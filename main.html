@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<style>
+			ul {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<h1 class="mui-title">中富移动办公</h1>
+			<button id='setting' class=" mui-pull-right mui-btn-link">设置</button>
+		</header>
+		
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>
+					您好 <span id='account'></span>，您已成功登录。
+				</p>
+				<!--<button  class="mui-btn mui-btn-block mui-btn-primary">设置</button>-->
+				<!--
+				<button id='exit' class="mui-btn mui-btn-block mui-btn-green">关闭</button>
+                <button id='logout' class="mui-btn mui-btn-red mui-btn-block">注销登录</button>
+                -->
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="main.html">
+					<span class="mui-icon mui-icon-home"></span>
+					<div class="mui-media-body">主页</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-email"><span class="mui-badge mui-badge-red">99+</span></span>
+					<div class="mui-media-body">Email</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-chatbubble"><span class="mui-badge mui-badge-red">99+</span></span>
+					<div class="mui-media-body">Chat</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-location"></span>
+					<div class="mui-media-body">Location</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="biaodanchaxun.html">
+					<span class="mui-icon mui-icon-search"></span>
+					<div class="mui-media-body">表单查询</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="biaodanluru.html">
+					<span class="mui-icon mui-icon-compose"></span>
+					<div class="mui-media-body">表单录入</div>
+				</a>
+			</li>
+			</ul>
+			
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				var settings = app.getSettings();
+				var account = doc.getElementById('account');
+				//
+				window.addEventListener('show', function() {
+					var state = app.getState();
+					account.innerText = state.account;
+					
+					if(state.account == null || state.account == undefined || state.account == '' )
+					{
+						mui.openWindow('login.html');
+					}
+				}, false);
+				$.plusReady(function() {
+					//设置键
+					var settingPage = $.preload({
+						"id": 'setting',
+						"url": 'setting.html'
+					});
+					var settingButton = doc.getElementById('setting');
+					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
+					settingButton.addEventListener('tap', function(event) {
+						$.openWindow({
+							id: 'setting',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					});
+					//-- 返回键
+					// 记录旧的返回
+					$.oldBack = mui.back; 
+					// 设置新的返回
+					var backButtonPress = 0;
+					$.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+					
+					// checkVer
+					function checkVer(wgtVer,newV){
+						wgtver = wgtVer.replace(/\./g,'');
+						newV = newV.replace(/\./g,'');
+						console.log(newV);
+						console.log(wgtver);
+						
+						return parseInt(newV) - parseInt(wgtver);
+					}
+					
+					// 版本
+					var wgtVer;
+					plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+						 wgtVer = inf.version;
+					});
+					
+					plus.downloader.clear();
+					function updateSoft() {
+						// let svno = "";
+						// let svurl = "";
+						// let svcontent = "";
+						// let svsize = "";
+						mui.ajax(realhost+"/api/common/getVersion",{
+							data:{},
+							async:true,
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:3000,//超时时间设置为10秒；
+							headers:{'Content-Type':'application/json'},
+							success: function(res) {
+								if(res.code == 0) {
+									console.log("当前服务器号：" + res.data.version)
+									console.log("当前版本号：" + wgtVer)
+									
+									if(checkVer(wgtVer,res.data.version) > 0){
+										mui.confirm('是否更新？','发现新版本',['取消','确认'],function (e) {
+											if (e.index == 1) {
+												// 下载任务
+												var dtask = plus.downloader.createDownload(
+													res.data.url,
+													{
+														"priority": 99,
+														"timeout": 5,  
+														"retry": 1,  
+														"retryInterval": 1,
+													},
+													function(d, status) {
+														if(status == 200) {
+															 clearInterval(i);
+															 plus.nativeUI.toast("正在准备环境，请稍后！");
+															 var path = d.filename; //_downloads
+															 plus.runtime.install(path); // 安装下载的apk文件
+														} else {
+															mui.alert('Download failed:' + status);
+														}
+													});
+												// 开始下载
+												dtask.start();
+												var i = setInterval(function() {
+													var totalSize = dtask.totalSize;
+													var downloadedSize = dtask.downloadedSize;
+													console.log(dtask.downloadedSize);
+													mui.toast('下载进行中：' + (downloadedSize/totalSize*100 + "").substring(0,4) + '%')
+												}, 2000); //1000为1秒钟
+											}
+										},'div');
+									}
+								}
+								else {
+									mui.toast(res.message)     
+								}
+							},
+							error: function(xhr,type,errorThrown) {
+								//异常处理；
+								if(type == "timeout")
+									mui.toast('连接超时，请检查网络')
+								else
+									mui.toast('系统异常');
+							}
+						});
+					}
+					
+					// 执行更新
+					updateSoft();
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

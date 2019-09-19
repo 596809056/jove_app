@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css"/>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content" id="">
+			
+			<div id="hcaption">
+				开料首检
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">条码信息</a>
+					<div class="mui-collapse-content">
+						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly"/></p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">基础数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">厂别:</span>
+							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">MO号:</span>
+							<span class="mui-col-xs-9"><input id="mo" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">生产编码:</span>
+							<span class="mui-col-xs-9"><input id="mfg" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">工单号:</span>
+							<span class="mui-col-xs-9"><input id="wo" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户代码:</span>
+							<span class="mui-col-xs-9"><input id="custcode" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户型号:</span>
+							<span class="mui-col-xs-9"><input id="custpart" type="text" value="" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">LOT号:</span>
+							<span class="mui-col-xs-9"><input id="lot" type="text" value="N/A" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">周期:</span>
+							<span class="mui-col-xs-9"><input id="datecode" type="text" value="N/A" readonly/></span>
+						</p>
+						<p class="mui-row jichushuju" style="display: none;">
+							<span class="mui-col-xs-3">d06rkey:</span>
+							<span class="mui-col-xs-9"><input id="d06rkey" type="text" value="" readonly/></span>
+						</p>
+						
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: indianred;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">板材二维码</a>
+					<div class="mui-collapse-content">
+						<p><input id="materialBarcode" type="text" class="scan" value="" data-id="bancai" placeholder="轻触以打开扫描" readonly="readonly"/></p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding:0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">投料数量:</span>
+							<span class="mui-col-xs-9"><input id="inputnumber" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">检查数量:</span>
+							<span class="mui-col-xs-9"><input id="checknumber" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">板材类型:</span>
+							<span class="mui-col-xs-9"><input id="supppn" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">是否含铜:</span>
+							<span class="mui-col-xs-9 hradio">
+									<label>是</label><input name="iscopper" type="radio" value="Y">
+									<label>否</label><input name="iscopper" type="radio" value="N">
+							</span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">要求板厚:</span>
+							<span class="mui-col-xs-9"><input id="plateply" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">板厚公差:</span>
+							<span class="mui-col-xs-9"><input id="plytolerance" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">实测板厚A:</span>
+							<span class="mui-col-xs-9"><input id="measurea" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">实测板厚B:</span>
+							<span class="mui-col-xs-9"><input id="measureb" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">实测板厚C:</span>
+							<span class="mui-col-xs-9"><input id="measurec" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">实测板厚D:</span>
+							<span class="mui-col-xs-9"><input id="measured" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">铜厚:</span>
+							<span class="mui-col-xs-9"><input id="copperply" type="text" value="" placeholder="单位oz"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">要求尺寸:</span>
+							<span class="mui-col-xs-9"><input id="requiredsize" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">尺寸公差:</span>
+							<span class="mui-col-xs-9"><input id="sizetolerance" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">实测尺寸:</span>
+							<span class="mui-col-xs-9"><input id="measuresize" type="text" value="" placeholder="单位mm"/></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">特殊尺寸:</span>
+							<span class="mui-col-xs-9 hradio">
+									<label>是</label><input name="speccut" value="Y" type="radio">
+									<label>否</label><input name="speccut" value="N" type="radio">
+							</span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">判定结果:</span>
+							<span class="mui-col-xs-9 hradio">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio">
+								<label>REJ</label><input name="decide" value="REJECT" type="radio">
+							</span>
+						</p>
+						<p class="mui-row">
+							<span class="mui-col-xs-3">检验员:</span>
+							<span class="mui-col-xs-9"><input id="inspector" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju" style="display: none;">
+							<span class="mui-col-xs-3">审核人:</span>
+							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">不良项:</span>
+							<span class="mui-col-xs-9 mui-row hcheckbox">
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
+								<span class="mui-col-xs-4"><label>板厚不符</label><input value="板厚不符" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜厚不符</label><input value="铜厚不符" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板边披锋</label><input value="板边披锋" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>圆角不良</label><input value="圆角不良" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板材不符</label><input value="板材不符" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+							</span>
+						</p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">备注</a>
+					<div class="mui-collapse-content">
+						<textarea rows="5" cols="" id="remark"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		(function($, doc) {
+						//初始化 scan页
+						$.init({
+						  preloadPages:[{id:'scan.html',url:'../scan.html'}]
+						});
+						
+						//自定义事件,供扫描回调
+						window.addEventListener('getScan',function(event){
+							// 获得事件参数
+							// var id = event.detail.id;
+							qrtype = event.detail.qrtype;
+							qrdata = event.detail.qrdata;
+							// 赋值到输入框
+							if(qrtype && qrdata){
+								// mui.alert(qrtype + ":" + qrdata );
+								var arr = qrdata.split(',');
+								if(arr.length > 2){
+									qrdata = arr[1];
+								}
+								document.querySelector("input[data-id='"+ qrtype + "']").value = qrdata;
+								
+								if(qrtype == 'tiaoma'){
+									// 采集数据
+									mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2',{
+											data: {
+												wo: qrdata,
+												isControl : false
+											},
+											dataType:'json',//服务器返回json格式数据
+											type:'POST',//HTTP请求类型
+											timeout:3000,//超时时间设置为10秒；
+											success:function(data){
+												if (data.success) {
+													// 基础信息
+													document.getElementById("mo").value = data.app.mo;
+													document.getElementById("wo").value = data.app.wo;
+													document.getElementById("mfg").value = data.app.mfg;
+													document.getElementById("custcode").value = data.app.cust_code;
+													document.getElementById("custpart").value = data.app.pn;
+													document.getElementById("lot").value = data.app.lot;
+													document.getElementById("datecode").value = data.app.datecode;
+													document.getElementById("d06rkey").value = data.app.d06rkey;
+													
+													document.getElementById("inputnumber").value = data.app.quanpcs;
+													document.getElementById("supppn").value = data.app.supppn;
+													document.getElementById("plateply").value = data.app.corerequirethick;
+													document.getElementById("requiredsize").value = data.app.panels;
+													document.getElementById("plytolerance").value = data.app.thicktolerance;
+												}else {
+													mui.alert(data.mess);
+												}
+											},
+											error: function(xhr,type,errorThrown){
+												//异常处理
+												if(type == "timeout")
+													$.toast('连接超时，请检查网络')
+												
+												$.toast('系统异常，请检查是否连接jove-wifi')
+											}
+									})
+								}
+								
+								if(qrtype == 'bancai'){
+									var val = qrdata.trim().split(",");
+									if (val.length != 11) {
+										//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+										mui.toast("板材条码错误");
+									}else{
+										document.getElementById("supppn").value = val[5];
+										document.getElementById("plateply").value = val[8];
+										document.getElementById("copperply").value = val[9];
+									}
+								}
+							}
+						});
+						
+						$.plusReady(function() {
+							// 获取本页面的固定信息
+							var self = plus.webview.currentWebview();
+							
+							// 扫描页webview
+							var scanPage = null;							
+							document.querySelectorAll(".scan").forEach(function(el){
+								el.addEventListener('tap',function(){
+									// 扫描页webview
+									if(!scanPage){
+										scanPage = plus.webview.getWebviewById('scan.html');
+									}
+									// 这里只有qrtype 是不一样的,根据el来
+									var qrtype = el.getAttribute("data-id");
+									mui.fire(scanPage,'newScan',{qrtype:qrtype,source:self.openurl,sourceid:self.id});
+									mui.openWindow({id: 'scan.html'});
+								})
+							})
+							
+							// 登录状态消息
+							var state = app.getState();
+							document.getElementById("factoryName").value = state.changbie;
+							document.getElementById("inspector").value = state.username;
+							
+							// 表单
+							document.getElementById("submit").addEventListener('tap',function(){
+								if(!confirm("确认提交吗？"))
+									return;
+								
+								if(document.getElementById("remark").value.length>30){
+									mui.alert("备注超过30字");
+									return;
+								}
+								var iscopper;
+								var speccut;
+								var decide;
+								var rejectitem = [];
+								var facarr = {
+									'一厂':1,
+									'二厂':2,
+									'三厂':3,
+									'未知':'N/A'
+								}
+								factoryName = facarr[document.getElementById("factoryName").value];
+								document.querySelectorAll("input[name='iscopper']").forEach(function(el){
+									if(el.checked)
+										iscopper = el.value;
+								})
+								document.querySelectorAll("input[name='speccut']").forEach(function(el){
+									if(el.checked)
+										speccut = el.value;
+								})
+								document.querySelectorAll("input[name='decide']").forEach(function(el){
+									if(el.checked)
+										decide = el.value;
+								})
+								document.querySelectorAll("input[name='rejectitem']").forEach(function(el){
+									if(el.checked)
+										rejectitem.push(el.value);
+								})
+								var data = {
+									factoryName:factoryName,
+									mo:document.getElementById("mo").value,
+									mfg:document.getElementById("mfg").value,
+									wo:document.getElementById("wo").value,
+									custcode:document.getElementById("custcode").value,
+									custpart:document.getElementById("custpart").value,
+									lot:document.getElementById("lot").value,
+									datecode:document.getElementById("datecode").value,
+									d06rkey:document.getElementById("d06rkey").value,
+									inputnumber:document.getElementById("inputnumber").value,
+									checknumber:document.getElementById("checknumber").value,
+									supppn:document.getElementById("supppn").value,
+									iscopper:iscopper,
+									plateply:document.getElementById("plateply").value,
+									plytolerance:document.getElementById("plytolerance").value,
+									measurea:document.getElementById("measurea").value,
+									measureb:document.getElementById("measureb").value,
+									measurec:document.getElementById("measurec").value,
+									measured:document.getElementById("measured").value,
+									copperply:document.getElementById("copperply").value,
+									sizetolerance:document.getElementById("sizetolerance").value,
+									requiredsize:document.getElementById("requiredsize").value,
+									plytolerance:document.getElementById("plytolerance").value,
+									measuresize:document.getElementById("measuresize").value,
+									speccut:speccut,
+									decide:decide,
+									rejectitem:rejectitem,
+									inspector:document.getElementById("inspector").value,
+									auditor:document.getElementById("auditor").value,
+									remark:document.getElementById("remark").value,
+								}
+								
+								// for(var key in data){
+								// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+								// 		mui.alert("必填项不能为空");
+								// 		return;
+								// 	}
+								// }
+								
+								var params = JSON.stringify(data);
+								mui.ajax({
+									url : realapi + '/JOVE_QIS/query/saveVerifyData.action?id=1',
+									type : "post",
+									data : {
+										params : params,
+										isRejectItem: true,
+										rejectItem: rejectitem.toString()
+									},
+									dataType : "json",
+									async : false,
+									error : function() {
+										mui.alert("error occur!");
+									},
+									success : function(data) {
+										if (data.isOK) {
+											mui.alert("上传成功!");
+										}else{
+											mui.alert("未知错误。");
+										}
+									}
+								});
+							});
+							
+							document.getElementById("reset").addEventListener('tap',function(){
+								if(!confirm("确认重置吗？"))
+									return;
+								
+								document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el){
+									el.value = '';
+								})
+								document.querySelectorAll(".shiceshuju button").forEach(function(el){
+									el.innerHTML = '';
+								})
+								document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el){
+									el.checked = '';
+								})
+								document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el){
+									el.checked = '';
+								})
+								document.querySelector("input[value='无不良']").checked = 'checked';
+							});
+							
+						});
+					}(mui, document));
+	</script>
+</html>

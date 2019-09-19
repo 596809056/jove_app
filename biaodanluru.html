@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<style>
+			ul {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-title">表单录入</h1>
+			<button id='setting' class=" mui-pull-right mui-btn-link">设置</button>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="main.html" class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a id="biaodanchaxun.html" class="mui-tab-item">
+				<span class="mui-icon mui-icon-search"></span>
+				<span class="mui-tab-label">表单查询</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>
+					您好 <span id='account'></span>，您已成功登录。
+				</p>
+			</div>
+			<div class="" style="padding-top: 5px;">
+				 <ul class="mui-table-view"> 
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">开料</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="kailiao_shoujian">
+									<a class="mui-navigate-right">开料首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="kailiao_ribao">
+									<a class="mui-navigate-right">开料日报</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">内层</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="neiceng_AOIshengchan">
+									<a class="mui-navigate-right">AOI生产</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="neiceng_AOIsaomiao">
+									<a class="mui-navigate-right">AOI扫描机</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="neiceng_AOIpinzhi">
+									<a class="mui-navigate-right">AOI品质</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">压合</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="yahe_paiban">
+									<a class="mui-navigate-right">压合排版</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_chengzhong">
+									<a class="mui-navigate-right">压合称重</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_ronghe">
+									<a class="mui-navigate-right">压合熔合</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_jianyan">
+									<a class="mui-navigate-right">压合检验</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_banhou">
+									<a class="mui-navigate-right">压合板厚</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_qiepian">
+									<a class="mui-navigate-right">压合切片</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_xray">
+									<a class="mui-navigate-right">X-RAY钻靶</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_zonghuayaoshui">
+									<a class="mui-navigate-right">粽化药水补加</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="yahe_zonghuafangong">
+									<a class="mui-navigate-right">粽化返工</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">钻孔</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="zuankong_zuanzhuicaodao">
+									<a class="mui-navigate-right">钻咀槽刀发放</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="zuankong_shoujian">
+									<a class="mui-navigate-right">钻孔首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="zuankong_choujian">
+									<a class="mui-navigate-right">钻孔抽检</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">电镀</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="bandu_fangong">
+									<a class="mui-navigate-right">返工</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_jianxingshike">
+									<a class="mui-navigate-right">碱性蚀刻</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_vcpshengchan">
+									<a class="mui-navigate-right">vcp生产</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_dvcpshengchan">
+									<a class="mui-navigate-right">dvcp生产</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_chentong">
+									<a class="mui-navigate-right">沉铜电镀</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_yankongshengchan">
+									<a class="mui-navigate-right">验孔生产</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diandu_yankongjianxiu">
+									<a class="mui-navigate-right">验孔检修</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">表面处理</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="biaomianchuli_wuqianpenxi">
+									<a class="mui-navigate-right">无铅喷锡生产</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">物理室</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="wulishi_beiguang">
+									<a class="mui-navigate-right">背光测试</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">电测</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="diance_feizhen">
+									<a class="mui-navigate-right">飞针测试</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diance_dizu">
+									<a class="mui-navigate-right">低阻测试</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diance_gaoya">
+									<a class="mui-navigate-right">高压测试</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diance_xianquan">
+									<a class="mui-navigate-right">线圈测试</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="diance_ceshixiuban">
+									<a class="mui-navigate-right">测试修板</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">品质</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="pinzhi_kongtongceliang">
+									<a class="mui-navigate-right">孔铜测量</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_dutongqiepian">
+									<a class="mui-navigate-right">镀铜切片</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_neicengxkxj">
+									<a class="mui-navigate-right">内层线宽线距</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_waicengxkxj">
+									<a class="mui-navigate-right">外层线宽线距</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_shikehoukongjing">
+									<a class="mui-navigate-right">蚀刻后孔径</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_zuhanhoudu">
+									<a class="mui-navigate-right">阻焊厚度</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_lvyoushoujian">
+									<a class="mui-navigate-right">绿油首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_zifushoujian">
+									<a class="mui-navigate-right">字符首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_chenjinshoujian">
+									<a class="mui-navigate-right">沉金首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_penxishoujian">
+									<a class="mui-navigate-right">喷锡首检</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_fuzhuoliceshi">
+									<a class="mui-navigate-right">附着力测试</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_AVI">
+									<a class="mui-navigate-right">AVI日报</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_banqiaoqu">
+									<a class="mui-navigate-right">板翘曲检查</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_zhongjianxiuban">
+									<a class="mui-navigate-right">终检修板</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="pinzhi_zuankongXRAY">
+									<a class="mui-navigate-right">钻孔底板xray</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">图镀</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="tudu_shengchan">
+									<a class="mui-navigate-right">生产</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="tudu_zhuzhuangjing">
+									<a class="mui-navigate-right">镀铜柱状晶</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">板镀</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="bandu_banduaxian">
+									<a class="mui-navigate-right">板镀A线</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="bandu_tonghouceliang">
+									<a class="mui-navigate-right">板镀铜厚</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="bandu_fangong">
+									<a class="mui-navigate-right">板镀返工</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">干膜</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="ganmo_taocimoban">
+									<a class="mui-navigate-right">陶瓷磨板</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="ganmo_CCDbaoguang">
+									<a class="mui-navigate-right">CCD曝光</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="ganmo_LDIbaoguang">
+									<a class="mui-navigate-right">LDI曝光</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">绿油</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="lvyou_ribao">
+									<a class="mui-navigate-right">生产日报</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="lvyou_kaiyou">
+									<a class="mui-navigate-right">开油记录</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="lvyou_baoguang">
+									<a class="mui-navigate-right">曝光</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="lvyou_xianying">
+									<a class="mui-navigate-right">显影</a>
+								</li>
+								<li class="mui-table-view-cell pro" id="lvyou_suidaoyuguhua">
+									<a class="mui-navigate-right">隧道预固化</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">字符</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="zifu_saikongshengchan">
+									<a class="mui-navigate-right">塞孔机生产</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">外形</a>
+						<div class="mui-collapse-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell pro" id="waixing_shike">
+									<a class="mui-navigate-right">外层碱/酸性蚀刻</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				var settings = app.getSettings();
+				var account = doc.getElementById('account');
+				//
+				window.addEventListener('show', function() {
+					var state = app.getState();
+					account.innerText = state.account;
+					
+					if(state.account == null || state.account == undefined || state.account == '' )
+					{
+						mui.openWindow('login.html');
+					}
+				}, false);
+				
+				document.querySelectorAll("nav a").forEach(function(el){
+					el.addEventListener('tap',function(){
+						console.log(el.id)
+						$.openWindow({
+							url: el.id
+						});
+					});
+				})
+				
+				$.plusReady(function() {
+					//设置键
+					var settingPage = $.preload({
+						"id": 'setting',
+						"url": 'setting.html'
+					});
+					var settingButton = doc.getElementById('setting');
+					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
+					settingButton.addEventListener('tap', function(event) {
+						$.openWindow({
+							id: 'setting',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					});
+					
+					
+					document.querySelectorAll(".pro").forEach(function(el){
+						var idstr = el.id;
+						var urlarr = idstr.split('_');
+						var url = urlarr[0] + '/' + urlarr[1] + '.html';
+						
+						el.addEventListener('tap',function(){
+							mui.openWindow({
+								url: url,
+								id: idstr,
+								styles:{},
+								extras:{
+									openurl: url
+								},
+								createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+								show:{
+								  autoShow:true,//页面loaded事件发生后自动显示，默认为true；
+								},
+								waiting:{
+								  autoShow:true,//自动显示等待框，默认为true
+								  title:'正在加载...',//等待对话框上显示的提示内容
+								}
+							});
+						});
+					});
+					
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,17 @@
+#hcaption {
+  text-align: center;
+  padding: 30px;
+  color: darkslategrey;
+}
+.biaodan li {
+  padding: 0.1rem 1rem;
+  text-align: center;
+  line-height: 40px;
+}
+p.shiceshuju {
+  line-height: 40px;
+}
+p.shiceshuju .hradio label {
+  margin: 0 0.3rem 0 1.2rem;
+  display: inline-block;
+}

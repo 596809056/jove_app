@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			ul {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-title">表单查询</h1>
+			<button id='setting' class=" mui-pull-right mui-btn-link">设置</button>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" id="main.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" id="biaodanluru.html">
+				<span class="mui-icon mui-icon-compose"></span>
+				<span class="mui-tab-label">表单录入</span>
+			</a>
+		</nav>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>
+					您好 <span id='account'></span>，您已成功登录。
+				</p>
+			</div>
+			<div class="" style="padding-top: 5px;">
+				 <!-- <div style="padding-left: 1rem;color: #2F4F4F;">选择工序：</div> -->
+				 <select id="search-type">
+					  <option value ="">请选择工序</option>
+					  <option value ="1">开料首检</option>
+					  <option value ="2">开料日报</option>
+				 </select>
+			</div>
+			<div id="biaodan">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" v-for="item in list">
+						<a class="mui-navigate-right">
+							{{"[" + item.mo + "][" + item.mfg + "][" + item.wo + "]"}}
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			function pad(num, n) {
+				var len = num.toString().length;
+				while(len < n) {
+					num = "0" + num;
+					len++;
+				}
+				return num;
+			}
+			
+			(function($, doc) {
+				$.init();
+				var settings = app.getSettings();
+				var account = doc.getElementById('account');
+				//
+				var state = app.getState();
+				window.addEventListener('show', function() {
+					account.innerText = state.account;
+					
+					if(state.account == null || state.account == undefined || state.account == '' )
+					{
+						mui.openWindow('login.html');
+					}
+				}, false);
+				
+				var biaodan = new Vue({
+					el:'#biaodan',
+					data:{
+						list:[]
+					}
+				})
+				
+				var searchObj = document.getElementById("search-type");
+				searchObj.addEventListener('change',function(){
+					console.log(pad(searchObj.options[searchObj.selectedIndex].value,4));
+					mui.ajax(realhost+'/api/common/getBiaodan',{
+						data:{
+							t:pad(searchObj.options[searchObj.selectedIndex].value,4),
+							u:state.username
+						},
+						dataType:'json',//服务器返回json格式数据
+						type:'post',//HTTP请求类型
+						timeout:10000,//超时时间设置为10秒；
+						success:function(data){
+							biaodan.list = data.data;
+						},
+						error:function(xhr,type,errorThrown){
+							mui.toast('网络异常,请检查是否连上jove-wifi');
+						}
+					});
+				});
+				
+				document.querySelectorAll("nav a").forEach(function(el){
+					el.addEventListener('tap',function(){
+						console.log(el.id)
+						$.openWindow({
+							url: el.id
+						});
+					});
+				})
+				
+				$.plusReady(function() {
+					//设置键
+					var settingPage = $.preload({
+						"id": 'setting',
+						"url": 'setting.html'
+					});
+					var settingButton = doc.getElementById('setting');
+					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
+					settingButton.addEventListener('tap', function(event) {
+						$.openWindow({
+							id: 'setting',
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					});
+					
+					
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>
