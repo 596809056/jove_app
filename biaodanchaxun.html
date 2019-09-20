@@ -72,20 +72,18 @@
 				return num;
 			}
 			
+			// 用户状态
+			var state = app.getState();
+			account.innerText = state.account;
+			if(state.account == null || state.account == undefined || state.account == '' )
+			{
+				mui.openWindow('login.html');
+			}
+			
 			(function($, doc) {
 				$.init();
 				var settings = app.getSettings();
 				var account = doc.getElementById('account');
-				//
-				var state = app.getState();
-				window.addEventListener('show', function() {
-					account.innerText = state.account;
-					
-					if(state.account == null || state.account == undefined || state.account == '' )
-					{
-						mui.openWindow('login.html');
-					}
-				}, false);
 				
 				var biaodan = new Vue({
 					el:'#biaodan',

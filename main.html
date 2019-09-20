@@ -78,20 +78,19 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script>
+			// 用户状态
+			var state = app.getState();
+			account.innerText = state.account;
+			if(state.account == null || state.account == undefined || state.account == '' )
+			{
+				mui.openWindow('login.html');
+			}
+			
 			(function($, doc) {
 				$.init();
 				var settings = app.getSettings();
 				var account = doc.getElementById('account');
-				//
-				window.addEventListener('show', function() {
-					var state = app.getState();
-					account.innerText = state.account;
-					
-					if(state.account == null || state.account == undefined || state.account == '' )
-					{
-						mui.openWindow('login.html');
-					}
-				}, false);
+				
 				$.plusReady(function() {
 					//设置键
 					var settingPage = $.preload({
@@ -136,8 +135,8 @@
 					function checkVer(wgtVer,newV){
 						wgtver = wgtVer.replace(/\./g,'');
 						newV = newV.replace(/\./g,'');
-						console.log(newV);
-						console.log(wgtver);
+						console.log("新版本：" + newV);
+						console.log("旧版本：" + wgtver);
 						
 						return parseInt(newV) - parseInt(wgtver);
 					}
