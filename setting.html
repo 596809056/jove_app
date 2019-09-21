@@ -165,6 +165,9 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-table-view-chevron">
 							<li class="mui-table-view-cell">
+								<a id="update" class="mui-navigate-right">检查更新</a>
+							</li>
+							<li class="mui-table-view-cell">
 								<a id="rate" class="mui-navigate-right">评分鼓励</a>
 							</li>
 							<li class="mui-table-view-cell">
@@ -297,6 +300,90 @@
 			}, function() {
 				console.log("获取分享服务列表失败");
 			});
+			// checkVer
+			function checkVer(wgtVer,newV){
+				wgtver = wgtVer.replace(/\./g,'');
+				newV = newV.replace(/\./g,'');
+				console.log(newV);
+				console.log(wgtver);
+				
+				return parseInt(newV) - parseInt(wgtver);
+			}
+			// 版本
+			var wgtVer;
+			plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+				 wgtVer = inf.version;
+			});
+			document.getElementById("update").addEventListener('tap', function() {
+				updateSoft();
+			});
+			plus.downloader.clear();
+			function updateSoft() {
+				// let svno = "";
+				// let svurl = "";
+				// let svcontent = "";
+				// let svsize = "";
+				mui.ajax(realhost+"/api/common/getVersion",{
+					data:{},
+					async:true,
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:3000,//超时时间设置为10秒；
+					headers:{'Content-Type':'application/json'},
+					success: function(res) {
+						if(res.code == 0) {
+							console.log("当前服务器号：" + res.data.version)
+							console.log("当前版本号：" + wgtVer)
+							
+							if(checkVer(wgtVer,res.data.version) > 0){
+								mui.confirm('是否更新？','发现新版本',['取消','确认'],function (e) {
+									if (e.index == 1) {
+										// 下载任务
+										var dtask = plus.downloader.createDownload(
+											res.data.url,
+											{
+												"priority": 99,
+												"timeout": 5,  
+												"retry": 1,  
+												"retryInterval": 1,
+											},
+											function(d, status) {
+												if(status == 200) {
+													 clearInterval(i);
+													 plus.nativeUI.toast("正在准备环境，请稍后！");
+													 var path = d.filename; //_downloads
+													 plus.runtime.install(path); // 安装下载的apk文件
+												} else {
+													mui.alert('Download failed:' + status);
+												}
+											});
+										// 开始下载
+										dtask.start();
+										var i = setInterval(function() {
+											var totalSize = dtask.totalSize;
+											var downloadedSize = dtask.downloadedSize;
+											console.log(dtask.downloadedSize);
+											mui.toast('下载进行中：' + (downloadedSize/totalSize*100 + "").substring(0,4) + '%')
+										}, 2000); //1000为1秒钟
+									}
+								},'div');
+							}else{
+								plus.nativeUI.toast("已是最新版本！");
+							}
+						}
+						else {
+							mui.toast(res.message)     
+						}
+					},
+					error: function(xhr,type,errorThrown) {
+						//异常处理；
+						if(type == "timeout")
+							mui.toast('连接超时，请检查网络')
+						else
+							mui.toast('系统异常');
+					}
+				});
+			}
 		});
 		 //分享链接点击事件
 		document.getElementById("share").addEventListener('tap', function() {
@@ -364,6 +451,7 @@
 					console.log("分享到\"" + share.description + "\"失败: " + e.code + " - " + e.message);
 				});
 			}
+			
 			//去评分
 		document.getElementById("rate").addEventListener('tap', function() {
 			if (mui.os.ios) {

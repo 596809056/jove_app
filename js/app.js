@@ -5,7 +5,7 @@
  **/
  // 测试内外网状态，如果内网能连就不需要外网
  var realhost = 'http://192.168.30.96:8080';
- var realapi = 'http://192.168.20.232:8080';
+ var realapi = 'https://192.168.20.232:8080';
  mui.ajax(realhost + '/api/user/login',{
  		data:{},
  		async:true,

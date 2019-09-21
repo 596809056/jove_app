@@ -6,10 +6,10 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../css/biaodan.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
 		<script src="../js/app.js"></script>
 		<style type="text/css">
 			#checkTime {
@@ -27,7 +27,7 @@
 			<h1 class="mui-title">中富移动办公</h1>
 		</header>
 		<div class="mui-content" id="">
-			
+
 			<div id="hcaption">
 				AOI品质
 			</div>
@@ -35,7 +35,10 @@
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
 					<div class="mui-collapse-content">
-						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly"/></p>
+						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+					</div>
+					<div class="mui-collapse-content">
+						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
@@ -43,41 +46,41 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">厂别:</span>
-							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">MO号:</span>
-							<span class="mui-col-xs-9"><input id="mo" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="mo" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">生产编码:</span>
-							<span class="mui-col-xs-9"><input id="mfg" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="mfg" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">工单号:</span>
-							<span class="mui-col-xs-9"><input id="wo" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="wo" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户代码:</span>
-							<span class="mui-col-xs-9"><input id="custcode" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="custcode" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户型号:</span>
-							<span class="mui-col-xs-9"><input id="custpart" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="custpart" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">LOT号:</span>
-							<span class="mui-col-xs-9"><input id="lot" type="text" value="N/A" readonly/></span>
+							<span class="mui-col-xs-9"><input id="lot" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">周期:</span>
-							<span class="mui-col-xs-9"><input id="datecode" type="text" value="N/A" readonly/></span>
+							<span class="mui-col-xs-9"><input id="datecode" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju" style="display: none;">
 							<span class="mui-col-xs-3">d06rkey:</span>
-							<span class="mui-col-xs-9"><input id="d06rkey" type="text" value="" readonly/></span>
+							<span class="mui-col-xs-9"><input id="d06rkey" type="text" value="" readonly /></span>
 						</p>
-						
+
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding:0.5rem 1rem;">
@@ -104,44 +107,44 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">定位:</span>
-							<span class="mui-col-xs-9"><input id="openPosition" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="openPosition" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">分散:</span>
-							<span class="mui-col-xs-9"><input id="openDisperse" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="openDisperse" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							短路
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">定位:</span>
-							<span class="mui-col-xs-9"><input id="shortoutPosition" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="shortoutPosition" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">分散:</span>
-							<span class="mui-col-xs-9"><input id="shortoutDisperse" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="shortoutDisperse" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							缺口
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">定位:</span>
-							<span class="mui-col-xs-9"><input id="gapPosition" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="gapPosition" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">分散:</span>
-							<span class="mui-col-xs-9"><input id="gapDisperse" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="gapDisperse" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							残铜
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">定位:</span>
-							<span class="mui-col-xs-9"><input id="residualCopperPosition" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="residualCopperPosition" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">分散:</span>
-							<span class="mui-col-xs-9"><input id="residualCopperDisperse" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="residualCopperDisperse" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">擦花:</span>
@@ -153,7 +156,7 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">曝光不良:</span>
-							<span class="mui-col-xs-9"><input id="exposeBad" type="text" value="" placeholder=""/></span>
+							<span class="mui-col-xs-9"><input id="exposeBad" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">显影过度/不净:</span>
@@ -167,7 +170,7 @@
 							<span class="mui-col-xs-3">其他:</span>
 							<span class="mui-col-xs-9"><input id="others" type="text" value="" /></span>
 						</p>
-						
+
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">结果:</span>
 							<span class="mui-col-xs-9 hradio">
@@ -183,7 +186,7 @@
 							<span class="mui-col-xs-3">审核人:</span>
 							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
 						</p>
-						
+
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
@@ -199,281 +202,329 @@
 			</ul>
 		</div>
 	</body>
-	
+
 	<script type="text/javascript">
 		(function($, doc) {
-						//初始化 scan页
-						$.init({
-						  preloadPages:[{id:'scan.html',url:'../scan.html'}]
-						});
-						
-document.querySelectorAll(".calc").forEach(function(el){
-	el.addEventListener('change',function(){
-		
-		var checkQty = document.getElementById("checkQty").value;
-		var okQty = document.getElementById("okQty").value;
-		if(checkQty>0 && okQty>0){
-			var area=((okQty/checkQty*100).toFixed(2))+"%";
-			document.getElementById("okYield").value = area;
-		}else{
-			document.getElementById("okYield").value = "";
-		
-		   return false;
-		}
-	});
-});
-						
-						//自定义事件,供扫描回调
-						window.addEventListener('getScan',function(event){
-							// 获得事件参数
-							// var id = event.detail.id;
-							qrtype = event.detail.qrtype;
-							qrdata = event.detail.qrdata;
-							// 赋值到输入框
-							if(qrtype && qrdata){
-								// mui.alert(qrtype + ":" + qrdata );
-								var arr = qrdata.split(',');
-								if(arr.length > 2){
-									qrdata = arr[1];
-								}
-								document.querySelector("input[data-id='"+ qrtype + "']").value = qrdata;
-								
-								if(qrtype == 'tiaoma'){
-									// 采集数据
-									mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2',{
-											data: {
-												wo: qrdata,
-												isControl : false
-											},
-											dataType:'json',//服务器返回json格式数据
-											type:'POST',//HTTP请求类型
-											timeout:3000,//超时时间设置为10秒；
-											success:function(data){
-												if (data.success) {
-													// 基础信息
-													document.getElementById("mo").value = data.app.mo;
-													document.getElementById("wo").value = data.app.wo;
-													document.getElementById("mfg").value = data.app.mfg;
-													document.getElementById("custcode").value = data.app.cust_code;
-													document.getElementById("custpart").value = data.app.pn;
-													document.getElementById("lot").value = data.app.lot;
-													document.getElementById("datecode").value = data.app.datecode;
-													document.getElementById("d06rkey").value = data.app.d06rkey;
-													
-													// document.getElementById("artworkNo").value = data.app.mfg;
-												}else {
-													mui.alert(data.mess);
-												}
-											},
-											error: function(xhr,type,errorThrown){
-												//异常处理
-												if(type == "timeout")
-													$.toast('连接超时，请检查网络')
-												
-												$.toast('系统异常，请检查是否连接jove-wifi')
-											}
-									})
-								}
-								
-								if(qrtype == 'bancai'){
-									var val = qrdata.trim().split(",");
-									if (val.length != 11) {
-										//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
-										mui.toast("板材条码错误");
-									}else{
-										document.getElementById("supppn").value = val[5];
-										document.getElementById("plateply").value = val[8];
-										document.getElementById("copperply").value = val[9];
-									}
-								}
-							}
-						});
-						
-						$.plusReady(function() {
-							// 获取本页面的固定信息
-							var self = plus.webview.currentWebview();
-							
-							// 扫描页webview
-							var scanPage = null;							
-							document.querySelectorAll(".scan").forEach(function(el){
-								el.addEventListener('tap',function(){
-									// 扫描页webview
-									if(!scanPage){
-										scanPage = plus.webview.getWebviewById('scan.html');
-									}
-									// 这里只有qrtype 是不一样的,根据el来
-									var qrtype = el.getAttribute("data-id");
-									mui.fire(scanPage,'newScan',{qrtype:qrtype,source:self.openurl,sourceid:self.id});
-									mui.openWindow({id: 'scan.html'});
-								})
-							})
-							
-							// 登录状态消息
-							var state = app.getState();
-							document.getElementById("factoryName").value = state.changbie;
-							document.getElementById("operator").value = state.username;
-							
-							// 日期控件
-							function pad(num, n) {
-								var len = num.toString().length;
-								while(len < n) {
-									num = "0" + num;
-									len++;
-								}
-								return num;
-							}
-							var date = new Date();
-							var pickerf = function(){
-								var _self = this;
-								if(_self.picker) {
-									_self.picker.show(function (rs) {
-										_self.innerHTML = rs.text;
-										_self.picker.dispose();
-										_self.picker = null;
-									});
+			//初始化 scan页
+			$.init({
+				preloadPages: [{
+					id: 'scan.html',
+					url: '../scan.html'
+				}]
+			});
+
+			document.querySelectorAll(".calc").forEach(function(el) {
+				el.addEventListener('change', function() {
+
+					var checkQty = document.getElementById("checkQty").value;
+					var okQty = document.getElementById("okQty").value;
+					if (checkQty > 0 && okQty > 0) {
+						var area = ((okQty / checkQty * 100).toFixed(2)) + "%";
+						document.getElementById("okYield").value = area;
+					} else {
+						document.getElementById("okYield").value = "";
+
+						return false;
+					}
+				});
+			});
+
+			document.querySelector("input[data-id='tiaoma1']").onchange = function() {
+				var qrdata = document.getElementById("code").value;
+				// 采集数据
+				mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+					data: {
+						wo: qrdata,
+						isControl: false
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'POST', //HTTP请求类型
+					timeout: 3000, //超时时间设置为10秒；
+					success: function(data) {
+						if (data.success) {
+							// 基础信息
+							document.getElementById("mo").value = data.app.mo;
+							document.getElementById("wo").value = data.app.wo;
+							document.getElementById("mfg").value = data.app.mfg;
+							document.getElementById("custcode").value = data.app.cust_code;
+							document.getElementById("custpart").value = data.app.pn;
+							document.getElementById("lot").value = data.app.lot;
+							document.getElementById("datecode").value = data.app.datecode;
+							document.getElementById("d06rkey").value = data.app.d06rkey;
+				
+							// document.getElementById("artworkNo").value = data.app.mfg;
+						} else {
+							mui.alert(data.mess);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						//异常处理
+						if (type == "timeout")
+							$.toast('连接超时，请检查网络')
+				
+						$.toast('系统异常，请检查是否连接jove-wifi')
+					}
+				})
+			}
+
+			//自定义事件,供扫描回调
+			window.addEventListener('getScan', function(event) {
+				// 获得事件参数
+				// var id = event.detail.id;
+				qrtype = event.detail.qrtype;
+				qrdata = event.detail.qrdata;
+				// 赋值到输入框
+				if (qrtype && qrdata) {
+					// mui.alert(qrtype + ":" + qrdata );
+					var arr = qrdata.split(',');
+					if (arr.length > 2) {
+						qrdata = arr[1];
+					}
+					document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
+
+					if (qrtype == 'tiaoma') {
+						// 采集数据
+						mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+							data: {
+								wo: qrdata,
+								isControl: false
+							},
+							dataType: 'json', //服务器返回json格式数据
+							type: 'POST', //HTTP请求类型
+							timeout: 3000, //超时时间设置为10秒；
+							success: function(data) {
+								if (data.success) {
+									// 基础信息
+									document.getElementById("mo").value = data.app.mo;
+									document.getElementById("wo").value = data.app.wo;
+									document.getElementById("mfg").value = data.app.mfg;
+									document.getElementById("custcode").value = data.app.cust_code;
+									document.getElementById("custpart").value = data.app.pn;
+									document.getElementById("lot").value = data.app.lot;
+									document.getElementById("datecode").value = data.app.datecode;
+									document.getElementById("d06rkey").value = data.app.d06rkey;
+
+									// document.getElementById("artworkNo").value = data.app.mfg;
 								} else {
-									var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString() , 2) + "-" + pad(date.getDate() , 2);
-									current += " " + pad(date.getHours(),2) + ":" + pad(date.getMinutes(),2);
-									var options = {
-										"value":current,
-										"beginYear":2019,
-										"endYear":2038
-									};
-									console.log("当前时间:" + current);
-									var id = this.getAttribute('id');
-									
-									_self.picker = new $.DtPicker(options);
-									_self.picker.show(function(rs) {
-										_self.innerHTML = rs.text;
-										_self.picker.dispose();
-										_self.picker = null;
-									});
+									mui.alert(data.mess);
 								}
+							},
+							error: function(xhr, type, errorThrown) {
+								//异常处理
+								if (type == "timeout")
+									$.toast('连接超时，请检查网络')
+
+								$.toast('系统异常，请检查是否连接jove-wifi')
 							}
-							// document.getElementById("checkTime").addEventListener('tap',pickerf);
-							
-							// 表单
-							document.getElementById("submit").addEventListener('tap',function(){
-								if(!confirm("确认提交吗？"))
-									return;
-								
-								if(document.getElementById("remark").value.length>30){
-									mui.alert("备注超过30字");
-									return;
-								}
-								var iscopper;
-								var speccut;
-								var decide;
-								var checkType;
-								var rejectitem = [];
-								var facarr = {
-									'一厂':1,
-									'二厂':2,
-									'三厂':3,
-									'未知':'N/A'
-								}
-								factoryName = facarr[document.getElementById("factoryName").value];
-								document.querySelectorAll("input[name='decide']").forEach(function(el){
-									if(el.checked)
-										decide = el.value;
-								})
-								document.querySelectorAll("input[name='checkType']").forEach(function(el){
-									if(el.checked)
-										checkType = el.checkType;
-								})
-								document.querySelectorAll("input[name='rejectitem']").forEach(function(el){
-									if(el.checked)
-										rejectitem.push(el.value);
-								})
-								
-								
-								var data = {
-									factoryName:factoryName,
-									mo:document.getElementById("mo").value,
-									mfg:document.getElementById("mfg").value,
-									wo:document.getElementById("wo").value,
-									custcode:document.getElementById("custcode").value,
-									custpart:document.getElementById("custpart").value,
-									lot:document.getElementById("lot").value,
-									datecode:document.getElementById("datecode").value,
-									d06rkey:document.getElementById("d06rkey").value,
-									
-									checkQty:document.getElementById("checkQty").value,
-									pcbLayerNo:document.getElementById("pcbLayerNo").value,
-									okQty:document.getElementById("okQty").value,
-									okYield:document.getElementById("okYield").value,
-									openPosition:document.getElementById("openPosition").value,
-									openDisperse:document.getElementById("openDisperse").value,
-									shortoutPosition:document.getElementById("shortoutPosition").value,
-									shortoutDisperse:document.getElementById("shortoutDisperse").value,
-									gapPosition:document.getElementById("gapPosition").value,
-									gapDisperse:document.getElementById("gapDisperse").value,
-									
-									residualCopperPosition:document.getElementById("residualCopperPosition").value,
-									residualCopperDisperse:document.getElementById("residualCopperDisperse").value,
-									chafed:document.getElementById("chafed").value,
-									pinhole:document.getElementById("pinhole").value,
-									exposeBad:document.getElementById("exposeBad").value,
-									overDevelopment:document.getElementById("overDevelopment").value,
-									underEtching:document.getElementById("underEtching").value,
-									others:document.getElementById("others").value,
-									
-									decide:decide,
-									operator:document.getElementById("operator").value,
-									auditor:document.getElementById("auditor").value,
-									remark:document.getElementById("remark").value,
-								}
-								
-								// for(var key in data){
-								// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-								// 		mui.alert("必填项不能为空");
-								// 		return;
-								// 	}
-								// }
-								
-								var params = JSON.stringify(data);
-								mui.ajax({
-									url : realapi + '/JOVE_QIS/query/saveVerifyData.action?id=88',
-									type : "post",
-									data : {
-										params : params,
-										isRejectItem: false
-									},
-									dataType : "json",
-									async : false,
-									error : function() {
-										mui.alert("error occur!");
-									},
-									success : function(data) {
-										if (data.isOK) {
-											mui.alert("上传成功!");
-										}else{
-											mui.alert("未知错误。");
-										}
-									}
-								});
-							});
-							
-							document.getElementById("reset").addEventListener('tap',function(){
-								if(!confirm("确认重置吗？"))
-									return;
-								
-								document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el){
-									el.value = '';
-								})
-								document.querySelectorAll(".shiceshuju button").forEach(function(el){
-									el.innerHTML = '';
-								})
-								document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el){
-									el.checked = '';
-								})
-								document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el){
-									el.checked = '';
-								})
-								document.querySelector("input[value='无不良']").checked = 'checked';
-							});
-							
+						})
+					}
+
+					if (qrtype == 'bancai') {
+						var val = qrdata.trim().split(",");
+						if (val.length != 11) {
+							//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+							mui.toast("板材条码错误");
+						} else {
+							document.getElementById("supppn").value = val[5];
+							document.getElementById("plateply").value = val[8];
+							document.getElementById("copperply").value = val[9];
+						}
+					}
+				}
+			});
+
+			$.plusReady(function() {
+				// 获取本页面的固定信息
+				var self = plus.webview.currentWebview();
+
+				// 扫描页webview
+				var scanPage = null;
+				document.querySelectorAll(".scan").forEach(function(el) {
+					el.addEventListener('tap', function() {
+						// 扫描页webview
+						if (!scanPage) {
+							scanPage = plus.webview.getWebviewById('scan.html');
+						}
+						// 这里只有qrtype 是不一样的,根据el来
+						var qrtype = el.getAttribute("data-id");
+						mui.fire(scanPage, 'newScan', {
+							qrtype: qrtype,
+							source: self.openurl,
+							sourceid: self.id
 						});
-					}(mui, document));
+						mui.openWindow({
+							id: 'scan.html'
+						});
+					})
+				})
+
+				// 登录状态消息
+				var state = app.getState();
+				document.getElementById("factoryName").value = state.changbie;
+				document.getElementById("operator").value = state.username;
+
+				// 日期控件
+				function pad(num, n) {
+					var len = num.toString().length;
+					while (len < n) {
+						num = "0" + num;
+						len++;
+					}
+					return num;
+				}
+				var date = new Date();
+				var pickerf = function() {
+					var _self = this;
+					if (_self.picker) {
+						_self.picker.show(function(rs) {
+							_self.innerHTML = rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+					} else {
+						var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+							2);
+						current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+						var options = {
+							"value": current,
+							"beginYear": 2019,
+							"endYear": 2038
+						};
+						console.log("当前时间:" + current);
+						var id = this.getAttribute('id');
+
+						_self.picker = new $.DtPicker(options);
+						_self.picker.show(function(rs) {
+							_self.innerHTML = rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+					}
+				}
+				// document.getElementById("checkTime").addEventListener('tap',pickerf);
+
+				// 表单
+				document.getElementById("submit").addEventListener('tap', function() {
+					if (!confirm("确认提交吗？"))
+						return;
+
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var iscopper;
+					var speccut;
+					var decide;
+					var checkType;
+					var rejectitem = [];
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value];
+					document.querySelectorAll("input[name='decide']").forEach(function(el) {
+						if (el.checked)
+							decide = el.value;
+					})
+					document.querySelectorAll("input[name='checkType']").forEach(function(el) {
+						if (el.checked)
+							checkType = el.checkType;
+					})
+					document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+						if (el.checked)
+							rejectitem.push(el.value);
+					})
+
+
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+
+						checkQty: document.getElementById("checkQty").value,
+						pcbLayerNo: document.getElementById("pcbLayerNo").value,
+						okQty: document.getElementById("okQty").value,
+						okYield: document.getElementById("okYield").value,
+						openPosition: document.getElementById("openPosition").value,
+						openDisperse: document.getElementById("openDisperse").value,
+						shortoutPosition: document.getElementById("shortoutPosition").value,
+						shortoutDisperse: document.getElementById("shortoutDisperse").value,
+						gapPosition: document.getElementById("gapPosition").value,
+						gapDisperse: document.getElementById("gapDisperse").value,
+
+						residualCopperPosition: document.getElementById("residualCopperPosition").value,
+						residualCopperDisperse: document.getElementById("residualCopperDisperse").value,
+						chafed: document.getElementById("chafed").value,
+						pinhole: document.getElementById("pinhole").value,
+						exposeBad: document.getElementById("exposeBad").value,
+						overDevelopment: document.getElementById("overDevelopment").value,
+						underEtching: document.getElementById("underEtching").value,
+						others: document.getElementById("others").value,
+
+						decide: decide,
+						operator: document.getElementById("operator").value,
+						auditor: document.getElementById("auditor").value,
+						remark: document.getElementById("remark").value,
+					}
+
+					// for(var key in data){
+					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+					// 		mui.alert("必填项不能为空");
+					// 		return;
+					// 	}
+					// }
+
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=88',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+						}
+					});
+				});
+
+				document.getElementById("reset").addEventListener('tap', function() {
+					if (!confirm("确认重置吗？"))
+						return;
+
+					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+						el.value = '';
+					})
+					document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+						el.innerHTML = '';
+					})
+					document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+						el.checked = '';
+					})
+					document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+						el.checked = '';
+					})
+					document.querySelector("input[value='无不良']").checked = 'checked';
+				});
+
+			});
+		}(mui, document));
 	</script>
 </html>
