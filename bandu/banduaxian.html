@@ -191,7 +191,7 @@
 							document.getElementById("lot").value = data.app.lot;
 							document.getElementById("datecode").value = data.app.datecode;
 							document.getElementById("d06rkey").value = data.app.d06rkey;
-					
+
 							document.getElementById("plateSize").value = data.app.panels;
 							document.getElementById("completeCopperThick").value = data.app.finishcopperthick;
 						} else {
@@ -202,7 +202,7 @@
 						//异常处理
 						if (type == "timeout")
 							$.toast('连接超时，请检查网络')
-					
+
 						$.toast('系统异常，请检查是否连接jove-wifi')
 					}
 				})
@@ -330,68 +330,77 @@
 
 				// 表单
 				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
+						if (!confirm("确认提交吗？"))
+							return;
 
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						//数据
-						completeCopperThick: document.getElementById("completeCopperThick").value,
-						plateSize: document.getElementById("plateSize").value,
-						checkQty: document.getElementById("checkQty").value,
-						electricity: document.getElementById("electricity").value,
-						ampereDensity: document.getElementById("ampereDensity").value,
-						platingTankNo: document.getElementById("platingTankNo").value,
-						inputTime: document.getElementById("inputTime").innerHTML,
-						outputTime: document.getElementById("outputTime").innerHTML,
-						operator: document.getElementById("operator").value,
-						currentConfirm: document.getElementById("currentConfirm").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=19',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
+						if (document.getElementById("remark").value.length > 30) {
+							mui.alert("备注超过30字");
+							return;
 						}
-					});
+						var facarr = {
+							'一厂': 1,
+							'二厂': 2,
+							'三厂': 3,
+							'未知': 'N/A'
+						}
+						factoryName = facarr[document.getElementById("factoryName").value];
+						var data = {
+							factoryName: factoryName,
+							mo: document.getElementById("mo").value,
+							mfg: document.getElementById("mfg").value,
+							wo: document.getElementById("wo").value,
+							custcode: document.getElementById("custcode").value,
+							custpart: document.getElementById("custpart").value,
+							lot: document.getElementById("lot").value,
+							datecode: document.getElementById("datecode").value,
+							d06rkey: document.getElementById("d06rkey").value,
+
+							//数据
+							completeCopperThick: document.getElementById("completeCopperThick").value,
+							plateSize: document.getElementById("plateSize").value,
+							checkQty: document.getElementById("checkQty").value,
+							electricity: document.getElementById("electricity").value,
+							ampereDensity: document.getElementById("ampereDensity").value,
+							platingTankNo: document.getElementById("platingTankNo").value,
+							inputTime: document.getElementById("inputTime").innerHTML,
+							outputTime: document.getElementById("outputTime").innerHTML,
+							operator: document.getElementById("operator").value,
+							currentConfirm: document.getElementById("currentConfirm").value,
+							auditor: document.getElementById("auditor").value,
+							remark: document.getElementById("remark").value,
+						}
+
+						var params = JSON.stringify(data);
+						mui.ajax({
+							url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=19',
+							type: "post",
+							data: {
+								params: params,
+								isRejectItem: false
+							},
+							dataType: "json",
+							async: false,
+							error: function() {
+								mui.alert("error occur!");
+							},
+							success: function(data) {
+								if (data.isOK) {
+									mui.alert("上传成功!");
+								} else {
+									mui.alert("未知错误。");
+								}
+							}
+						});
 				});
+
+				function callback(err) {
+					console.log("登录...");
+					if (err) {
+						plus.nativeUI.toast(err);
+						return;
+					}
+					toMain();
+				}
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))
