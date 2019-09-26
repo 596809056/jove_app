@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -169,6 +170,105 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				reworkClassify: reworkClassify.options[reworkClassify.selectedIndex].value || '',
+				reworkQty: document.getElementById("reworkQty").value || '',
+				reworkReason: document.getElementById("reworkReason").value || '',
+				reworkTime: document.getElementById("reworkTime").value || '',
+				recorder: document.getElementById("recorder").value || '',
+				standardRequest: document.getElementById("standardRequest").value || '',
+				inspectionData: document.getElementById("inspectionData").value || '',
+				decide: document.querySelector("input[name='decide'][checked='checked']").value || ''
+			}
+			if (information.reworkClassify.length < 1 || information.reworkQty.length < 1 || 
+				information.reworkReason.length < 1 || information.reworkTime.length < 1 ||
+				information.recorder.length < 1 || information.standardRequest.length < 1 ||
+				information.inspectionData.length < 1 || information.decide.length < 1) {
+				var color = "#F9F900";
+				if(information.reworkClassify.length < 1)
+					$("#reworkClassify").css("background-color",color);
+				if(information.reworkQty.length < 1)
+					$("#reworkQty").css("background-color",color);
+				if(information.reworkReason.length < 1)
+					$("#reworkReason").css("background-color",color);
+				if(information.reworkTime.length < 1)
+					$("#reworkTime").css("background-color",color);
+				if(information.recorder.length < 1)
+					$("#recorder").css("background-color",color);
+				if(information.standardRequest.length < 1)
+					$("#standardRequest").css("background-color",color);
+				if(information.inspectionData.length < 1)
+					$("#inspectionData").css("background-color",color);
+				if(information.decide.length < 1)
+					$("#decide").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+		
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				reworkClassify = document.getElementById("reworkClassify");
+				factoryName = facarr[document.getElementById("factoryName").value];
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+		
+					reworkClassify: reworkClassify.options[reworkClassify.selectedIndex].value,
+					reworkQty: document.getElementById("reworkQty").value,
+					reworkReason: document.getElementById("reworkReason").value,
+					reworkTime: document.getElementById("reworkTime").value,
+					recorder: document.getElementById("recorder").value,
+					standardRequest: document.getElementById("standardRequest").value,
+					inspectionData: document.getElementById("inspectionData").value,
+					decide: document.querySelector("input[name='decide'][checked='checked']").value,
+					auditor: document.getElementById("auditor").value,
+					operator: document.getElementById("operator").value,
+					remark: document.getElementById("remark").value,
+				}
+		
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=17',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: false,
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
+		
 		function pad(num, n) {
 			var len = num.toString().length;
 			while (len < n) {
@@ -216,7 +316,7 @@
 						//异常处理
 						if (type == "timeout")
 							$.toast('连接超时，请检查网络')
-					
+
 						$.toast('系统异常，请检查是否连接jove-wifi')
 					}
 				})
@@ -337,70 +437,6 @@
 				// }
 				// document.getElementById("inputTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					reworkClassify = document.getElementById("reworkClassify");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						reworkClassify: reworkClassify.options[reworkClassify.selectedIndex].value,
-						reworkQty: document.getElementById("reworkQty").value,
-						reworkReason: document.getElementById("reworkReason").value,
-						reworkTime: document.getElementById("reworkTime").value,
-						recorder: document.getElementById("recorder").value,
-						standardRequest: document.getElementById("standardRequest").value,
-						inspectionData: document.getElementById("inspectionData").value,
-						decide: document.querySelector("input[name='decide'][checked='checked']").value,
-						auditor: document.getElementById("auditor").value,
-						operator: document.getElementById("operator").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=17',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false,
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))
