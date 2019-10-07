@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
@@ -102,7 +103,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检验工具:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>点图</label><input name="inspectionTool" value="点图" type="radio">
+								<label>点图</label><input name="inspectionTool" value="点图" type="radio" checked="checked">
 								<label>红胶片</label><input name="inspectionTool" value="红胶片" type="radio">
 							</span>
 						</p>
@@ -132,14 +133,14 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">X-RAY检测:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="xrayCheck" value="ACCEPT" type="radio">
+								<label>ACC</label><input name="xrayCheck" value="ACCEPT" type="radio" checked="checked">
 								<label>REJ</label><input name="xrayCheck" value="REJECT" type="radio">
 							</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -160,6 +161,126 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				machineNo: document.getElementById("machineNo").value || '',
+				rejectQty: document.getElementById("rejectQty").value || '',
+				checkQty: document.getElementById("checkQty").value || '',
+				//inspectionTool: inspectionTool,
+				//xrayCheck: xrayCheck,
+				//decide: decide,
+				//rejectitem: rejectitem,
+				operator: document.getElementById("operator").value || '',
+			}
+			if (information.machineNo.length < 1 || information.rejectQty.length < 1 ||
+				information.checkQty.length < 1) {
+				var color = "#F9F900";
+				if (information.machineNo.length < 1)
+					$("#machineNo").css("background-color", color);
+				if (information.rejectQty.length < 1)
+					$("#rejectQty").css("background-color", color);
+				if (information.checkQty.length < 1)
+					$("#checkQty").css("background-color", color);
+				if (information.operator.length < 1)
+					$("#operator").css("background-color", color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var xrayCheck;
+				var inspectionTool;
+				var decide;
+
+				var rejectitem = [];
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				document.querySelectorAll("input[name='inspectionTool']").forEach(function(el) {
+					if (el.checked)
+						inspectionTool = el.value;
+				})
+				document.querySelectorAll("input[name='xrayCheck']").forEach(function(el) {
+					if (el.checked)
+						xrayCheck = el.value;
+				})
+				document.querySelectorAll("input[name='decide']").forEach(function(el) {
+					if (el.checked)
+						decide = el.value;
+				})
+				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+					if (el.checked)
+						rejectitem.push(el.value);
+				})
+
+
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					machineNo: document.getElementById("machineNo").value,
+					rejectQty: document.getElementById("rejectQty").value,
+					checkQty: document.getElementById("checkQty").value,
+
+					inspectionTool: inspectionTool,
+					xrayCheck: xrayCheck,
+					decide: decide,
+
+					rejectitem: rejectitem,
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=78',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: true,
+						rejectItem: rejectitem.toString()
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
+
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -199,7 +320,7 @@
 						//异常处理
 						if (type == "timeout")
 							$.toast('连接超时，请检查网络')
-					
+
 						$.toast('系统异常，请检查是否连接jove-wifi')
 					}
 				})
@@ -339,100 +460,6 @@
 				}
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
 
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var xrayCheck;
-					var inspectionTool;
-					var decide;
-
-					var rejectitem = [];
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					factoryName = facarr[document.getElementById("factoryName").value];
-					document.querySelectorAll("input[name='inspectionTool']").forEach(function(el) {
-						if (el.checked)
-							inspectionTool = el.value;
-					})
-					document.querySelectorAll("input[name='xrayCheck']").forEach(function(el) {
-						if (el.checked)
-							xrayCheck = el.value;
-					})
-					document.querySelectorAll("input[name='decide']").forEach(function(el) {
-						if (el.checked)
-							decide = el.value;
-					})
-					document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
-						if (el.checked)
-							rejectitem.push(el.value);
-					})
-
-
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						machineNo: document.getElementById("machineNo").value,
-						rejectQty: document.getElementById("rejectQty").value,
-						checkQty: document.getElementById("checkQty").value,
-
-						inspectionTool: inspectionTool,
-						xrayCheck: xrayCheck,
-						decide: decide,
-
-						rejectitem: rejectitem,
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					// for(var key in data){
-					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-					// 		mui.alert("必填项不能为空");
-					// 		return;
-					// 	}
-					// }
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=78',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: true,
-							rejectItem: rejectitem.toString()
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

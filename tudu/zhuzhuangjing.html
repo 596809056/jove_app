@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -95,28 +96,36 @@
 							<span class="mui-col-xs-3">缸号:</span>
 							<span class="mui-col-xs-9"><input id="dyelotNo" type="text" value="" /></span>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">柱状晶结构:</span>
-							<span class="mui-col-xs-9">
-								<select id="isColumnarCrystal">
-									<option value="" selected="selected">请选择</option>
-									<option value="Y">有</option>
-									<option value="N">无</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 8px 0px 0px 0px;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">柱状晶结构:</label>
+									<span class="mui-badge1">
+										<select id="isColumnarCrystal" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="Y">有</option>
+											<option value="N">无</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">判定:</span>
-							<span class="mui-col-xs-9">
-								<select id="decide">
-									<option value="" selected="selected">请选择</option>
-									<option value="ACCEPT">ACC</option>
-									<option value="REJECT">REJ</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">判定:</label>
+									<span class="mui-badge1">
+											<select id="decide"style="margin: auto;color: #8F8F94;font-size: 14px;">
+												<option value="" selected="selected">请选择</option>
+												<option value="ACCEPT">ACC</option>
+												<option value="REJECT">REJ</option>
+											</select>
+										</span>
+								</div>
+							</div>
 						</p>
 
-						<p class="mui-row ">
+						<p class="mui-row " style="padding: 23px 0px 0px 0px;">
 							<span class="mui-col-xs-3">检验员:</span>
 							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
 						</p>
@@ -141,78 +150,120 @@
 	</body>
 
 	<script type="text/javascript">
-		function pad(num, n) {
-			var len = num.toString().length;
-			while (len < n) {
-				num = "0" + num;
-				len++;
-			}
-			return num;
-		}
-		(function($, doc) {
-			//初始化 scan页
-			$.init({
-				preloadPages: [{
-					id: 'scan.html',
-					url: '../scan.html'
-				}]
-			});
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+					processType: document.getElementById("processType").value || '',
+					dyelotNo: document.getElementById("dyelotNo").value || '',
+					decide: document.getElementById("decide").value || '',
+					isColumnarCrystal: document.getElementById("isColumnarCrystal").value || '',
+					operator: document.getElementById("operator").value || '',
+				}
+				if (information.processType.length < 1 || information.dyelotNo.length < 1 ||
+					information.decide.length < 1 || information.isColumnarCrystal.length < 1 ||
+					information.operator.length < 1) {
+					var color = "#F9F900";
+					if (information.processType.length < 1)
+						$("#processType").css("background-color", color);
+					if (information.dyelotNo.length < 1)
+						$("#dyelotNo").css("background-color", color);
+					if (information.decide.length < 1)
+						$("#decide").css("background-color", color);
+					if (information.isColumnarCrystal.length < 1)
+						$("#isColumnarCrystal").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+						if (!confirm("确认提交吗？"))
+							return;
 
-			document.querySelector("input[data-id='tiaoma1']").onchange = function() {
-				var qrdata = document.getElementById("code").value;
-				// 采集数据
-				mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
-					data: {
-						wo: qrdata,
-						isControl: false
-					},
-					dataType: 'json', //服务器返回json格式数据
-					type: 'post', //HTTP请求类型
-					timeout: 3000, //超时时间设置为10秒；
-					success: function(data) {
-						if (data.success) {
-							// 基础信息
-							document.getElementById("mo").value = data.app.mo;
-							document.getElementById("wo").value = data.app.wo;
-							document.getElementById("mfg").value = data.app.mfg;
-							document.getElementById("custcode").value = data.app.cust_code;
-							document.getElementById("custpart").value = data.app.pn;
-							document.getElementById("lot").value = data.app.lot;
-							document.getElementById("datecode").value = data.app.datecode;
-							document.getElementById("d06rkey").value = data.app.d06rkey;
-					
-							// document.getElementById("plateThick").value = data.app.platethickness;
-						} else {
-							mui.alert(data.mess);
+						if (document.getElementById("remark").value.length > 30) {
+							mui.alert("备注超过30字");
+							return;
 						}
-					},
-					error: function(xhr, type, errorThrown) {
-						//异常处理
-						if (type == "timeout")
-							$.toast('连接超时，请检查网络')
-					
-						$.toast('系统异常，请检查是否连接jove-wifi')
+
+						var decide;
+						var facarr = {
+							'一厂': 1,
+							'二厂': 2,
+							'三厂': 3,
+							'未知': 'N/A'
+						}
+
+						factoryName = facarr[document.getElementById("factoryName").value];
+						// document.querySelectorAll("input[name='decide']").forEach(function(el){
+						// 	if(el.checked)
+						// 		decide = el.value;
+						// })
+						decide = document.getElementById("decide");
+						isColumnarCrystal = document.getElementById("isColumnarCrystal");
+						var data = {
+							factoryName: factoryName,
+							mo: document.getElementById("mo").value,
+							mfg: document.getElementById("mfg").value,
+							wo: document.getElementById("wo").value,
+							custcode: document.getElementById("custcode").value,
+							custpart: document.getElementById("custpart").value,
+							lot: document.getElementById("lot").value,
+							datecode: document.getElementById("datecode").value,
+							d06rkey: document.getElementById("d06rkey").value,
+
+							processType: document.getElementById("processType").value,
+							dyelotNo: document.getElementById("dyelotNo").value,
+
+							decide: decide.options[decide.selectedIndex].value,
+							isColumnarCrystal: isColumnarCrystal.options[isColumnarCrystal.selectedIndex].value,
+
+							operator: document.getElementById("operator").value,
+							auditor: document.getElementById("auditor").value,
+							remark: document.getElementById("remark").value,
+						}
+
+						var params = JSON.stringify(data);
+						mui.ajax({
+							url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=80',
+							type: "post",
+							data: {
+								params: params,
+								isRejectItem: false
+							},
+							dataType: "json",
+							async: false,
+							error: function() {
+								mui.alert("error occur!");
+							},
+							success: function(data) {
+								if (data.isOK) {
+									mui.alert("上传成功!");
+								} else {
+									mui.alert("未知错误。");
+								}
+							}
+						});
+						}
+					});
+
+				function pad(num, n) {
+					var len = num.toString().length;
+					while (len < n) {
+						num = "0" + num;
+						len++;
 					}
-				})
-			}
+					return num;
+				}
+				(function($, doc) {
+					//初始化 scan页
+					$.init({
+						preloadPages: [{
+							id: 'scan.html',
+							url: '../scan.html'
+						}]
+					});
 
-			//自定义事件,供扫描回调
-			window.addEventListener('getScan', function(event) {
-				// 获得事件参数
-				// var id = event.detail.id;
-				qrtype = event.detail.qrtype;
-				qrdata = event.detail.qrdata;
-				// 赋值到输入框
-				if (qrtype && qrdata) {
-					// mui.alert(qrtype + ":" + qrdata );
-					var arr = qrdata.split(',');
-					if (arr.length > 2) {
-						qrdata = arr[1];
-					}
-
-					document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
-
-					if (qrtype == 'tiaoma') {
+					document.querySelector("input[data-id='tiaoma1']").onchange = function() {
+						var qrdata = document.getElementById("code").value;
 						// 采集数据
 						mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
 							data: {
@@ -248,189 +299,173 @@
 							}
 						})
 					}
-				}
-			});
 
-			$.plusReady(function() {
-				// 获取本页面的固定信息
-				var self = plus.webview.currentWebview();
+					//自定义事件,供扫描回调
+					window.addEventListener('getScan', function(event) {
+						// 获得事件参数
+						// var id = event.detail.id;
+						qrtype = event.detail.qrtype;
+						qrdata = event.detail.qrdata;
+						// 赋值到输入框
+						if (qrtype && qrdata) {
+							// mui.alert(qrtype + ":" + qrdata );
+							var arr = qrdata.split(',');
+							if (arr.length > 2) {
+								qrdata = arr[1];
+							}
 
-				// 扫描页webview
-				var scanPage = null;
-				document.querySelectorAll(".scan").forEach(function(el) {
-					el.addEventListener('tap', function() {
-						// 扫描页webview
-						if (!scanPage) {
-							scanPage = plus.webview.getWebviewById('scan.html');
-						}
-						// 这里只有qrtype 是不一样的,根据el来
-						var qrtype = el.getAttribute("data-id");
-						mui.fire(scanPage, 'newScan', {
-							qrtype: qrtype,
-							source: self.openurl,
-							sourceid: self.id
-						});
-						mui.openWindow({
-							id: 'scan.html'
-						});
-					})
-				})
+							document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
 
-				// 登录状态消息
-				var state = app.getState();
-				document.getElementById("factoryName").value = state.changbie;
-				document.getElementById("operator").value = state.username;
+							if (qrtype == 'tiaoma') {
+								// 采集数据
+								mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+									data: {
+										wo: qrdata,
+										isControl: false
+									},
+									dataType: 'json', //服务器返回json格式数据
+									type: 'post', //HTTP请求类型
+									timeout: 3000, //超时时间设置为10秒；
+									success: function(data) {
+										if (data.success) {
+											// 基础信息
+											document.getElementById("mo").value = data.app.mo;
+											document.getElementById("wo").value = data.app.wo;
+											document.getElementById("mfg").value = data.app.mfg;
+											document.getElementById("custcode").value = data.app.cust_code;
+											document.getElementById("custpart").value = data.app.pn;
+											document.getElementById("lot").value = data.app.lot;
+											document.getElementById("datecode").value = data.app.datecode;
+											document.getElementById("d06rkey").value = data.app.d06rkey;
 
-				var date = new Date();
-				var pickerf = function() {
-					var _self = this;
-					if (_self.picker) {
-						_self.picker.show(function(rs) {
-							_self.innerHTML = rs.text;
-							_self.picker.dispose();
-							_self.picker = null;
-						});
-					} else {
-						var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
-							2);
-						current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
-						var options = {
-							"value": current,
-							"beginYear": 2019,
-							"endYear": 2038
-						};
-						console.log("当前时间:" + current);
-						var id = this.getAttribute('id');
+											// document.getElementById("plateThick").value = data.app.platethickness;
+										} else {
+											mui.alert(data.mess);
+										}
+									},
+									error: function(xhr, type, errorThrown) {
+										//异常处理
+										if (type == "timeout")
+											$.toast('连接超时，请检查网络')
 
-						_self.picker = new $.DtPicker(options);
-						_self.picker.show(function(rs) {
-							_self.innerHTML = rs.text;
-							_self.picker.dispose();
-							_self.picker = null;
-						});
-					}
-				}
-				// document.getElementById("checkTime").addEventListener('tap',pickerf);
-				// document.getElementById("outputTime").addEventListener('tap',pickerf);
-
-				function cal() {
-					var minCopperThick = 999;
-					var maxCopperThick = -999;
-					var num = 0;
-					document.querySelectorAll(".meashuju").forEach(function(el) {
-						num++;
-						if (el.value && el.value.trim() != '') {
-							console.log("数据" + (num) + ":" + el.value);
-							if (el.value > maxCopperThick)
-								maxCopperThick = el.value;
-
-							if (el.value < minCopperThick)
-								minCopperThick = el.value;
-						}
-					})
-
-					document.getElementById("minCopperThick").value = (minCopperThick == 999) ? 0 : minCopperThick;
-					document.getElementById("maxCopperThick").value = (maxCopperThick == -999) ? 0 : maxCopperThick;
-					document.getElementById("maxMinusRequire").value = document.getElementById("minCopperThick").value - document.getElementById(
-						"copperThickRequire").value;
-					document.getElementById("maxMinusMin").value = document.getElementById("maxCopperThick").value - document.getElementById(
-						"minCopperThick").value;
-				}
-
-				// document.querySelectorAll(".meashuju").forEach(function(el){
-				// 	el.addEventListener('change',cal)
-				// })
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-
-					var decide;
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-
-					factoryName = facarr[document.getElementById("factoryName").value];
-					// document.querySelectorAll("input[name='decide']").forEach(function(el){
-					// 	if(el.checked)
-					// 		decide = el.value;
-					// })
-					decide = document.getElementById("decide");
-					isColumnarCrystal = document.getElementById("isColumnarCrystal");
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						processType: document.getElementById("processType").value,
-						dyelotNo: document.getElementById("dyelotNo").value,
-
-						decide: decide.options[decide.selectedIndex].value,
-						isColumnarCrystal: isColumnarCrystal.options[isColumnarCrystal.selectedIndex].value,
-
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=80',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
+										$.toast('系统异常，请检查是否连接jove-wifi')
+									}
+								})
 							}
 						}
 					});
-				});
 
-				document.getElementById("reset").addEventListener('tap', function() {
-					if (!confirm("确认重置吗？"))
-						return;
+					$.plusReady(function() {
+						// 获取本页面的固定信息
+						var self = plus.webview.currentWebview();
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
-						el.value = '';
-					})
-					document.querySelectorAll(".shiceshuju button").forEach(function(el) {
-						el.innerHTML = '';
-					})
-					document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
-						el.checked = '';
-					})
-					document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
-						el.checked = '';
-					})
-				});
+						// 扫描页webview
+						var scanPage = null;
+						document.querySelectorAll(".scan").forEach(function(el) {
+							el.addEventListener('tap', function() {
+								// 扫描页webview
+								if (!scanPage) {
+									scanPage = plus.webview.getWebviewById('scan.html');
+								}
+								// 这里只有qrtype 是不一样的,根据el来
+								var qrtype = el.getAttribute("data-id");
+								mui.fire(scanPage, 'newScan', {
+									qrtype: qrtype,
+									source: self.openurl,
+									sourceid: self.id
+								});
+								mui.openWindow({
+									id: 'scan.html'
+								});
+							})
+						})
 
-			});
+						// 登录状态消息
+						var state = app.getState();
+						document.getElementById("factoryName").value = state.changbie;
+						document.getElementById("operator").value = state.username;
 
-		}(mui, document));
+						var date = new Date();
+						var pickerf = function() {
+							var _self = this;
+							if (_self.picker) {
+								_self.picker.show(function(rs) {
+									_self.innerHTML = rs.text;
+									_self.picker.dispose();
+									_self.picker = null;
+								});
+							} else {
+								var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+									2);
+								current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+								var options = {
+									"value": current,
+									"beginYear": 2019,
+									"endYear": 2038
+								};
+								console.log("当前时间:" + current);
+								var id = this.getAttribute('id');
+
+								_self.picker = new $.DtPicker(options);
+								_self.picker.show(function(rs) {
+									_self.innerHTML = rs.text;
+									_self.picker.dispose();
+									_self.picker = null;
+								});
+							}
+						}
+						// document.getElementById("checkTime").addEventListener('tap',pickerf);
+						// document.getElementById("outputTime").addEventListener('tap',pickerf);
+
+						function cal() {
+							var minCopperThick = 999;
+							var maxCopperThick = -999;
+							var num = 0;
+							document.querySelectorAll(".meashuju").forEach(function(el) {
+								num++;
+								if (el.value && el.value.trim() != '') {
+									console.log("数据" + (num) + ":" + el.value);
+									if (el.value > maxCopperThick)
+										maxCopperThick = el.value;
+
+									if (el.value < minCopperThick)
+										minCopperThick = el.value;
+								}
+							})
+
+							document.getElementById("minCopperThick").value = (minCopperThick == 999) ? 0 : minCopperThick;
+							document.getElementById("maxCopperThick").value = (maxCopperThick == -999) ? 0 : maxCopperThick;
+							document.getElementById("maxMinusRequire").value = document.getElementById("minCopperThick").value - document
+								.getElementById(
+									"copperThickRequire").value;
+							document.getElementById("maxMinusMin").value = document.getElementById("maxCopperThick").value - document.getElementById(
+								"minCopperThick").value;
+						}
+
+						// document.querySelectorAll(".meashuju").forEach(function(el){
+						// 	el.addEventListener('change',cal)
+						// })
+
+						document.getElementById("reset").addEventListener('tap', function() {
+							if (!confirm("确认重置吗？"))
+								return;
+
+							document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+								el.value = '';
+							})
+							document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+								el.innerHTML = '';
+							})
+							document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+								el.checked = '';
+							})
+							document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+								el.checked = '';
+							})
+						});
+
+					});
+
+				}(mui, document));
 	</script>
 </html>
