@@ -28,9 +28,6 @@
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
 					<div class="mui-collapse-content">
-						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
-					</div>
-					<div class="mui-collapse-content">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -173,7 +170,7 @@
 			if (information.checkNum.length < 1 || information.checkOutNum.length < 1 ||
 				information.requireSize.length < 1 || information.tolerance.length < 1 ||
 				information.measureSize.length < 1 || information.decide.length < 1 ||
-				information.rejectitem.length < 1 || information.operator.length < 1 ) {
+				information.rejectitem.length < 1 || information.operator.length < 1) {
 				var color = "#F9F900";
 				if (information.checkNum.length < 1)
 					$("#checkNum").css("background-color", color);
@@ -218,7 +215,7 @@
 					if (el.checked)
 						speccut = el.value;
 				})
-				
+
 				var data = {
 					factoryName: factoryName,
 					mo: document.getElementById("mo").value,
@@ -274,6 +271,7 @@
 				});
 			}
 		});
+
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -282,45 +280,6 @@
 					url: '../scan.html'
 				}]
 			});
-
-			document.querySelector("input[data-id='tiaoma1']").onchange = function() {
-				var qrdata = document.getElementById("code").value;
-				// 采集数据
-				mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
-					data: {
-						wo: qrdata,
-						isControl: false
-					},
-					dataType: 'json', //服务器返回json格式数据
-					type: 'post', //HTTP请求类型
-					timeout: 3000, //超时时间设置为10秒；
-					success: function(data) {
-						if (data.success) {
-							// 基础信息
-							document.getElementById("mo").value = data.app.mo;
-							document.getElementById("wo").value = data.app.wo;
-							document.getElementById("mfg").value = data.app.mfg;
-							document.getElementById("custcode").value = data.app.cust_code;
-							document.getElementById("custpart").value = data.app.pn;
-							document.getElementById("lot").value = data.app.lot;
-							document.getElementById("datecode").value = data.app.datecode;
-							document.getElementById("d06rkey").value = data.app.d06rkey;
-
-							document.getElementById("tolerance").value = data.app.thicktolerance;
-							document.getElementById("requiredsize").value = data.app.panels;
-						} else {
-							mui.alert(data.mess);
-						}
-					},
-					error: function(xhr, type, errorThrown) {
-						//异常处理
-						if (type == "timeout")
-							$.toast('连接超时，请检查网络')
-
-						$.toast('系统异常，请检查是否连接jove-wifi')
-					}
-				})
-			}
 
 			//自定义事件,供扫描回调
 			window.addEventListener('getScan', function(event) {
@@ -417,7 +376,7 @@
 				// 登录状态消息
 				var state = app.getState();
 				document.getElementById("factoryName").value = state.changbie;
-				document.getElementById("operator").value = state.username;
+				document.getElementById("inspector").value = state.username;
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

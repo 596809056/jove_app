@@ -15,3 +15,10 @@ p.shiceshuju .hradio label {
   margin: 0 0.3rem 0 1.2rem;
   display: inline-block;
 }
+.mui-badge1{
+	padding:0px; width:65%; float:right; line-height:42px; font-size:14px;color:#8F8F94;
+	}
+input::-webkit-input-placeholder { 
+color: #bababa; 
+font-size:14px;
+} 

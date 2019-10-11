@@ -37,9 +37,6 @@
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
 					<div class="mui-collapse-content">
-						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
-					</div>
-					<div class="mui-collapse-content">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -212,6 +209,7 @@
 				if (el.checked)
 					decide = el.value;
 			})
+
 			var information = {
 				isCopper: isCopper.options[isCopper.selectedIndex].value || '',
 				isPlateThickReq: isPlateThickReq.options[isPlateThickReq.selectedIndex].value || '',
@@ -241,8 +239,8 @@
 				information.measurec.length < 1 || information.measured.length < 1 ||
 				information.measuree.length < 1 || information.measuref.length < 1 ||
 				information.measureg.length < 1 || information.measureh.length < 1 ||
-				information.measurei.length < 1 || information.decide.length < 1|| 
-				information.operator.length < 1 ) {
+				information.measurei.length < 1 || information.decide.length < 1 ||
+				information.operator.length < 1) {
 				var color = "#F9F900";
 				if (information.isCopper.length < 1)
 					$("#isCopper").css("background-color", color);
@@ -264,24 +262,24 @@
 					$("#measurea").css("background-color", color);
 				if (information.measureb.length < 1)
 					$("#measureb").css("background-color", color);
-				if(information.measurec.length < 1)
-					$("#measurec").css("background-color",color);
-				if(information.measured.length < 1)
-					$("#measured").css("background-color",color);
-				if(information.measuree.length < 1)
-					$("#measuree").css("background-color",color);
-				if(information.measuref.length < 1)
-					$("#measuref").css("background-color",color);
-				if(information.measureg.length < 1)
-					$("#measureg").css("background-color",color);
-				if(information.measureh.length < 1)
-					$("#measureh").css("background-color",color);
-				if(information.measurei.length < 1)
-					$("#measurei").css("background-color",color);
-				if(information.decide.length < 1)
-					$("#decide").css("background-color",color);
-				if(information.operator.length < 1)
-					$("#operator").css("background-color",color);
+				if (information.measurec.length < 1)
+					$("#measurec").css("background-color", color);
+				if (information.measured.length < 1)
+					$("#measured").css("background-color", color);
+				if (information.measuree.length < 1)
+					$("#measuree").css("background-color", color);
+				if (information.measuref.length < 1)
+					$("#measuref").css("background-color", color);
+				if (information.measureg.length < 1)
+					$("#measureg").css("background-color", color);
+				if (information.measureh.length < 1)
+					$("#measureh").css("background-color", color);
+				if (information.measurei.length < 1)
+					$("#measurei").css("background-color", color);
+				if (information.decide.length < 1)
+					$("#decide").css("background-color", color);
+				if (information.operator.length < 1)
+					$("#operator").css("background-color", color);
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
 			} else {
@@ -298,8 +296,6 @@
 					'三厂': 3,
 					'未知': 'N/A'
 				}
-
-				
 				factoryName = facarr[document.getElementById("factoryName").value];
 				var data = {
 					factoryName: factoryName,
@@ -377,47 +373,6 @@
 					url: '../scan.html'
 				}]
 			});
-
-			document.querySelector("input[data-id='tiaoma1']").onchange = function() {
-				var qrdata = document.getElementById("code").value;
-				// 采集数据
-				mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
-					data: {
-						wo: qrdata,
-						isControl: false
-					},
-					dataType: 'json', //服务器返回json格式数据
-					type: 'post', //HTTP请求类型
-					timeout: 3000, //超时时间设置为10秒；
-					success: function(data) {
-						if (data.success) {
-							// 基础信息
-							document.getElementById("mo").value = data.app.mo;
-							document.getElementById("wo").value = data.app.wo;
-							document.getElementById("mfg").value = data.app.mfg;
-							document.getElementById("custcode").value = data.app.cust_code;
-							document.getElementById("custpart").value = data.app.pn;
-							document.getElementById("lot").value = data.app.lot;
-							document.getElementById("datecode").value = data.app.datecode;
-							document.getElementById("d06rkey").value = data.app.d06rkey;
-
-							document.getElementById("corePlateThickRequire").value = data.app.corerequirethick;
-							document.getElementById("finishedPlateThickReq").value = data.app.platethickness;
-							document.getElementById("finishedPlateThickTol").value = data.app.thicktolerance;
-
-						} else {
-							mui.alert(data.mess);
-						}
-					},
-					error: function(xhr, type, errorThrown) {
-						//异常处理
-						if (type == "timeout")
-							$.toast('连接超时，请检查网络')
-
-						$.toast('系统异常，请检查是否连接jove-wifi')
-					}
-				})
-			}
 
 			//自定义事件,供扫描回调
 			window.addEventListener('getScan', function(event) {
