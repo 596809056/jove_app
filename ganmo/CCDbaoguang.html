@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -146,6 +147,103 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				upOrlowFrame: upOrlowFrame.options[document.getElementById("upOrlowFrame").selectedIndex].value || '',
+				prodQty: document.getElementById("prodQty").value || '',
+				prodNum: document.getElementById("prodNum").value || '',
+				exposureEnergy: document.getElementById("exposureEnergy").value || '',
+				tableVacuum: document.getElementById("tableVacuum").value || '',
+				confirmor: document.getElementById("confirmor").value || '',
+				standardRequest: document.getElementById("standardRequest").value || '',
+				operator: document.getElementById("operator").value || ''
+			}
+			if (information.upOrlowFrame.length < 1 || information.prodQty.length < 1 || 
+				information.prodNum.length < 1 || information.exposureEnergy.length < 1 ||
+				information.tableVacuum.length < 1 || information.confirmor.length < 1 ||
+				information.standardRequest.length < 1 || information.operator.length < 1 ) {
+				var color = "#F9F900";
+				if(information.upOrlowFrame.length < 1)
+					$("#upOrlowFrame").css("background-color",color);
+				if(information.prodQty.length < 1)
+					$("#prodQty").css("background-color",color);
+				if(information.prodNum.length < 1)
+					$("#prodNum").css("background-color",color);
+				if(information.exposureEnergy.length < 1)
+					$("#exposureEnergy").css("background-color",color);
+				if(information.tableVacuum.length < 1)
+					$("#tableVacuum").css("background-color",color);
+				if(information.confirmor.length < 1)
+					$("#confirmor").css("background-color",color);
+				if(information.standardRequest.length < 1)
+					$("#standardRequest").css("background-color",color);
+				if(information.operator.length < 1)
+					$("#operator").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+						return;
+				
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					upOrlowFrame = document.getElementById("upOrlowFrame");
+					factoryName = facarr[document.getElementById("factoryName").value];
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+				
+						upOrlowFrame: upOrlowFrame.options[upOrlowFrame.selectedIndex].value,
+						prodQty: document.getElementById("prodQty").value,
+						prodNum: document.getElementById("prodNum").value,
+						exposureEnergy: document.getElementById("exposureEnergy").value,
+						tableVacuum: document.getElementById("tableVacuum").value,
+				
+						confirmor: document.getElementById("confirmor").value,
+						auditor: document.getElementById("auditor").value,
+						operator: document.getElementById("operator").value,
+						remark: document.getElementById("remark").value,
+					}
+				
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=35',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false,
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+						}
+					});
+					}
+				});
 		function pad(num, n) {
 			var len = num.toString().length;
 			while (len < n) {
@@ -314,69 +412,6 @@
 				// }
 				// document.getElementById("inputTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					upOrlowFrame = document.getElementById("upOrlowFrame");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						upOrlowFrame: upOrlowFrame.options[upOrlowFrame.selectedIndex].value,
-						prodQty: document.getElementById("prodQty").value,
-						prodNum: document.getElementById("prodNum").value,
-						exposureEnergy: document.getElementById("exposureEnergy").value,
-						tableVacuum: document.getElementById("tableVacuum").value,
-
-						confirmor: document.getElementById("confirmor").value,
-						auditor: document.getElementById("auditor").value,
-						operator: document.getElementById("operator").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=35',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false,
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

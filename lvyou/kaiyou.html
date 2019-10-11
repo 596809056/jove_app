@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
@@ -129,7 +130,7 @@
 							<span class="mui-col-xs-3">印刷次数:</span>
 							<span class="mui-col-xs-9">
 								<select id="printNo">
-									<option value="无" selected="selected">请选择</option>
+									<option value="" selected="selected">请选择</option>
 									<option value="一次">一次</option>
 									<option value="二次">二次</option>
 								</select>
@@ -170,6 +171,137 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			printNo = document.getElementById("printNo");
+			var information = {
+				prodQty: document.getElementById("prodQty").value || '',
+				oilSupplier: document.getElementById("oilSupplier").value || '',
+				oilPn: document.getElementById("oilPn").value || '',
+				solderBatchNumber: document.getElementById("solderBatchNumber").value || '',
+				oilColor: document.getElementById("oilColor").value || '',
+				startManuallyStirring: document.getElementById("startManuallyStirring").innerHTML || '',
+				stopManuallyStirring: document.getElementById("stopManuallyStirring").innerHTML || '',
+				startMixingMachine: document.getElementById("startMixingMachine").innerHTML || '',
+				operator: document.getElementById("operator").value || '',
+				stopMixingMachine: document.getElementById("stopMixingMachine").innerHTML || '',
+				printNo: printNo.options[printNo.selectedIndex].value || '',
+				inkThinner: document.getElementById("inkThinner").value || '',
+				oilViscosity: document.getElementById("oilViscosity").value || ''
+			}
+			if (information.prodQty.length < 1 || information.oilSupplier.length < 1 ||
+				information.oilPn.length < 1 || information.solderBatchNumber.length < 1 ||
+				information.oilColor.length < 1 || information.startManuallyStirring.length < 1 ||
+				information.stopManuallyStirring.length < 1 || information.startMixingMachine.length < 1 ||
+				information.operator.length < 1 || information.stopMixingMachine.length < 1 ||
+				information.printNo.length < 1 || information.inkThinner.length < 1 ||
+				information.oilViscosity.length < 1 ) {
+				var color = "#F9F900";
+				if (information.prodQty.length < 1)
+					$("#prodQty").css("background-color", color);
+				if (information.oilSupplier.length < 1)
+					$("#oilSupplier").css("background-color", color);
+				if (information.oilPn.length < 1)
+					$("#oilPn").css("background-color", color);
+				if (information.solderBatchNumber.length < 1)
+					$("#solderBatchNumber").css("background-color", color);
+				if (information.oilColor.length < 1)
+					$("#oilColor").css("background-color", color);
+				if (information.startManuallyStirring.length < 1)
+					$("#startManuallyStirring").css("background-color", color);
+				if (information.stopManuallyStirring.length < 1)
+					$("#stopManuallyStirring").css("background-color", color);
+				if (information.startMixingMachine.length < 1)
+					$("#startMixingMachine").css("background-color", color);
+				if (information.operator.length < 1)
+					$("#operator").css("background-color", color);
+				if (information.stopMixingMachine.length < 1)
+					$("#stopMixingMachine").css("background-color", color);
+				if(information.printNo.length < 1)
+					$("#printNo").css("background-color",color);
+				if(information.inkThinner.length < 1)
+					$("#inkThinner").css("background-color",color);
+				if(information.oilViscosity.length < 1)
+					$("#oilViscosity").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				
+				factoryName = facarr[document.getElementById("factoryName").value];
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					prodQty: document.getElementById("prodQty").value,
+					oilSupplier: document.getElementById("oilSupplier").value,
+					oilPn: document.getElementById("oilPn").value,
+					solderBatchNumber: document.getElementById("solderBatchNumber").value,
+					oilColor: document.getElementById("oilColor").value,
+
+					startManuallyStirring: document.getElementById("startManuallyStirring").innerHTML,
+					stopManuallyStirring: document.getElementById("stopManuallyStirring").innerHTML,
+					startMixingMachine: document.getElementById("startMixingMachine").innerHTML,
+					stopMixingMachine: document.getElementById("stopMixingMachine").innerHTML,
+
+					printNo: printNo.options[printNo.selectedIndex].value,
+					inkThinner: document.getElementById("inkThinner").value,
+					oilViscosity: document.getElementById("oilViscosity").value,
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=44',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: false
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -191,7 +323,7 @@
 					type: 'post', //HTTP请求类型
 					timeout: 3000, //超时时间设置为10秒；
 					success: function(data) {
-					
+
 						if (data.success) {
 							// 基础信息
 							document.getElementById("mo").value = data.app.mo;
@@ -202,17 +334,17 @@
 							document.getElementById("lot").value = data.app.lot;
 							document.getElementById("datecode").value = data.app.datecode;
 							document.getElementById("d06rkey").value = data.app.d06rkey;
-					
+
 						} else {
 							mui.alert(data.mess);
 						}
-					
+
 					},
 					error: function(xhr, type, errorThrown) {
 						//异常处理
 						if (type == "timeout")
 							$.toast('连接超时，请检查网络')
-					
+
 						$.toast('系统异常，请检查是否连接jove-wifi')
 					}
 				})
@@ -367,83 +499,6 @@
 					});
 				});
 
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					printNo = document.getElementById("printNo");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						prodQty: document.getElementById("prodQty").value,
-						oilSupplier: document.getElementById("oilSupplier").value,
-						oilPn: document.getElementById("oilPn").value,
-						solderBatchNumber: document.getElementById("solderBatchNumber").value,
-						oilColor: document.getElementById("oilColor").value,
-
-						startManuallyStirring: document.getElementById("startManuallyStirring").innerHTML,
-						stopManuallyStirring: document.getElementById("stopManuallyStirring").innerHTML,
-						startMixingMachine: document.getElementById("startMixingMachine").innerHTML,
-						stopMixingMachine: document.getElementById("stopMixingMachine").innerHTML,
-
-						printNo: printNo.options[printNo.selectedIndex].value,
-						inkThinner: document.getElementById("inkThinner").value,
-						oilViscosity: document.getElementById("oilViscosity").value,
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					// for(var key in data){
-					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-					// 		mui.alert("必填项不能为空");
-					// 		return;
-					// 	}
-					// }
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=44',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))
 						return;

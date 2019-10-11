@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -202,6 +203,164 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var decide;
+			isCopper = document.getElementById("isCopper");
+			isPlateThickReq = document.getElementById("isPlateThickReq");
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
+			var information = {
+				isCopper: isCopper.options[isCopper.selectedIndex].value || '',
+				isPlateThickReq: isPlateThickReq.options[isPlateThickReq.selectedIndex].value || '',
+				checkQty: document.getElementById("checkQty").value || '',
+				corePlateThickRequire: document.getElementById("corePlateThickRequire").value || '',
+				prePlateThickReq: document.getElementById("prePlateThickReq").value || '',
+				prePlateThickTol: document.getElementById("prePlateThickTol").value || '',
+				finishedPlateThickReq: document.getElementById("finishedPlateThickReq").value || '',
+				finishedPlateThickTol: document.getElementById("finishedPlateThickTol").value || '',
+				measurea: document.getElementById("measurea").value || '',
+				measureb: document.getElementById("measureb").value || '',
+				measurec: document.getElementById("measurec").value || '',
+				measured: document.getElementById("measured").value || '',
+				measuree: document.getElementById("measuree").value || '',
+				measuref: document.getElementById("measuref").value || '',
+				measureg: document.getElementById("measureg").value || '',
+				measureh: document.getElementById("measureh").value || '',
+				measurei: document.getElementById("measurei").value || '',
+				decide: decide || '',
+				operator: document.getElementById("operator").value || ''
+			}
+			if (information.isCopper.length < 1 || information.isPlateThickReq.length < 1 ||
+				information.checkQty.length < 1 || information.corePlateThickRequire.length < 1 ||
+				information.prePlateThickReq.length < 1 || information.prePlateThickTol.length < 1 ||
+				information.finishedPlateThickReq.length < 1 || information.finishedPlateThickTol.length < 1 ||
+				information.measurea.length < 1 || information.measureb.length < 1 ||
+				information.measurec.length < 1 || information.measured.length < 1 ||
+				information.measuree.length < 1 || information.measuref.length < 1 ||
+				information.measureg.length < 1 || information.measureh.length < 1 ||
+				information.measurei.length < 1 || information.decide.length < 1|| 
+				information.operator.length < 1 ) {
+				var color = "#F9F900";
+				if (information.isCopper.length < 1)
+					$("#isCopper").css("background-color", color);
+				if (information.isPlateThickReq.length < 1)
+					$("#isPlateThickReq").css("background-color", color);
+				if (information.checkQty.length < 1)
+					$("#checkQty").css("background-color", color);
+				if (information.corePlateThickRequire.length < 1)
+					$("#corePlateThickRequire").css("background-color", color);
+				if (information.prePlateThickReq.length < 1)
+					$("#prePlateThickReq").css("background-color", color);
+				if (information.prePlateThickTol.length < 1)
+					$("#prePlateThickTol").css("background-color", color);
+				if (information.finishedPlateThickReq.length < 1)
+					$("#finishedPlateThickReq").css("background-color", color);
+				if (information.finishedPlateThickTol.length < 1)
+					$("#finishedPlateThickTol").css("background-color", color);
+				if (information.measurea.length < 1)
+					$("#measurea").css("background-color", color);
+				if (information.measureb.length < 1)
+					$("#measureb").css("background-color", color);
+				if(information.measurec.length < 1)
+					$("#measurec").css("background-color",color);
+				if(information.measured.length < 1)
+					$("#measured").css("background-color",color);
+				if(information.measuree.length < 1)
+					$("#measuree").css("background-color",color);
+				if(information.measuref.length < 1)
+					$("#measuref").css("background-color",color);
+				if(information.measureg.length < 1)
+					$("#measureg").css("background-color",color);
+				if(information.measureh.length < 1)
+					$("#measureh").css("background-color",color);
+				if(information.measurei.length < 1)
+					$("#measurei").css("background-color",color);
+				if(information.decide.length < 1)
+					$("#decide").css("background-color",color);
+				if(information.operator.length < 1)
+					$("#operator").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+
+				
+				factoryName = facarr[document.getElementById("factoryName").value];
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+
+					isCopper: isCopper.options[isCopper.selectedIndex].value,
+					isPlateThickReq: isPlateThickReq.options[isPlateThickReq.selectedIndex].value,
+					checkQty: document.getElementById("checkQty").value,
+					corePlateThickRequire: document.getElementById("corePlateThickRequire").value,
+					prePlateThickReq: document.getElementById("prePlateThickReq").value,
+					prePlateThickTol: document.getElementById("prePlateThickTol").value,
+					finishedPlateThickReq: document.getElementById("finishedPlateThickReq").value,
+					finishedPlateThickTol: document.getElementById("finishedPlateThickTol").value,
+					measurea: document.getElementById("measurea").value,
+					measureb: document.getElementById("measureb").value,
+					measurec: document.getElementById("measurec").value,
+					measured: document.getElementById("measured").value,
+					measuree: document.getElementById("measuree").value,
+					measuref: document.getElementById("measuref").value,
+					measureg: document.getElementById("measureg").value,
+					measureh: document.getElementById("measureh").value,
+					measurei: document.getElementById("measurei").value,
+					decide: decide,
+
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=73',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: false,
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
+
 		function pad(num, n) {
 			var len = num.toString().length;
 			while (len < n) {
@@ -380,89 +539,6 @@
 				// }
 				// document.getElementById("inputTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-
-					var decide;
-					document.querySelectorAll("input[name='decide']").forEach(function(el) {
-						if (el.checked)
-							decide = el.value;
-					})
-					isCopper = document.getElementById("isCopper");
-					isPlateThickReq = document.getElementById("isPlateThickReq");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-
-						isCopper: isCopper.options[isCopper.selectedIndex].value,
-						isPlateThickReq: isPlateThickReq.options[isPlateThickReq.selectedIndex].value,
-						checkQty: document.getElementById("checkQty").value,
-						corePlateThickRequire: document.getElementById("corePlateThickRequire").value,
-						prePlateThickReq: document.getElementById("prePlateThickReq").value,
-						prePlateThickTol: document.getElementById("prePlateThickTol").value,
-						finishedPlateThickReq: document.getElementById("finishedPlateThickReq").value,
-						finishedPlateThickTol: document.getElementById("finishedPlateThickTol").value,
-						measurea: document.getElementById("measurea").value,
-						measureb: document.getElementById("measureb").value,
-						measurec: document.getElementById("measurec").value,
-						measured: document.getElementById("measured").value,
-						measuree: document.getElementById("measuree").value,
-						measuref: document.getElementById("measuref").value,
-						measureg: document.getElementById("measureg").value,
-						measureh: document.getElementById("measureh").value,
-						measurei: document.getElementById("measurei").value,
-						decide: decide,
-
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=73',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false,
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

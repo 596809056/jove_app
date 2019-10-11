@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
@@ -195,6 +196,140 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
+			var information = {
+				machineNo: document.getElementById("machineNo").value || '',
+				openCircuitMea: document.getElementById("openCircuitMea").value || '',
+				shortCircuitMea: document.getElementById("shortCircuitMea").value || '',
+				liftedLandsMea: document.getElementById("liftedLandsMea").value || '',
+				gapOrPinholeMea: document.getElementById("gapOrPinholeMea").value || '',
+				lineHighlightMea: document.getElementById("lineHighlightMea").value || '',
+				padGapMea: document.getElementById("padGapMea").value || '',
+				problemPoints: document.getElementById("problemPoints").value || '',
+				falsePoints: document.getElementById("falsePoints").value || '',
+				decide: decide || ''
+			}
+			if (information.machineNo.length < 1 || information.openCircuitMea.length < 1 ||
+				information.shortCircuitMea.length < 1 || information.liftedLandsMea.length < 1 ||
+				information.gapOrPinholeMea.length < 1 || information.lineHighlightMea.length < 1 ||
+				information.padGapMea.length < 1 || information.problemPoints.length < 1 ||
+				information.falsePoints.length < 1 || information.decide.length < 1) {
+				var color = "#F9F900";
+				if (information.machineNo.length < 1)
+					$("#machineNo").css("background-color", color);
+				if (information.openCircuitMea.length < 1)
+					$("#openCircuitMea").css("background-color", color);
+				if (information.shortCircuitMea.length < 1)
+					$("#shortCircuitMea").css("background-color", color);
+				if (information.liftedLandsMea.length < 1)
+					$("#liftedLandsMea").css("background-color", color);
+				if (information.gapOrPinholeMea.length < 1)
+					$("#gapOrPinholeMea").css("background-color", color);
+				if (information.lineHighlightMea.length < 1)
+					$("#lineHighlightMea").css("background-color", color);
+				if (information.padGapMea.length < 1)
+					$("#padGapMea").css("background-color", color);
+				if (information.problemPoints.length < 1)
+					$("#problemPoints").css("background-color", color);
+				if (information.falsePoints.length < 1)
+					$("#falsePoints").css("background-color", color);
+				if(information.decide.length < 1)
+					$("#decide").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var iscopper;
+				var speccut;
+				var decide;
+				var checkType;
+				var rejectitem = [];
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				document.querySelectorAll("input[name='checkType']").forEach(function(el) {
+					if (el.checked)
+						checkType = el.checkType;
+				})
+				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+					if (el.checked)
+						rejectitem.push(el.value);
+				})
+
+
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					machineNo: document.getElementById("machineNo").value,
+					openCircuitMea: document.getElementById("openCircuitMea").value,
+					shortCircuitMea: document.getElementById("shortCircuitMea").value,
+					liftedLandsMea: document.getElementById("liftedLandsMea").value,
+					gapOrPinholeMea: document.getElementById("gapOrPinholeMea").value,
+					lineHighlightMea: document.getElementById("lineHighlightMea").value,
+					padGapMea: document.getElementById("padGapMea").value,
+					problemPoints: document.getElementById("problemPoints").value,
+					falsePoints: document.getElementById("falsePoints").value,
+
+					decide: decide,
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=75',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: false
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
+
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -377,98 +512,6 @@
 					}
 				}
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var iscopper;
-					var speccut;
-					var decide;
-					var checkType;
-					var rejectitem = [];
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					factoryName = facarr[document.getElementById("factoryName").value];
-					document.querySelectorAll("input[name='decide']").forEach(function(el) {
-						if (el.checked)
-							decide = el.value;
-					})
-					document.querySelectorAll("input[name='checkType']").forEach(function(el) {
-						if (el.checked)
-							checkType = el.checkType;
-					})
-					document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
-						if (el.checked)
-							rejectitem.push(el.value);
-					})
-
-
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						machineNo: document.getElementById("machineNo").value,
-						openCircuitMea: document.getElementById("openCircuitMea").value,
-						shortCircuitMea: document.getElementById("shortCircuitMea").value,
-						liftedLandsMea: document.getElementById("liftedLandsMea").value,
-						gapOrPinholeMea: document.getElementById("gapOrPinholeMea").value,
-						lineHighlightMea: document.getElementById("lineHighlightMea").value,
-						padGapMea: document.getElementById("padGapMea").value,
-						problemPoints: document.getElementById("problemPoints").value,
-						falsePoints: document.getElementById("falsePoints").value,
-
-						decide: decide,
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					// for(var key in data){
-					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-					// 		mui.alert("必填项不能为空");
-					// 		return;
-					// 	}
-					// }
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=75',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

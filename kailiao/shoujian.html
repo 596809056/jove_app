@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/app.js"></script>
 	</head>
@@ -201,6 +202,181 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var iscopper = "";
+			var speccut = "";
+			var decide = "";
+			var rejectitem = [];
+			document.querySelectorAll("input[name='iscopper']").forEach(function(el) {
+				if (el.checked)
+					iscopper = el.value;
+			})
+			document.querySelectorAll("input[name='speccut']").forEach(function(el) {
+				if (el.checked)
+					speccut = el.value;
+			})
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
+			document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+				if (el.checked)
+					rejectitem.push(el.value);
+			})
+			var information = {
+				inputnumber: document.getElementById("inputnumber").value || '',
+				checknumber: document.getElementById("checknumber").value || '',
+				supppn: document.getElementById("supppn").value || '',
+				iscopper: iscopper || '',
+				plateply: document.getElementById("plateply").value || '',
+				plytolerance: document.getElementById("plytolerance").value || '',
+				measurea: document.getElementById("measurea").value || '',
+				measureb: document.getElementById("measureb").value || '',
+				measurec: document.getElementById("measurec").value || '',
+				measured: document.getElementById("measured").value || '',
+				copperply: document.getElementById("copperply").value || '',
+				sizetolerance: document.getElementById("sizetolerance").value || '',
+				requiredsize: document.getElementById("requiredsize").value || '',
+				plytolerance: document.getElementById("plytolerance").value || '',
+				measuresize: document.getElementById("measuresize").value || '',
+				speccut: speccut || '',
+				decide: decide || '',
+				rejectitem: rejectitem || '',
+				inspector: document.getElementById("inspector").value || ''
+			}
+			if (information.inputnumber.length < 1 || information.checknumber.length < 1 || 
+				information.supppn.length < 1 || information.iscopper.length < 1 ||
+				information.plateply.length < 1 || information.plytolerance.length < 1 ||
+				information.measurea.length < 1 || information.measureb.length < 1|| 
+				information.measurec.length < 1 || information.measured.length < 1 ||
+				information.copperply.length < 1 || information.sizetolerance.length < 1 ||
+				information.requiredsize.length < 1 || information.plytolerance.length < 1 ||
+				information.measuresize.length < 1 || information.speccut.length < 1 ||
+				information.decide.length < 1 || information.rejectitem.length < 1|| 
+				information.inspector.length < 1 ) {
+				var color = "#F9F900";
+				if(information.inputnumber.length < 1)
+					$("#inputnumber").css("background-color",color);
+				if(information.checknumber.length < 1)
+					$("#checknumber").css("background-color",color);
+				if(information.supppn.length < 1)
+					$("#supppn").css("background-color",color);
+				if(information.iscopper.length < 1)
+					$("#iscopper").css("background-color",color);
+				if(information.plateply.length < 1)
+					$("#plateply").css("background-color",color);
+				if(information.plytolerance.length < 1)
+					$("#plytolerance").css("background-color",color);
+				if(information.measurea.length < 1)
+					$("#measurea").css("background-color",color);
+				if(information.measureb.length < 1)
+					$("#measureb").css("background-color",color);
+				if(information.measurec.length < 1)
+					$("#measurec").css("background-color",color);
+				if(information.measured.length < 1)
+					$("#measured").css("background-color",color);
+				if(information.copperply.length < 1)
+					$("#copperply").css("background-color",color);
+				if(information.sizetolerance.length < 1)
+					$("#sizetolerance").css("background-color",color);
+				if(information.requiredsize.length < 1)
+					$("#requiredsize").css("background-color",color);
+				if(information.plytolerance.length < 1)
+					$("#plytolerance").css("background-color",color);
+				if(information.measuresize.length < 1)
+					$("#measuresize").css("background-color",color);
+				if(information.speccut.length < 1)
+					$("#speccut").css("background-color",color);
+				if(information.decide.length < 1)
+					$("#decide").css("background-color",color);
+				if(information.rejectitem.length < 1)
+					$("#rejectitem").css("background-color",color);
+				if(information.inspector.length < 1)
+					$("#inspector").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+					inputnumber: document.getElementById("inputnumber").value,
+					checknumber: document.getElementById("checknumber").value,
+					supppn: document.getElementById("supppn").value,
+					iscopper: iscopper,
+					plateply: document.getElementById("plateply").value,
+					plytolerance: document.getElementById("plytolerance").value,
+					measurea: document.getElementById("measurea").value,
+					measureb: document.getElementById("measureb").value,
+					measurec: document.getElementById("measurec").value,
+					measured: document.getElementById("measured").value,
+					copperply: document.getElementById("copperply").value,
+					sizetolerance: document.getElementById("sizetolerance").value,
+					requiredsize: document.getElementById("requiredsize").value,
+					plytolerance: document.getElementById("plytolerance").value,
+					measuresize: document.getElementById("measuresize").value,
+					speccut: speccut,
+					decide: decide,
+					rejectitem: rejectitem,
+					inspector: document.getElementById("inspector").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=1',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: true,
+						rejectItem: rejectitem.toString()
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -363,106 +539,6 @@
 				var state = app.getState();
 				document.getElementById("factoryName").value = state.changbie;
 				document.getElementById("inspector").value = state.username;
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var iscopper;
-					var speccut;
-					var decide;
-					var rejectitem = [];
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					factoryName = facarr[document.getElementById("factoryName").value];
-					document.querySelectorAll("input[name='iscopper']").forEach(function(el) {
-						if (el.checked)
-							iscopper = el.value;
-					})
-					document.querySelectorAll("input[name='speccut']").forEach(function(el) {
-						if (el.checked)
-							speccut = el.value;
-					})
-					document.querySelectorAll("input[name='decide']").forEach(function(el) {
-						if (el.checked)
-							decide = el.value;
-					})
-					document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
-						if (el.checked)
-							rejectitem.push(el.value);
-					})
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-						inputnumber: document.getElementById("inputnumber").value,
-						checknumber: document.getElementById("checknumber").value,
-						supppn: document.getElementById("supppn").value,
-						iscopper: iscopper,
-						plateply: document.getElementById("plateply").value,
-						plytolerance: document.getElementById("plytolerance").value,
-						measurea: document.getElementById("measurea").value,
-						measureb: document.getElementById("measureb").value,
-						measurec: document.getElementById("measurec").value,
-						measured: document.getElementById("measured").value,
-						copperply: document.getElementById("copperply").value,
-						sizetolerance: document.getElementById("sizetolerance").value,
-						requiredsize: document.getElementById("requiredsize").value,
-						plytolerance: document.getElementById("plytolerance").value,
-						measuresize: document.getElementById("measuresize").value,
-						speccut: speccut,
-						decide: decide,
-						rejectitem: rejectitem,
-						inspector: document.getElementById("inspector").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					// for(var key in data){
-					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-					// 		mui.alert("必填项不能为空");
-					// 		return;
-					// 	}
-					// }
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=1',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: true,
-							rejectItem: rejectitem.toString()
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

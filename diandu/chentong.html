@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -207,6 +208,166 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				processCategory: processCategory.options[document.getElementById("processCategory").selectedIndex].value || '',
+				prodNum: document.getElementById("prodNum").value || '',
+				minHole: document.getElementById("minHole").value || '',
+				prodTime: document.getElementById("prodTime").innerHTML || '',
+				cutPlateSize: document.getElementById("cutPlateSize").value || '',
+				prodArea: document.getElementById("prodArea").value || '',
+				addUpArea: document.getElementById("addUpArea").value || '',
+				platingArea: document.getElementById("platingArea").value || '',
+				operator: document.getElementById("operator").value || '',
+				fots: document.getElementById("fots").value || '',
+				kmno: document.getElementById("kmno").value || '',
+				naoh: document.getElementById("naoh").value || '',
+				tfsf: document.getElementById("tfsf").value || '',
+				htot: document.getElementById("htot").value || '',
+				hso: document.getElementById("hso").value || '',
+				ttt: document.getElementById("ttt").value || '',
+				htsof: document.getElementById("htsof").value || '',
+				sps: document.getElementById("sps").value || '',
+				hsof: document.getElementById("hsof").value || '',
+				fzf: document.getElementById("fzf").value || '',
+				catff: document.getElementById("catff").value || ''
+			}
+			if (information.processCategory.length < 1 || information.prodNum.length < 1 || 
+				information.minHole.length < 1 || information.prodTime.length < 1 ||
+				information.cutPlateSize.length < 1 || information.prodArea.length < 1 ||
+				information.addUpArea.length < 1 || information.platingArea.length < 1|| 
+				information.operator.length < 1 ||
+				information.fots.length < 1 || information.kmno.length < 1 ||
+				information.naoh.length < 1 || information.tfsf.length < 1 ||
+				information.htot.length < 1 || information.hso.length < 1 ||
+				information.ttt.length < 1 || information.htsof.length < 1|| 
+				information.sps.length < 1 || information.hsof.length < 1||
+				information.fzf.length < 1 || information.catff.length < 1) {
+				var color = "#F9F900";
+				if(information.processCategory.length < 1)
+					$("#processCategory").css("background-color",color);
+				if(information.prodNum.length < 1)
+					$("#prodNum").css("background-color",color);
+				if(information.minHole.length < 1)
+					$("#minHole").css("background-color",color);
+				if(information.prodTime.length < 1)
+					$("#prodTime").css("background-color",color);
+				if(information.cutPlateSize.length < 1)
+					$("#cutPlateSize").css("background-color",color);
+				if(information.prodArea.length < 1)
+					$("#prodArea").css("background-color",color);
+				if(information.addUpArea.length < 1)
+					$("#addUpArea").css("background-color",color);
+				if(information.platingArea.length < 1)
+					$("#platingArea").css("background-color",color);
+				if(information.operator.length < 1)
+					$("#operator").css("background-color",color);
+				if(information.fots.length < 1)
+					$("#fots").css("background-color",color);
+				if(information.kmno.length < 1)
+					$("#kmno").css("background-color",color);
+				if(information.naoh.length < 1)
+					$("#naoh").css("background-color",color);
+				if(information.tfsf.length < 1)
+					$("#tfsf").css("background-color",color);
+				if(information.htot.length < 1)
+					$("#htot").css("background-color",color);
+				if(information.hso.length < 1)
+					$("#hso").css("background-color",color);
+				if(information.ttt.length < 1)
+					$("#ttt").css("background-color",color);
+				if(information.htsof.length < 1)
+					$("#htsof").css("background-color",color);
+				if(information.sps.length < 1)
+					$("#sps").css("background-color",color);
+				if(information.hsof.length < 1)
+					$("#hsof").css("background-color",color);
+				if(information.fzf.length < 1)
+					$("#fzf").css("background-color",color);
+				if(information.catff.length < 1)
+					$("#catff").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+						return;
+				
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					processCategory = document.getElementById("processCategory");
+					factoryName = facarr[document.getElementById("factoryName").value];
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+				
+						//数据
+						processCategory: processCategory.options[processCategory.selectedIndex].value,
+						prodNum: document.getElementById("prodNum").value,
+						minHole: document.getElementById("minHole").value,
+						prodTime: document.getElementById("prodTime").innerHTML,
+						cutPlateSize: document.getElementById("cutPlateSize").value,
+						prodArea: document.getElementById("prodArea").value,
+						addUpArea: document.getElementById("addUpArea").value,
+						platingArea: document.getElementById("platingArea").value,
+						referVal: document.getElementById("referVal").value,
+				
+						fots: document.getElementById("fots").value,
+						kmno: document.getElementById("kmno").value,
+						naoh: document.getElementById("naoh").value,
+						tfsf: document.getElementById("tfsf").value,
+						htot: document.getElementById("htot").value,
+						hso: document.getElementById("hso").value,
+						ttt: document.getElementById("ttt").value,
+						htsof: document.getElementById("htsof").value,
+						sps: document.getElementById("sps").value,
+						hsof: document.getElementById("hsof").value,
+						fzf: document.getElementById("fzf").value,
+						catff: document.getElementById("catff").value,
+				
+						operator: document.getElementById("operator").value,
+						auditor: document.getElementById("auditor").value,
+						remark: document.getElementById("remark").value,
+					}
+				
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=16',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+						}
+					});
+					}
+				});
 		function pad(num, n) {
 			var len = num.toString().length;
 			while (len < n) {
@@ -414,86 +575,6 @@
 				var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(), 2);
 				current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
 				document.getElementById("prodTime").innerHTML = current;
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					processCategory = document.getElementById("processCategory");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						//数据
-						processCategory: processCategory.options[processCategory.selectedIndex].value,
-						prodNum: document.getElementById("prodNum").value,
-						minHole: document.getElementById("minHole").value,
-						prodTime: document.getElementById("prodTime").innerHTML,
-						cutPlateSize: document.getElementById("cutPlateSize").value,
-						prodArea: document.getElementById("prodArea").value,
-						addUpArea: document.getElementById("addUpArea").value,
-						referArea: document.getElementById("referArea").value,
-						referVal: document.getElementById("referVal").value,
-
-						fots: document.getElementById("fots").value,
-						kmno: document.getElementById("kmno").value,
-						naoh: document.getElementById("naoh").value,
-						tfsf: document.getElementById("tfsf").value,
-						htot: document.getElementById("htot").value,
-						hso: document.getElementById("hso").value,
-						ttt: document.getElementById("ttt").value,
-						htsof: document.getElementById("htsof").value,
-						sps: document.getElementById("sps").value,
-						hsof: document.getElementById("hsof").value,
-						fzf: document.getElementById("fzf").value,
-						catff: document.getElementById("catff").value,
-
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=16',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

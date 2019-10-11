@@ -8,6 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
@@ -189,6 +190,151 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			processCategory = document.getElementById("processCategory");
+			upperWay = document.getElementById("upperWay");
+			var information = {
+				processCategory: processCategory.options[processCategory.selectedIndex].value || '',
+				upperWay: upperWay.options[upperWay.selectedIndex].value || '',
+				prodQty: document.getElementById("prodQty").value || '',
+				ssGraphicsArea: document.getElementById("ssGraphicsArea").value || '',
+				csGraphicsArea: document.getElementById("csGraphicsArea").value || '',
+				copperDyelotNo: document.getElementById("copperDyelotNo").value || '',
+				copperCurrentParameter: document.getElementById("copperCurrentParameter").value || '',
+				ssCopperCurrent: document.getElementById("ssCopperCurrent").value || '',
+				operator: document.getElementById("operator").value || '',
+				csCopperCurrent: document.getElementById("csCopperCurrent").value || '',
+				tinDyelotNo: document.getElementById("tinDyelotNo").value || '',
+				thinCurrentParameter: document.getElementById("thinCurrentParameter").value || '',
+				ssThinCurrent: document.getElementById("ssThinCurrent").value || '',
+				csThinCurrent: document.getElementById("csThinCurrent").value || '',
+				confirmor: document.getElementById("confirmor").value || '',
+				inputTime: document.getElementById("inputTime").innerHTML || '',
+				outputTime: document.getElementById("outputTime").innerHTML || ''
+			}
+			if (information.processCategory.length < 1 || information.upperWay.length < 1 ||
+				information.prodQty.length < 1 || information.ssGraphicsArea.length < 1 ||
+				information.csGraphicsArea.length < 1 || information.copperDyelotNo.length < 1 ||
+				information.copperCurrentParameter.length < 1 || information.ssCopperCurrent.length < 1 ||
+				information.operator.length < 1 || information.csCopperCurrent.length < 1 ||
+				information.tinDyelotNo.length < 1 || information.thinCurrentParameter.length < 1 ||
+				information.ssThinCurrent.length < 1 || information.csThinCurrent.length < 1 ||
+				information.confirmor.length < 1 ||
+				information.inputTime.length < 1 || information.outputTime.length < 1) {
+				var color = "#F9F900";
+				if (information.processCategory.length < 1)
+					$("#processCategory").css("background-color", color);
+				if (information.upperWay.length < 1)
+					$("#upperWay").css("background-color", color);
+				if (information.prodQty.length < 1)
+					$("#prodQty").css("background-color", color);
+				if (information.ssGraphicsArea.length < 1)
+					$("#ssGraphicsArea").css("background-color", color);
+				if (information.csGraphicsArea.length < 1)
+					$("#csGraphicsArea").css("background-color", color);
+				if (information.copperDyelotNo.length < 1)
+					$("#copperDyelotNo").css("background-color", color);
+				if (information.copperCurrentParameter.length < 1)
+					$("#copperCurrentParameter").css("background-color", color);
+				if (information.ssCopperCurrent.length < 1)
+					$("#ssCopperCurrent").css("background-color", color);
+				if (information.operator.length < 1)
+					$("#operator").css("background-color", color);
+				if (information.csCopperCurrent.length < 1)
+					$("#csCopperCurrent").css("background-color", color);
+				if(information.tinDyelotNo.length < 1)
+					$("#tinDyelotNo").css("background-color",color);
+				if(information.thinCurrentParameter.length < 1)
+					$("#thinCurrentParameter").css("background-color",color);
+				if(information.ssThinCurrent.length < 1)
+					$("#ssThinCurrent").css("background-color",color);
+				if(information.csThinCurrent.length < 1)
+					$("#csThinCurrent").css("background-color",color);
+				if(information.confirmor.length < 1)
+					$("#confirmor").css("background-color",color);
+				if(information.inputTime.length < 1)
+					$("#inputTime").css("background-color",color);
+				if(information.outputTime.length < 1)
+					$("#outputTime").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					processCategory: processCategory.options[processCategory.selectedIndex].value,
+					upperWay: upperWay.options[upperWay.selectedIndex].value,
+
+					prodQty: document.getElementById("prodQty").value,
+					ssGraphicsArea: document.getElementById("ssGraphicsArea").value,
+					csGraphicsArea: document.getElementById("csGraphicsArea").value,
+
+					copperDyelotNo: document.getElementById("copperDyelotNo").value,
+					copperCurrentParameter: document.getElementById("copperCurrentParameter").value,
+					ssCopperCurrent: document.getElementById("ssCopperCurrent").value,
+					csCopperCurrent: document.getElementById("csCopperCurrent").value,
+
+					tinDyelotNo: document.getElementById("tinDyelotNo").value,
+					thinCurrentParameter: document.getElementById("thinCurrentParameter").value,
+					ssThinCurrent: document.getElementById("ssThinCurrent").value,
+					csThinCurrent: document.getElementById("csThinCurrent").value,
+
+					inputTime: document.getElementById("inputTime").innerHTML,
+					outputTime: document.getElementById("outputTime").innerHTML,
+
+					auditor: document.getElementById("auditor").value,
+					confirmor: document.getElementById("confirmor").value,
+					operator: document.getElementById("operator").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=25',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: false,
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
+
 		function pad(num, n) {
 			var len = num.toString().length;
 			while (len < n) {
@@ -236,7 +382,7 @@
 						//异常处理
 						if (type == "timeout")
 							$.toast('连接超时，请检查网络')
-					
+
 						$.toast('系统异常，请检查是否连接jove-wifi')
 					}
 				})
@@ -358,84 +504,6 @@
 				}
 				document.getElementById("inputTime").addEventListener('tap', pickerf);
 				document.getElementById("outputTime").addEventListener('tap', pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					processCategory = document.getElementById("processCategory");
-					upperWay = document.getElementById("upperWay");
-					factoryName = facarr[document.getElementById("factoryName").value];
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						processCategory: processCategory.options[processCategory.selectedIndex].value,
-						upperWay: upperWay.options[upperWay.selectedIndex].value,
-
-						prodQty: document.getElementById("prodQty").value,
-						ssGraphicsArea: document.getElementById("ssGraphicsArea").value,
-						csGraphicsArea: document.getElementById("csGraphicsArea").value,
-
-						copperDyelotNo: document.getElementById("copperDyelotNo").value,
-						copperCurrentParameter: document.getElementById("copperCurrentParameter").value,
-						ssCopperCurrent: document.getElementById("ssCopperCurrent").value,
-						csCopperCurrent: document.getElementById("csCopperCurrent").value,
-
-						tinDyelotNo: document.getElementById("tinDyelotNo").value,
-						thinCurrentParameter: document.getElementById("thinCurrentParameter").value,
-						ssThinCurrent: document.getElementById("ssThinCurrent").value,
-						csThinCurrent: document.getElementById("csThinCurrent").value,
-
-						inputTime: document.getElementById("inputTime").innerHTML,
-						outputTime: document.getElementById("outputTime").innerHTML,
-
-						auditor: document.getElementById("auditor").value,
-						confirmor: document.getElementById("confirmor").value,
-						operator: document.getElementById("operator").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=25',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: false,
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))

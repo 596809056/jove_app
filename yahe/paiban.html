@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
@@ -180,6 +181,171 @@
 	</body>
 
 	<script type="text/javascript">
+		// 表单
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				incisionNo: document.getElementById("incisionNo").value || '',
+				prodQty: document.getElementById("prodQty").value || '',
+				plateSize: document.getElementById("plateSize").value || '',
+				plateArea: document.getElementById("plateArea").value || '',
+				laminarStructure: document.getElementById("laminarStructure").value || '',
+				laminatedLayers: document.getElementById("laminatedLayers").value || '',
+				copperSize: document.getElementById("copperSize").value || '',
+				inAndOutCopperThick: document.getElementById("inAndOutCopperThick").value || '',
+				typography: document.getElementById("typography").value || '',
+				setTemp: document.getElementById("setTemp").value || '',
+				realTemp: document.getElementById("realTemp").value || '',
+				setPressure: document.getElementById("setPressure").value || '',
+				realPressure: document.getElementById("realPressure").value || '',
+				heatupTime: document.getElementById("heatupTime").value || '',
+				prePlateArea: document.getElementById("prePlateArea").value || '',
+				tgValue: document.getElementById("tgValue").value || '',
+				operator: document.getElementById("operator").value || ''
+			}
+			if (information.incisionNo.length < 1 || information.prodQty.length < 1 ||
+				information.plateSize.length < 1 || information.plateArea.length < 1 ||
+				information.laminarStructure.length < 1 || information.laminatedLayers.length < 1 ||
+				information.copperSize.length < 1 || information.inAndOutCopperThick.length < 1 ||
+				information.typography.length < 1 || information.setTemp.length < 1 ||
+				information.realTemp.length < 1 || information.setPressure.length < 1 ||
+				information.realPressure.length < 1 || information.heatupTime.length < 1 ||
+				information.prePlateArea.length < 1 || information.tgValue.length < 1 ||
+				information.operator.length < 1 ) {
+				var color = "#F9F900";
+				if (information.incisionNo.length < 1)
+					$("#incisionNo").css("background-color", color);
+				if (information.prodQty.length < 1)
+					$("#prodQty").css("background-color", color);
+				if (information.plateSize.length < 1)
+					$("#plateSize").css("background-color", color);
+				if (information.plateArea.length < 1)
+					$("#plateArea").css("background-color", color);
+				if (information.laminarStructure.length < 1)
+					$("#laminarStructure").css("background-color", color);
+				if (information.laminatedLayers.length < 1)
+					$("#laminatedLayers").css("background-color", color);
+				if (information.copperSize.length < 1)
+					$("#copperSize").css("background-color", color);
+				if (information.inAndOutCopperThick.length < 1)
+					$("#inAndOutCopperThick").css("background-color", color);
+				if (information.typography.length < 1)
+					$("#typography").css("background-color", color);
+				if (information.setTemp.length < 1)
+					$("#setTemp").css("background-color", color);
+				if(information.realTemp.length < 1)
+					$("#realTemp").css("background-color",color);
+				if(information.setPressure.length < 1)
+					$("#setPressure").css("background-color",color);
+				if(information.realPressure.length < 1)
+					$("#realPressure").css("background-color",color);
+				if(information.heatupTime.length < 1)
+					$("#heatupTime").css("background-color",color);
+				if(information.prePlateArea.length < 1)
+					$("#prePlateArea").css("background-color",color);
+				if(information.tgValue.length < 1)
+					$("#tgValue").css("background-color",color);
+				if(information.operator.length < 1)
+					$("#operator").css("background-color",color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				var iscopper;
+				var speccut;
+				var decide;
+				var checkType;
+				var rejectitem = [];
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				document.querySelectorAll("input[name='decide']").forEach(function(el) {
+					if (el.checked)
+						decide = el.value;
+				})
+				document.querySelectorAll("input[name='checkType']").forEach(function(el) {
+					if (el.checked)
+						checkType = el.checkType;
+				})
+				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+					if (el.checked)
+						rejectitem.push(el.value);
+				})
+
+
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					incisionNo: document.getElementById("incisionNo").value,
+					prodQty: document.getElementById("prodQty").value,
+					plateSize: document.getElementById("plateSize").value,
+					plateArea: document.getElementById("plateArea").value,
+					laminarStructure: document.getElementById("laminarStructure").value,
+					laminatedLayers: document.getElementById("laminatedLayers").value,
+					copperSize: document.getElementById("copperSize").value,
+					inAndOutCopperThick: document.getElementById("inAndOutCopperThick").value,
+					typography: document.getElementById("typography").value,
+					setTemp: document.getElementById("setTemp").value,
+					realTemp: document.getElementById("realTemp").value,
+					setPressure: document.getElementById("setPressure").value,
+					realPressure: document.getElementById("realPressure").value,
+					heatupTime: document.getElementById("heatupTime").value,
+					prePlateArea: document.getElementById("prePlateArea").value,
+					tgValue: document.getElementById("tgValue").value,
+
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=88',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: true,
+						rejectItem: rejectitem.toString()
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+					}
+				});
+			}
+		});
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -227,7 +393,7 @@
 							document.getElementById("lot").value = data.app.lot;
 							document.getElementById("datecode").value = data.app.datecode;
 							document.getElementById("d06rkey").value = data.app.d06rkey;
-					
+
 							document.getElementById("plateSize").value = data.app.panels;
 						} else {
 							mui.alert(data.mess);
@@ -378,105 +544,6 @@
 					}
 				}
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
-
-				// 表单
-				document.getElementById("submit").addEventListener('tap', function() {
-					if (!confirm("确认提交吗？"))
-						return;
-
-					if (document.getElementById("remark").value.length > 30) {
-						mui.alert("备注超过30字");
-						return;
-					}
-					var iscopper;
-					var speccut;
-					var decide;
-					var checkType;
-					var rejectitem = [];
-					var facarr = {
-						'一厂': 1,
-						'二厂': 2,
-						'三厂': 3,
-						'未知': 'N/A'
-					}
-					factoryName = facarr[document.getElementById("factoryName").value];
-					document.querySelectorAll("input[name='decide']").forEach(function(el) {
-						if (el.checked)
-							decide = el.value;
-					})
-					document.querySelectorAll("input[name='checkType']").forEach(function(el) {
-						if (el.checked)
-							checkType = el.checkType;
-					})
-					document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
-						if (el.checked)
-							rejectitem.push(el.value);
-					})
-
-
-					var data = {
-						factoryName: factoryName,
-						mo: document.getElementById("mo").value,
-						mfg: document.getElementById("mfg").value,
-						wo: document.getElementById("wo").value,
-						custcode: document.getElementById("custcode").value,
-						custpart: document.getElementById("custpart").value,
-						lot: document.getElementById("lot").value,
-						datecode: document.getElementById("datecode").value,
-						d06rkey: document.getElementById("d06rkey").value,
-
-						incisionNo: document.getElementById("incisionNo").value,
-						prodQty: document.getElementById("prodQty").value,
-						plateSize: document.getElementById("plateSize").value,
-						plateArea: document.getElementById("plateArea").value,
-						laminarStructure: document.getElementById("laminarStructure").value,
-						laminatedLayers: document.getElementById("laminatedLayers").value,
-						copperSize: document.getElementById("copperSize").value,
-						inAndOutCopperThick: document.getElementById("inAndOutCopperThick").value,
-						typography: document.getElementById("typography").value,
-						setTemp: document.getElementById("setTemp").value,
-						realTemp: document.getElementById("realTemp").value,
-						setPressure: document.getElementById("setPressure").value,
-						realPressure: document.getElementById("realPressure").value,
-						heatupTime: document.getElementById("heatupTime").value,
-						prePlateArea: document.getElementById("prePlateArea").value,
-						tgValue: document.getElementById("tgValue").value,
-
-						operator: document.getElementById("operator").value,
-						auditor: document.getElementById("auditor").value,
-						remark: document.getElementById("remark").value,
-					}
-
-					// for(var key in data){
-					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-					// 		mui.alert("必填项不能为空");
-					// 		return;
-					// 	}
-					// }
-
-					var params = JSON.stringify(data);
-					mui.ajax({
-						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=88',
-						type: "post",
-						data: {
-							params: params,
-							isRejectItem: true,
-							rejectItem: rejectitem.toString()
-						},
-						dataType: "json",
-						async: false,
-						error: function() {
-							mui.alert("error occur!");
-						},
-						success: function(data) {
-							if (data.isOK) {
-								mui.alert("上传成功!");
-							} else {
-								mui.alert("未知错误。");
-							}
-						}
-					});
-				});
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))
