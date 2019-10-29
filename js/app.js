@@ -65,7 +65,7 @@
 					console.log("连接成功：" + data.message);
 					if(data.code>0)
 						return callback('用户名或密码错误');
-					
+					console.log(data)
 					var info = [];
 					info.account = loginInfo.account;
 					info.username = data.data.UserName;
