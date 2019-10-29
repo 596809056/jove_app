@@ -8,11 +8,11 @@
  var realapi = 'https://192.168.20.232:8080';
  mui.ajax(realhost + '/api/user/login',{
  		data:{},
- 		async:true,
+ 		async: true,
  		dataType:'json',//服务器返回json格式数据
  		type:'post',//HTTP请求类型
- 		timeout:3000,//超时时间设置为10秒；
- 		headers:{'Content-Type':'application/json'},	              
+ 		timeout:3000,//超时时间设置为3秒；
+ 		headers:{'Content-Type':'application/json'},
  		success:function(data){
  			// 连接内网成功
  			console.log('内网 success');
