@@ -27,7 +27,7 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -78,23 +78,23 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检验数量:</span>
-							<span class="mui-col-xs-9"><input id="checkNum" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkNum" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良数量:</span>
-							<span class="mui-col-xs-9"><input id="checkOutNum" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkOutNum" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求尺寸:</span>
-							<span class="mui-col-xs-9"><input id="requireSize" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="requireSize" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">公差:</span>
-							<span class="mui-col-xs-9"><input id="tolerance" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="tolerance" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测尺寸:</span>
-							<span class="mui-col-xs-9"><input id="measureSize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measureSize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
@@ -105,27 +105,27 @@
 						</p>
 						<p class="mui-row">
 							<span class="mui-col-xs-3">检验员:</span>
-							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="operator" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="display: none;">
 							<span class="mui-col-xs-3">审核人:</span>
-							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="auditor" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>胶渍</label><input value="胶渍" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜箔起泡</label><input value="铜箔起泡" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>靶位偏</label><input value="靶位偏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>起皱</label><input value="起皱" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>披峰</label><input value="披峰" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>锣坏</label><input value="锣坏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" class="none" type="checkbox" checked="checked"></span>
+								<span class="mui-col-xs-4"><label>胶渍</label><input value="胶渍" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜箔起泡</label><input value="铜箔起泡" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>靶位偏</label><input value="靶位偏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>起皱</label><input value="起皱" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>披峰</label><input value="披峰" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>锣坏</label><input value="锣坏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 					</div>
@@ -133,7 +133,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -145,6 +145,22 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		//监听复选框
+		$(".none").change(function() {
+			if ($(this).is(":checked")) {
+				$(".rej").prop("checked", false);
+			}
+		});
+		$(".rej").change(function() {
+			if ($(this).is(":checked")) {
+				$(".none").prop("checked", false);
+			}
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var decide;
@@ -267,6 +283,11 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
+						$(".rej").prop("checked", false);
+						$(".none").prop("checked", true;);
 					}
 				});
 			}

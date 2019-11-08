@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script src="../js/app.js"></script>
+	</head>
+	<style type="text/css">
+		#inputTime,
+		#outputTime {
+			height: 40px;
+			line-height: 10px;
+		}
+
+		#jianYan {
+			text-align: center;
+			padding: 5px;
+			color: darkslategrey;
+		}
+
+		.title-text span {
+			display: block;
+			position: relative;
+			text-align: left;
+		}
+
+		.title-text span:before,
+		.title-text span:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			background: red;
+			width: 70%;
+			height: 1px;
+		}
+
+		.title-text span:before {
+			left: 30%;
+		}
+
+		.title-text span:after {
+			right: -1%;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				金手指开窗生产记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">条码信息</a>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+					</div>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">基础数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">厂别:</span>
+							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">MO号:</span>
+							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">生产编码:</span>
+							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">工单号:</span>
+							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户代码:</span>
+							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户型号:</span>
+							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">LOT号:</span>
+							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">周期:</span>
+							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju" style="display: none;">
+							<span class="mui-col-xs-3">d06rkey:</span>
+							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
+						</p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">检查数量:</span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" placeholder="panel/set" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">无划伤绿油:</span>
+							<span class="mui-col-xs-9"><input id="scratchOil" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">开窗位置与工程设计一致:</span>
+							<span class="mui-col-xs-9"><input id="isPosition" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">判定:</span>
+							<span class="mui-col-xs-9 hradio">
+								<label>ACC &nbsp;</label><input name="decide" value="ACCEPT" type="radio" > &nbsp&nbsp
+								<label>REJ &nbsp</label><input name="decide" value="REJECT" type="radio">
+							</span>
+						</p>
+						<p class="mui-row shiceshuju" style="padding: 10px 0px 0px 0px;">
+							<span class="mui-col-xs-3">操作员:</span>
+							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" class="reset" id="remark" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			});
+			// 表单
+			document.getElementById("submit").addEventListener('tap', function() {
+				var decide; 
+				document.querySelectorAll("input[name='decide']").forEach(function(el){
+					if(el.checked){
+						decide=el.value;
+					}
+				})
+				var information = {
+					prodQty: document.getElementById("prodQty").value || '',
+					scratchOil: document.getElementById("scratchOil").value || '',
+					isPosition: document.getElementById("isPosition").value || '',
+					operator: document.getElementById("operator").value || '',
+					decide: decide || '',
+				}
+				if (information.prodQty.length < 1 || information.scratchOil.length < 1 ||
+					information.isPosition.length < 1 || information.decide.length < 1 ||
+					information.operator.length < 1) {
+					var color = "#F9F900";
+					if (information.prodQty.length < 1)
+						$("#prodQty").css("background-color", color);
+					if (information.decide.length < 1)
+						$("#decide").css("background-color", color);	
+					if (information.scratchOil.length < 1)
+						$("#scratchOil").css("background-color", color);
+					if (information.isPosition.length < 1)
+						$("#isPosition").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value];
+					
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+
+						prodQty: document.getElementById("prodQty").value,
+						scratchOil: document.getElementById("scratchOil").value,
+						isPosition: document.getElementById("isPosition").value,
+						operator: document.getElementById("operator").value,
+						decide: decide,
+						remark: document.getElementById("remark").value,
+					}
+					// for(var key in data){
+					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+					// 		mui.alert("必填项不能为空");
+					// 		return;
+					// 	}
+					// }
+
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=153',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false,
+							//rejectItem: arr.toString(),
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
+						}
+					});
+				}
+			});
+
+			(function($, doc) {
+				//初始化 scan页
+				$.init({
+					preloadPages: [{
+						id: 'scan.html',
+						url: '../scan.html'
+					}]
+				});
+
+				document.querySelector("input[data-id='tiaoma1']").onchange = function() {
+					var qrdata = document.getElementById("code").value;
+					// 采集数据
+					mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+						data: {
+							wo: qrdata,
+							isControl: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 3000, //超时时间设置为10秒；
+						success: function(data) {
+							if (data.success) {
+								// 基础信息
+								document.getElementById("mo").value = data.app.mo;
+								document.getElementById("wo").value = data.app.wo;
+								document.getElementById("mfg").value = data.app.mfg;
+								document.getElementById("custcode").value = data.app.cust_code;
+								document.getElementById("custpart").value = data.app.pn;
+								document.getElementById("lot").value = data.app.lot;
+								document.getElementById("datecode").value = data.app.datecode;
+								document.getElementById("d06rkey").value = data.app.d06rkey; 
+								
+								document.getElementById("prodQty").value = data.app.quanpanel; 
+							} else {
+								mui.alert(data.mess);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理
+							if (type == "timeout")
+								$.toast('连接超时，请检查网络')
+
+							$.toast('系统异常，请检查是否连接jove-wifi')
+						}
+					})
+				}
+
+				//自定义事件,供扫描回调
+				window.addEventListener('getScan', function(event) {
+					// 获得事件参数
+					// var id = event.detail.id;
+					qrtype = event.detail.qrtype;
+					qrdata = event.detail.qrdata;
+					// 赋值到输入框
+					if (qrtype && qrdata) {
+						// mui.alert(qrtype + ":" + qrdata );
+						var arr = qrdata.split(',');
+						if (arr.length > 2) {
+							qrdata = arr[1];
+						}
+						document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
+
+						if (qrtype == 'tiaoma') {
+							// 采集数据
+							mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+								data: {
+									wo: qrdata,
+									isControl: false
+								},
+								dataType: 'json', //服务器返回json格式数据
+								type: 'POST', //HTTP请求类型
+								timeout: 3000, //超时时间设置为10秒；
+								success: function(data) {
+									if (data.success) {
+										// 基础信息
+										document.getElementById("mo").value = data.app.mo;
+										document.getElementById("wo").value = data.app.wo;
+										document.getElementById("mfg").value = data.app.mfg;
+										document.getElementById("custcode").value = data.app.cust_code;
+										document.getElementById("custpart").value = data.app.pn;
+										document.getElementById("lot").value = data.app.lot;
+										document.getElementById("datecode").value = data.app.datecode;
+									    document.getElementById("d06rkey").value = data.app.d06rkey;
+									
+									   document.getElementById("prodQty").value = data.app.quanpanel; 
+									} else {
+										mui.alert(data.mess);
+									}
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理
+									if (type == "timeout")
+										$.toast('连接超时，请检查网络')
+
+									$.toast('系统异常，请检查是否连接jove-wifi')
+								}
+							})
+						}
+
+						if (qrtype == 'bancai') {
+							var val = qrdata.trim().split(",");
+							if (val.length != 11) {
+								//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+								mui.toast("板材条码错误");
+							} else {
+								document.getElementById("supppn").value = val[5];
+								document.getElementById("plateply").value = val[8];
+								document.getElementById("copperply").value = val[9];
+							}
+						}
+					}
+				});
+
+				$.plusReady(function() {
+					// 获取本页面的固定信息
+					var self = plus.webview.currentWebview();
+
+					// 扫描页webview
+					var scanPage = null;
+					document.querySelectorAll(".scan").forEach(function(el) {
+						el.addEventListener('tap', function() {
+							// 扫描页webview
+							if (!scanPage) {
+								scanPage = plus.webview.getWebviewById('scan.html');
+							}
+							// 这里只有qrtype 是不一样的,根据el来
+							var qrtype = el.getAttribute("data-id");
+							mui.fire(scanPage, 'newScan', {
+								qrtype: qrtype,
+								source: self.openurl,
+								sourceid: self.id
+							});
+							mui.openWindow({
+								id: 'scan.html'
+							});
+						})
+					})
+
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("factoryName").value = state.changbie;
+					document.getElementById("operator").value = state.username;
+
+					// 日期控件
+					function pad(num, n) {
+						var len = num.toString().length;
+						while (len < n) {
+							num = "0" + num;
+							len++;
+						}
+						return num;
+					}
+					var date = new Date();
+					var pickerf = function() {
+						var _self = this;
+						if (_self.picker) {
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+								2);
+							current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+							var options = {
+								"value": current,
+								"beginYear": 2019,
+								"endYear": 2038
+							};
+							console.log("当前时间:" + current);
+							var id = this.getAttribute('id');
+
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}
+					//document.getElementById("electroplateTime").addEventListener('tap', pickerf);
+
+
+
+					document.getElementById("reset").addEventListener('tap', function() {
+						if (!confirm("确认重置吗？"))
+							return;
+
+						document.querySelectorAll(".tiaoMa input[type='text']").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+							el.innerHTML = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelector("input[value='无不良']").checked = 'checked';
+					});
+
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

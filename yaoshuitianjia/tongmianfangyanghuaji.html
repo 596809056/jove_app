@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/app.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				电镀铜面防氧化剂添加记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju" style="padding: 20px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row">
+									<label class="mui-badge1 ">厂别:</label>
+									<a class="mui-navigate-right">
+										<span class="mui-badge1">
+											<select id="factoryName" style="margin:auto; color:#8F8F94; font-size: 14px;">
+												<option value="">请选择</option>
+												<option value="1">一厂</option>
+												<option value="2">二厂</option>
+												<option value="3">三厂</option>
+
+											</select>
+										</span>
+									</a>
+								</div>
+							</div>
+						</p>
+						<p class="mui-row shiceshuju" style="padding: 20px 0px 0px 0px;">
+							<span class="mui-col-xs-3">添加量:</span>
+							<span class="mui-col-xs-9"><input id="additiveAmount" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju" >
+							<span class="mui-col-xs-3">添加者:</span>
+							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" cols="" id="remark" class="reset" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			});
+			
+			document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+				factoryName: document.getElementById("factoryName").value || '',
+				additiveAmount: document.getElementById("additiveAmount").value || '',
+				operator: document.getElementById("operator").value  || '',
+				}
+				if (information.factoryName.length < 1 || information.additiveAmount.length < 1 ||
+					 information.operator.length < 1 ) {
+					var color = "#F9F900";
+					if (information.factoryName.length < 1)
+						$("#factoryName").css("background-color", color);
+					if (information.additiveAmount.length < 1)
+						$("#additiveAmount").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+			
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					/* var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value]; */
+					var data = {
+						factoryName: document.getElementById("factoryName").value,
+						additiveAmount: document.getElementById("additiveAmount").value,
+						operator: document.getElementById("operator").value,
+						remark: document.getElementById('remark').value,
+					}
+			
+					var params = JSON.stringify(data);
+					mui.ajax(realapi + '/JOVE_QIS/query/saveVerifyData.action?id=106', {
+						data: {
+							params: params,
+							isRejectItem: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						async: false,
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.alert("error occur!");
+						}
+					});
+			
+				}
+			});
+			
+			
+			(function($, doc) {
+			
+				mui.plusReady(function() {
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("operator").value = state.username;
+			
+					mui.ajax(realapi + '/JOVE_QIS/pack/getUniqueIdentifier.action', {
+						type: "post",
+						data: {},
+						dataType: "json",
+						success: function(data) {
+							document.getElementById("factoryName").value = data.factoryName;
+							//form.render("select");
+						}
+					});
+			
+					document.getElementById('reset').addEventListener('tap', function() {
+						if (!confirm('确认重置吗？')) {
+							return;
+						}
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+					});
+				});
+			
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

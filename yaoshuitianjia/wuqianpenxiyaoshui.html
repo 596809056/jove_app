@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/app.js"></script>
+	</head>
+	<style type="text/css">
+		#inputTime,
+		#outputTime {
+			height: 40px;
+			line-height: 10px;
+		}
+
+		#jianYan {
+			text-align: center;
+			padding: 5px;
+			color: darkslategrey;
+		}
+
+		.title-text span {
+			display: block;
+			position: relative;
+			text-align: left;
+		}
+
+		.title-text span:before,
+		.title-text span:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			background: #9A9A9A;
+			width: 70%;
+			height: 1px;
+		}
+
+		.title-text span:before {
+			left: 18%;
+		}
+
+		.title-text span:after {
+			right: -1%;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				无铅喷锡前处理药水添加记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju" style="padding: 13px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row">
+									<label class="mui-badge1 ">厂别:</label>
+									<a class="mui-navigate-right">
+										<span class="mui-badge1">
+											<select id="factoryName" style="margin:auto; color:#8F8F94; font-size: 14px;">
+												<option value="">请选择</option>
+												<option value="1">一厂</option>
+												<option value="2">二厂</option>
+												<option value="3">三厂</option>
+
+											</select>
+										</span>
+									</a>
+								</div>
+							</div>
+						</p>
+						<p class="mui-row shiceshuju" style="padding: 29px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row">
+									<label class="mui-badge1 ">班别:</label>
+									<a class="mui-navigate-right">
+										<span class="mui-badge1">
+											<select id="classType" class="reset" style="margin:auto; color:#8F8F94; font-size: 14px;">
+												<option value="">请选择</option>
+												<option value="白班">白班</option>
+												<option value="晚班">晚班</option>
+											</select>
+										</span>
+									</a>
+								</div>
+							</div>
+						</p>
+						<p class="mui-row shiceshuju" style="padding: 21px 0px 0px 0px;">
+							<span class="mui-col-xs-3">保养频率:</span>
+							<span class="mui-col-xs-9"><input id="maintenanceFrequency" type="text" value="1次/班" style="margin:auto; color:#8F8F94; font-size: 14px;"/></span>
+						</p>
+						<div id="jianYan">
+							<p class="title-text"><span>添加项目</span></p>
+						</div>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">酸洗缸H₂SO₄(L):</span>
+							<span class="mui-col-xs-9"><input id="picklingHSO" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">微蚀缸H₂SO₄(L):</span>
+							<span class="mui-col-xs-9"><input id="microErosionHSO" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">微蚀缸SPS(kg):</span>
+							<span class="mui-col-xs-9"><input id="microErosionSPS" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">操作员:</span>
+							<span class="mui-col-xs-9"><input id="operator" class="reset" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" cols="" id="remark" class="reset" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			});
+			
+			document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+					factoryName: document.getElementById("factoryName").value || '',
+					classType: document.getElementById("classType").value || '',
+					maintenanceFrequency: document.getElementById("maintenanceFrequency").value || '',
+					picklingHSO: document.getElementById("picklingHSO").value || '',
+					microErosionHSO: document.getElementById("microErosionHSO").value || '',
+					microErosionSPS: document.getElementById("microErosionSPS").value || '',
+					operator: document.getElementById("operator").value || '',
+				}
+				
+				if (information.factoryName.length < 1 || information.classType.length < 1 ||
+					information.maintenanceFrequency.length < 1 || information.picklingHSO.length < 1 ||
+					information.microErosionHSO.length < 1 || information.microErosionSPS.length < 1 ||
+					 information.operator.length < 1) {
+					var color = "#F9F900";
+					if (information.factoryName.length < 1)
+						$("#factoryName").css("background-color", color);
+					if (information.classType.length < 1)
+						$("#classType").css("background-color", color);
+					if (information.maintenanceFrequency.length < 1)
+						$("#maintenanceFrequency").css("background-color", color);
+					if (information.picklingHSO.length < 1)
+						$("#picklingHSO").css("background-color", color);
+					if (information.microErosionHSO.length < 1)
+						$("#microErosionHSO").css("background-color", color);
+					if (information.microErosionSPS.length < 1)
+						$("#microErosionSPS").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					/* var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value]; */
+					var data = {
+						factoryName: document.getElementById("factoryName").value,
+						classType: document.getElementById("classType").value,
+						maintenanceFrequency: document.getElementById("maintenanceFrequency").value,
+						picklingHSO: document.getElementById("picklingHSO").value,
+						microErosionHSO: document.getElementById("microErosionHSO").value,
+						microErosionSPS: document.getElementById("microErosionSPS").value,
+						operator: document.getElementById("operator").value,
+						remark: document.getElementById('remark').value,
+					}
+
+					var params = JSON.stringify(data);
+					mui.ajax(realapi + '/JOVE_QIS/query/saveVerifyData.action?id=107', {
+						data: {
+							params: params,
+							isRejectItem: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						async: false,
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.alert("error occur!");
+						}
+					});
+
+				}
+			});
+
+
+			(function($, doc) {
+
+				mui.plusReady(function() {
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("operator").value = state.username;
+
+					mui.ajax(realapi + '/JOVE_QIS/pack/getUniqueIdentifier.action', {
+						type: "post",
+						data: {},
+						dataType: "json",
+						success: function(data) {
+							document.getElementById("factoryName").value = data.factoryName;
+							//form.render("select");
+						}
+					});
+
+					document.getElementById('reset').addEventListener('tap', function() {
+						if (!confirm('确认重置吗？')) {
+							return;
+						}
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+					});
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/app.js"></script>
+	</head>
+	<style type="text/css">
+		#inputTime,
+		#outputTime {
+			height: 40px;
+			line-height: 10px;
+		}
+
+		#jianYan {
+			text-align: center;
+			padding: 5px;
+			color: darkslategrey;
+		}
+
+		.title-text span {
+			display: block;
+			position: relative;
+			text-align: left;
+		}
+
+		.title-text span:before,
+		.title-text span:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			background: #9A9A9A;
+			width: 70%;
+			height: 1px;
+		}
+
+		.title-text span:before {
+			left: 12%;
+		}
+
+		.title-text span:after {
+			right: -1%;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				金手指线药水添加记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">厂别:</span>
+							<span class="mui-col-xs-9">
+								<select id="factoryName" style="margin:auto; color:#8F8F94; font-size: 14px;">
+									<option value="1">一厂</option>
+									<option value="2">二厂</option>
+									<option value="3">三厂</option>
+								</select>
+							</span>
+						</p>
+
+						<div id="jianYan" style="padding: 10px 0px 0px 0px ;">
+							<p class="title-text"><span>
+									<font size="3" color="#2AC845">微蚀</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">过硫酸钠(kg):</span>
+							<span class="mui-col-xs-9"><input id="microErosionNaSO" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">硫酸(L):</span>
+							<span class="mui-col-xs-9"><input id="microErosionHSO" class="reset" type="text" value="" /></span>
+						</p>
+
+						<div id="jianYan">
+							<p class="title-text"><span>
+									<font size="3" color="#2AC845">活化1</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">硫酸(L):</span>
+							<span class="mui-col-xs-9"><input id="revitalite1HSO" class="reset" type="text" value="" /></span>
+						</p>
+
+						<div id="jianYan">
+							<p class="title-text"><span>
+									<font size="3" color="#FF0000">镀镍</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">氨基磺酸镍(L):</span>
+							<span class="mui-col-xs-9"><input id="niNHSO" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">660-H(L):</span>
+							<span class="mui-col-xs-9"><input id="ni660h" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">660-W(ml):</span>
+							<span class="mui-col-xs-9"><input id="ni660w" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">660-B(ml):</span>
+							<span class="mui-col-xs-9"><input id="ni660b" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">加DI水(L):</span>
+							<span class="mui-col-xs-9"><input id="niDIWater" class="reset" type="text" value="" /></span>
+						</p>
+
+						<div id="jianYan">
+							<p class="title-text"><span>
+									<font size="3" color="#FF0000">活化2</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">硫酸(L):</span>
+							<span class="mui-col-xs-9"><input id="revitalite2HSO" class="reset" type="text" value="" /></span>
+						</p>
+
+						<div id="jianYan">
+							<p class="title-text"><span>
+									<font size="3" color="#FF0000">镀金</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">金盐(g):</span>
+							<span class="mui-col-xs-9"><input id="auGoldSalt" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">光泽剂202(ml):</span>
+							<span class="mui-col-xs-9"><input id="au202" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">补充添加剂203(ml):</span>
+							<span class="mui-col-xs-9"><input id="au203" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">平衡盐204(g):</span>
+							<span class="mui-col-xs-9"><input id="au204" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">维持添加剂207(ml):</span>
+							<span class="mui-col-xs-9"><input id="au207" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">导电盐205(kg):</span>
+							<span class="mui-col-xs-9"><input id="au205" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">调整酸盐208(kg):</span>
+							<span class="mui-col-xs-9"><input id="au208" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">加DI水(L):</span>
+							<span class="mui-col-xs-9"><input id="auDIWater" class="reset" type="text" value="" /></span>
+						</p>
+
+						<div id="jianYan">
+							<p class="title-text"><span>
+									<font size="3" color="#FF0000">签名</font>
+								</span></p>
+						</div>
+
+						<p class="mui-row shiceshuju" style="padding: 10px 0px 0px 0px;">
+							<span class="mui-col-xs-4">添加金盐时,生产主管签名:</span>
+							<span class="mui-col-xs-8"><input id="goldSaltSign" class="reset" type="text" value="" /></span>
+						</p>
+						<br>
+						<p class="mui-row shiceshuju" >
+							<span class="mui-col-xs-3">操作员:</span>
+							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+						</p>
+
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">备注</a>
+					<div class="mui-collapse-content">
+						<textarea rows="5" cols="" id="remark" class="reset"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		
+		document.getElementById("submit").addEventListener('tap', function() {
+			var information = {
+				microErosionNaSO: document.getElementById("microErosionNaSO").value || '',
+				microErosionHSO: document.getElementById("microErosionHSO").value || '',
+				revitalite1HSO: document.getElementById("revitalite1HSO").value || '',
+				niNHSO: document.getElementById("niNHSO").value || '',
+				ni660h: document.getElementById("ni660h").value || '',
+				ni660w: document.getElementById("ni660w").value || '',
+				ni660b: document.getElementById("ni660b").value || '',
+				niDIWater: document.getElementById("niDIWater").value || '',
+				revitalite2HSO: document.getElementById('revitalite2HSO').value || '',
+				auGoldSalt: document.getElementById('auGoldSalt').value || '',
+				au202: document.getElementById('au202').value || '',
+				au203: document.getElementById('au203').value || '',
+				au204: document.getElementById('au204').value || '',
+				au207: document.getElementById('au207').value || '',
+				au205: document.getElementById('au205').value || '',
+				au208: document.getElementById('au208').value || '',
+				auDIWater: document.getElementById('auDIWater').value || '',
+				goldSaltSign: document.getElementById('goldSaltSign').value || '',
+				operator: document.getElementById('operator').value || '',
+			}
+			if (information.microErosionNaSO.length < 1 || information.microErosionHSO.length < 1 ||
+				information.revitalite1HSO.length < 1 || information.niNHSO.length < 1 ||
+				information.ni660h.length < 1 || information.ni660w.length < 1 ||
+				information.ni660b.length < 1 || information.niDIWater.length < 1 ||
+				information.revitalite2HSO.length < 1 || information.auGoldSalt.length < 1 ||
+				information.au202.length < 1 || information.au203.length < 1 ||
+				information.au204.length < 1 || information.au207.length < 1 ||
+				information.au205.length < 1 || information.au208.length < 1 ||
+				information.auDIWater.length < 1 || information.goldSaltSign.length < 1 ||
+				information.operator.length < 1) {
+				var color = "#F9F900";
+				if (information.microErosionNaSO.length < 1)
+					$("#microErosionNaSO").css("background-color", color);
+				if (information.microErosionHSO.length < 1)
+					$("#microErosionHSO").css("background-color", color);
+				if (information.revitalite1HSO.length < 1)
+					$("#revitalite1HSO").css("background-color", color);
+				if (information.niNHSO.length < 1)
+					$("#niNHSO").css("background-color", color);
+				if (information.ni660h.length < 1)
+					$("#ni660h").css("background-color", color);
+				if (information.ni660w.length < 1)
+					$("#ni660w").css("background-color", color);
+				if (information.ni660b.length < 1)
+					$("#ni660b").css("background-color", color);
+				if (information.niDIWater.length < 1)
+					$("#niDIWater").css("background-color", color);
+				if (information.revitalite2HSO.length < 1)
+					$("#revitalite2HSO").css("background-color", color);
+				if (information.auGoldSalt.length < 1)
+					$("#auGoldSalt").css("background-color", color);
+				if (information.au202.length < 1)
+					$("#au202").css("background-color", color);
+				if (information.au203.length < 1)
+					$("#au203").css("background-color", color);
+				if (information.au204.length < 1)
+					$("#au204").css("background-color", color);
+				if (information.au207.length < 1)
+					$("#au207").css("background-color", color);
+				if (information.au205.length < 1)
+					$("#au205").css("background-color", color);
+				if (information.au208.length < 1)
+					$("#au208").css("background-color", color);
+				if (information.auDIWater.length < 1)
+					$("#auDIWater").css("background-color", color);
+				if (information.goldSaltSign.length < 1)
+					$("#goldSaltSign").css("background-color", color);
+				if (information.operator.length < 1)
+					$("#operator").css("background-color", color);
+				plus.nativeUI.toast("黄色区域为必填项！");
+				return;
+			} else {
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
+				}
+				/* var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value]; */
+				var data = {
+					factoryName: document.getElementById("factoryName").value,
+					microErosionNaSO: document.getElementById("microErosionNaSO").value,
+					microErosionHSO: document.getElementById("microErosionHSO").value,
+					revitalite1HSO: document.getElementById("revitalite1HSO").value,
+					niNHSO: document.getElementById("niNHSO").value,
+					ni660h: document.getElementById("ni660h").value,
+					ni660w: document.getElementById("ni660w").value,
+					ni660b: document.getElementById("ni660b").value,
+					niDIWater: document.getElementById("niDIWater").value,
+					revitalite2HSO: document.getElementById('revitalite2HSO').value,
+					auGoldSalt: document.getElementById('auGoldSalt').value,
+					au202: document.getElementById('au202').value,
+					au203: document.getElementById('au203').value,
+					au204: document.getElementById('au204').value,
+					au207: document.getElementById('au207').value,
+					au205: document.getElementById('au205').value,
+					au208: document.getElementById('au208').value,
+					auDIWater: document.getElementById('auDIWater').value,
+					goldSaltSign: document.getElementById('goldSaltSign').value,
+					operator: document.getElementById('operator').value,
+					remark: document.getElementById('remark').value,
+				}
+
+				var params = JSON.stringify(data);
+				mui.ajax(realapi + '/JOVE_QIS/query/saveVerifyData.action?id=108', {
+					data: {
+						params: params,
+						isRejectItem: false
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					async: false,
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+						$(".reset").val("");
+						$(".shiceshuju .reset,.reset").css("background-color", "");
+
+					},
+					error: function(xhr, type, errorThrown) {
+						mui.alert("error occur!");
+					}
+				});
+
+			}
+		});
+
+
+		(function($, doc) {
+
+			mui.plusReady(function() {
+				// 登录状态消息
+				var state = app.getState();
+				document.getElementById("operator").value = state.username;
+
+				mui.ajax(realapi + '/JOVE_QIS/pack/getUniqueIdentifier.action', {
+					type: "post",
+					data: {},
+					dataType: "json",
+					success: function(data) {
+						document.getElementById("factoryName").value = data.factoryName;
+						//form.render("select");
+					}
+				});
+
+				document.getElementById('reset').addEventListener('tap', function() {
+					if (!confirm('确认重置吗？')) {
+						return;
+					}
+					document.querySelectorAll(".reset").forEach(function(el) {
+						el.value = '';
+					})
+					document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+						el.checked = '';
+					})
+					document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+						el.checked = '';
+					})
+				});
+			});
+
+		}(mui, document));
+	</script>
+</html>

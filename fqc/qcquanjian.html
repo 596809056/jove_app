@@ -1,0 +1,899 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<script src="../js/app.js"></script>
+		<style type="text/css">
+			#inputTime,
+			#outputTime,
+			#signTime {
+				height: 40px;
+				line-height: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content" id="">
+
+			<div id="hcaption">
+				最终QC全检记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">条码信息</a>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+					</div>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">基础数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">厂别:</span>
+							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">MO号:</span>
+							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">生产编码:</span>
+							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">工单号:</span>
+							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户代码:</span>
+							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户型号:</span>
+							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">LOT号:</span>
+							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">周期:</span>
+							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju" style="display: none;">
+							<span class="mui-col-xs-3">d06rkey:</span>
+							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
+						</p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">检查数量(panel/set):</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset calc" id="checkQty" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">尺寸:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="plateSize" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">合格数量:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset calc" id="okQty" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">合格率:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="okYield" value="" style="cursor: not-allowed;background-color: #EEEEEE;"
+								 disabled="disabled" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">修理不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect059" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锣板不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect060" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">擦花露铜:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect061" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">漏V割:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect062" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">板面擦白:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect063" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">外形毛刺:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect064" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡面粗糙:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect065" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡高:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect066" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡面氧化:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect067" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡堵孔:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect068" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">焊盘露铜:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect069" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">PAD孔损:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect070" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">擦花上锡:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect071" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">油污:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect072" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">定位菲林擦花:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect073" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">塞孔不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect040" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">偏位上PAD:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect074" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">油墨入孔:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect036" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">兰胶不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect075" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油起泡:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect027" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">显影不净:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect030" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">不下油:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect076" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">菲林对反:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect077" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油底氧化:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect078" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">杂物:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect043" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">漏印字符:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect079" value="" /></span>
+						</p>
+
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">字符残缺:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect080" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">金面氧化:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect081" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">金面粗糙:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect026" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">擦花上金:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect082" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">金面擦花:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect083" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">擦花上银:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect084" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">铜皮起皱:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect085" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">白斑白点:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect086" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">分层起泡:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect087" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">棕化不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect088" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">凹坑:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect089" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">线路针孔:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect090" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">孔内铜渣:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect091" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">过蚀:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect092" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">NPT孔上金:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect093" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">周期错误:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect045" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">钻孔不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect094" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油上PAD:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect095" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">爆孔:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect096" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">孔内毛刺:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect097" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">披锋:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect098" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">膜面不良:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect099" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">残铜:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect100" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">线缺口:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect101" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">歪线:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="defect102" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">其他:</span>
+							<span class="mui-col-xs-9"><input type="text" name="" class="reset" id="others" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">检查人:</span>
+							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" cols="" class="reset" id="remark" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			})
+			//自动计算
+			$(".calc").on("change", function() {
+				var checkQty = $("#checkQty").val();
+				var okQty = $("#okQty").val();
+				if (checkQty > 0 && okQty > 0) {
+					var area = ((okQty / checkQty * 100).toFixed(2)) + "%";
+					$("#okYield").val(area);
+				} else {
+					$("#okYield").val("");
+					return false;
+				}
+			});
+			// 表单
+			document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+					checkQty: document.getElementById("checkQty").value || '',
+					plateSize: document.getElementById("plateSize").value || '',
+					okQty: document.getElementById("okQty").value || '',
+					okYield: document.getElementById("okYield").value || '',
+					defect059: document.getElementById("defect059").value || '',
+					defect060: document.getElementById("defect060").value || '',
+					defect061: document.getElementById("defect061").value || '',
+					defect062: document.getElementById("defect062").value || '',
+					defect063: document.getElementById("defect063").value || '',
+					defect064: document.getElementById("defect064").value || '',
+					defect065: document.getElementById("defect065").value || '',
+					defect066: document.getElementById("defect066").value || '',
+					defect067: document.getElementById("defect067").value || '',
+					defect068: document.getElementById("defect068").value || '',
+					defect069: document.getElementById("defect069").value || '',
+					defect070: document.getElementById("defect070").value || '',
+					defect071: document.getElementById("defect071").value || '',
+					defect072: document.getElementById("defect072").value || '',
+					defect073: document.getElementById("defect073").value || '',
+					defect040: document.getElementById("defect040").value || '',
+					defect074: document.getElementById("defect074").value || '',
+					defect036: document.getElementById("defect036").value || '',
+					defect075: document.getElementById("defect075").value || '',
+					defect027: document.getElementById("defect027").value || '',
+					defect030: document.getElementById("defect030").value || '',
+					defect076: document.getElementById("defect076").value || '',
+					defect077: document.getElementById("defect077").value || '',
+					defect078: document.getElementById("defect078").value || '',
+					defect043: document.getElementById("defect043").value || '',
+					defect079: document.getElementById("defect079").value || '',
+					defect080: document.getElementById("defect080").value || '',
+					defect081: document.getElementById("defect081").value || '',
+					defect026: document.getElementById("defect026").value || '',
+					defect082: document.getElementById("defect082").value || '',
+					defect083: document.getElementById("defect083").value || '',
+					defect084: document.getElementById("defect084").value || '',
+					defect085: document.getElementById("defect085").value || '',
+					defect086: document.getElementById("defect086").value || '',
+					defect087: document.getElementById("defect087").value || '',
+					defect088: document.getElementById("defect088").value || '',
+					defect089: document.getElementById("defect089").value || '',
+					defect090: document.getElementById("defect090").value || '',
+					defect091: document.getElementById("defect091").value || '',
+					defect092: document.getElementById("defect092").value || '',
+					defect093: document.getElementById("defect093").value || '',
+					defect045: document.getElementById("defect045").value || '',
+					defect094: document.getElementById("defect094").value || '',
+					defect095: document.getElementById("defect095").value || '',
+					defect096: document.getElementById("defect096").value || '',
+					defect097: document.getElementById("defect097").value || '',
+					defect098: document.getElementById("defect098").value || '',
+					defect099: document.getElementById("defect099").value || '',
+					defect100: document.getElementById("defect100").value || '',
+					defect101: document.getElementById("defect101").value || '',
+					defect102: document.getElementById("defect102").value || '',
+					others: document.getElementById("others").value || '',
+					operator: document.getElementById("operator").value || '',
+				}
+				if (information.checkQty.length < 1 || information.plateSize.length < 1 ||
+					information.okQty.length < 1 || information.okYield.length < 1 ||
+					information.defect059.length < 1 || information.defect060.length < 1 ||
+					information.defect061.length < 1 || information.defect062.length < 1 ||
+					information.defect063.length < 1 || information.defect064.length < 1 ||
+					information.defect065.length < 1 || information.defect066.length < 1 ||
+					information.defect067.length < 1 || information.defect068.length < 1 ||
+					information.defect069.length < 1 || information.defect070.length < 1 ||
+					information.defect071.length < 1 || information.defect072.length < 1 ||
+					information.defect073.length < 1 || information.defect040.length < 1 ||
+					information.defect074.length < 1 || information.defect036.length < 1 ||
+					information.defect075.length < 1 || information.defect027.length < 1 ||
+					information.defect030.length < 1 || information.defect076.length < 1 ||
+					information.defect077.length < 1 || information.defect078.length < 1 ||
+					information.defect043.length < 1 || information.defect079.length < 1 ||
+					information.defect080.length < 1 || information.defect081.length < 1 ||
+					information.defect026.length < 1 || information.defect082.length < 1 ||
+					information.defect083.length < 1 || information.defect084.length < 1 ||
+					information.defect085.length < 1 || information.defect086.length < 1 ||
+					information.defect087.length < 1 || information.defect088.length < 1 ||
+					information.defect089.length < 1 || information.defect090.length < 1 ||
+					information.defect091.length < 1 || information.defect092.length < 1 ||
+					information.defect093.length < 1 || information.defect045.length < 1 ||
+					information.defect094.length < 1 || information.defect095.length < 1 ||
+					information.defect096.length < 1 || information.defect097.length < 1 ||
+					information.defect098.length < 1 || information.defect099.length < 1 ||
+					information.defect100.length < 1 || information.defect101.length < 1 ||
+					information.defect102.length < 1 || information.others.length < 1 ||
+					information.operator.length < 1) {
+					var color = "#F9F900";
+					if (information.checkQty.length < 1)
+						$("#checkQty").css("background-color", color);
+					if (information.plateSize.length < 1)
+						$("#plateSize").css("background-color", color);
+					 if (information.okQty.length < 1)
+						$("#okQty").css("background-color", color); 
+					/* if (information.okYield.length < 1)
+						$("#okYield").css("background-color", color); */
+					if (information.defect059.length < 1)
+						$("#defect059").css("background-color", color);
+					if (information.defect060.length < 1)
+						$("#defect060").css("background-color", color);
+					if (information.defect061.length < 1)
+						$("#defect061").css("background-color", color);
+					if (information.defect062.length < 1)
+						$("#defect062").css("background-color", color);
+					if (information.defect063.length < 1)
+						$("#defect063").css("background-color", color);
+					if (information.defect064.length < 1)
+						$("#defect064").css("background-color", color);
+					if (information.defect065.length < 1)
+						$("#defect065").css("background-color", color);
+					if (information.defect066.length < 1)
+						$("#defect066").css("background-color", color);
+					if (information.defect067.length < 1)
+						$("#defect067").css("background-color", color);
+					if (information.defect068.length < 1)
+						$("#defect068").css("background-color", color);
+					if (information.defect069.length < 1)
+						$("#defect069").css("background-color", color);
+					if (information.defect070.length < 1)
+						$("#defect070").css("background-color", color);
+					if (information.defect071.length < 1)
+						$("#defect071").css("background-color", color);
+					if (information.defect072.length < 1)
+						$("#defect072").css("background-color", color);
+					if (information.defect073.length < 1)
+						$("#defect073").css("background-color", color);
+					if (information.defect040.length < 1)
+						$("#defect040").css("background-color", color);
+					if (information.defect074.length < 1)
+						$("#defect074").css("background-color", color);
+					if (information.defect036.length < 1)
+						$("#defect036").css("background-color", color);
+					if (information.defect075.length < 1)
+						$("#defect075").css("background-color", color);
+					if (information.defect027.length < 1)
+						$("#defect027").css("background-color", color);
+					if (information.defect030.length < 1)
+						$("#defect030").css("background-color", color);
+					if (information.defect076.length < 1)
+						$("#defect076").css("background-color", color);
+					if (information.defect077.length < 1)
+						$("#defect077").css("background-color", color);
+					if (information.defect078.length < 1)
+						$("#defect078").css("background-color", color);
+					if (information.defect043.length < 1)
+						$("#defect043").css("background-color", color);
+					if (information.defect079.length < 1)
+						$("#defect079").css("background-color", color);
+					if (information.defect080.length < 1)
+						$("#defect080").css("background-color", color);
+					if (information.defect081.length < 1)
+						$("#defect081").css("background-color", color);
+					if (information.defect026.length < 1)
+						$("#defect026").css("background-color", color);
+					if (information.defect082.length < 1)
+						$("#defect082").css("background-color", color);
+					if (information.defect083.length < 1)
+						$("#defect083").css("background-color", color);
+					if (information.defect084.length < 1)
+						$("#defect084").css("background-color", color);
+					if (information.defect085.length < 1)
+						$("#defect085").css("background-color", color);
+					if (information.defect086.length < 1)
+						$("#defect086").css("background-color", color);
+					if (information.defect087.length < 1)
+						$("#defect087").css("background-color", color);
+					if (information.defect088.length < 1)
+						$("#defect088").css("background-color", color);
+					if (information.defect089.length < 1)
+						$("#defect089").css("background-color", color);
+					if (information.defect090.length < 1)
+						$("#defect090").css("background-color", color);
+					if (information.defect091.length < 1)
+						$("#defect091").css("background-color", color);
+					if (information.defect092.length < 1)
+						$("#defect092").css("background-color", color);
+					if (information.defect093.length < 1)
+						$("#defect093").css("background-color", color);
+					if (information.defect045.length < 1)
+						$("#defect045").css("background-color", color);
+					if (information.defect094.length < 1)
+						$("#defect094").css("background-color", color);
+					if (information.defect095.length < 1)
+						$("#defect095").css("background-color", color);
+					if (information.defect096.length < 1)
+						$("#defect096").css("background-color", color);
+					if (information.defect097.length < 1)
+						$("#defect097").css("background-color", color);
+					if (information.defect098.length < 1)
+						$("#defect098").css("background-color", color);
+					if (information.defect099.length < 1)
+						$("#defect099").css("background-color", color);
+					if (information.defect100.length < 1)
+						$("#defect100").css("background-color", color);
+					if (information.defect101.length < 1)
+						$("#defect101").css("background-color", color);
+					if (information.defect102.length < 1)
+						$("#defect102").css("background-color", color);
+					if (information.others.length < 1)
+						$("#others").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var iscopper;
+					var speccut;
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value];
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+
+						checkQty: document.getElementById("checkQty").value,
+						plateSize: document.getElementById("plateSize").value,
+						okQty: document.getElementById("okQty").value,
+						okYield: document.getElementById("okYield").value,
+						defect059: document.getElementById("defect059").value,
+						defect060: document.getElementById("defect060").value,
+						defect061: document.getElementById("defect061").value,
+						defect062: document.getElementById("defect062").value,
+						defect063: document.getElementById("defect063").value,
+						defect064: document.getElementById("defect064").value,
+						defect065: document.getElementById("defect065").value,
+						defect066: document.getElementById("defect066").value,
+						defect067: document.getElementById("defect067").value,
+						defect068: document.getElementById("defect068").value,
+						defect069: document.getElementById("defect069").value,
+						defect070: document.getElementById("defect070").value,
+						defect071: document.getElementById("defect071").value,
+						defect072: document.getElementById("defect072").value,
+						defect073: document.getElementById("defect073").value,
+						defect040: document.getElementById("defect040").value,
+						defect074: document.getElementById("defect074").value,
+						defect036: document.getElementById("defect036").value,
+						defect075: document.getElementById("defect075").value,
+						defect027: document.getElementById("defect027").value,
+						defect030: document.getElementById("defect030").value,
+						defect076: document.getElementById("defect076").value,
+						defect077: document.getElementById("defect077").value,
+						defect078: document.getElementById("defect078").value,
+						defect043: document.getElementById("defect043").value,
+						defect079: document.getElementById("defect079").value,
+						defect080: document.getElementById("defect080").value,
+						defect081: document.getElementById("defect081").value,
+						defect026: document.getElementById("defect026").value,
+						defect082: document.getElementById("defect082").value,
+						defect083: document.getElementById("defect083").value,
+						defect084: document.getElementById("defect084").value,
+						defect085: document.getElementById("defect085").value,
+						defect086: document.getElementById("defect086").value,
+						defect087: document.getElementById("defect087").value,
+						defect088: document.getElementById("defect088").value,
+						defect089: document.getElementById("defect089").value,
+						defect090: document.getElementById("defect090").value,
+						defect091: document.getElementById("defect091").value,
+						defect092: document.getElementById("defect092").value,
+						defect093: document.getElementById("defect093").value,
+						defect045: document.getElementById("defect045").value,
+						defect094: document.getElementById("defect094").value,
+						defect095: document.getElementById("defect095").value,
+						defect096: document.getElementById("defect096").value,
+						defect097: document.getElementById("defect097").value,
+						defect098: document.getElementById("defect098").value,
+						defect099: document.getElementById("defect099").value,
+						defect100: document.getElementById("defect100").value,
+						defect101: document.getElementById("defect101").value,
+						defect102: document.getElementById("defect102").value,
+						others: document.getElementById("others").value,
+						operator: document.getElementById("operator").value,
+						remark: document.getElementById("remark").value,
+					}
+
+					// for(var key in data){
+					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+					// 		mui.alert("必填项不能为空");
+					// 		return;
+					// 	}
+					// }
+
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=96',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false,
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
+
+						}
+					});
+				}
+			});
+
+			(function($, doc) {
+				//初始化 scan页
+				$.init({
+					preloadPages: [{
+						id: 'scan.html',
+						url: '../scan.html'
+					}]
+				});
+
+				document.querySelector("input[data-id='tiaoma1']").onchange = function() {
+					var qrdata = document.getElementById("code").value;
+					// 采集数据
+					mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+						data: {
+							wo: qrdata,
+							isControl: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 3000, //超时时间设置为10秒；
+						success: function(data) {
+							if (data.success) {
+								// 基础信息
+								document.getElementById("mo").value = data.app.mo;
+								document.getElementById("wo").value = data.app.wo;
+								document.getElementById("mfg").value = data.app.mfg;
+								document.getElementById("custcode").value = data.app.cust_code;
+								document.getElementById("custpart").value = data.app.pn;
+								document.getElementById("lot").value = data.app.lot;
+								document.getElementById("datecode").value = data.app.datecode;
+								document.getElementById("d06rkey").value = data.app.d06rkey;
+
+								document.getElementById("checkQty").value = data.app.quanpanel;
+								document.getElementById("plateSize").value = data.app.panels;
+							} else {
+								mui.alert(data.mess);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理
+							if (type == "timeout")
+								$.toast('连接超时，请检查网络')
+
+							$.toast('系统异常，请检查是否连接jove-wifi')
+						}
+					})
+				}
+
+				//自定义事件,供扫描回调
+				window.addEventListener('getScan', function(event) {
+					// 获得事件参数
+					// var id = event.detail.id;
+					qrtype = event.detail.qrtype;
+					qrdata = event.detail.qrdata;
+					// 赋值到输入框
+					if (qrtype && qrdata) {
+						// mui.alert(qrtype + ":" + qrdata );
+						var arr = qrdata.split(',');
+						if (arr.length > 2) {
+							qrdata = arr[1];
+						}
+						document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
+
+						if (qrtype == 'tiaoma') {
+							// 采集数据
+							mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+								data: {
+									wo: qrdata,
+									isControl: false
+								},
+								dataType: 'json', //服务器返回json格式数据
+								type: 'POST', //HTTP请求类型
+								timeout: 3000, //超时时间设置为10秒；
+								success: function(data) {
+									if (data.success) {
+										// 基础信息
+										document.getElementById("mo").value = data.app.mo;
+										document.getElementById("wo").value = data.app.wo;
+										document.getElementById("mfg").value = data.app.mfg;
+										document.getElementById("custcode").value = data.app.cust_code;
+										document.getElementById("custpart").value = data.app.pn;
+										document.getElementById("lot").value = data.app.lot;
+										document.getElementById("datecode").value = data.app.datecode;
+										document.getElementById("d06rkey").value = data.app.d06rkey;
+
+										document.getElementById("checkQty").value = data.app.quanpanel;
+										document.getElementById("plateSize").value = data.app.panels;
+
+									} else {
+										mui.alert(data.mess);
+									}
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理
+									if (type == "timeout")
+										$.toast('连接超时，请检查网络')
+
+									$.toast('系统异常，请检查是否连接jove-wifi')
+								}
+							})
+						}
+
+						if (qrtype == 'bancai') {
+							var val = qrdata.trim().split(",");
+							if (val.length != 11) {
+								//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+								mui.toast("板材条码错误");
+							} else {
+								document.getElementById("supppn").value = val[5];
+								document.getElementById("plateply").value = val[8];
+								document.getElementById("copperply").value = val[9];
+							}
+						}
+					}
+				});
+
+				$.plusReady(function() {
+					// 获取本页面的固定信息
+					var self = plus.webview.currentWebview();
+
+					// 扫描页webview
+					var scanPage = null;
+					document.querySelectorAll(".scan").forEach(function(el) {
+						el.addEventListener('tap', function() {
+							// 扫描页webview
+							if (!scanPage) {
+								scanPage = plus.webview.getWebviewById('scan.html');
+							}
+							// 这里只有qrtype 是不一样的,根据el来
+							var qrtype = el.getAttribute("data-id");
+							mui.fire(scanPage, 'newScan', {
+								qrtype: qrtype,
+								source: self.openurl,
+								sourceid: self.id
+							});
+							mui.openWindow({
+								id: 'scan.html'
+							});
+						})
+					})
+
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("factoryName").value = state.changbie;
+					document.getElementById("operator").value = state.username;
+
+					// 日期控件
+					function pad(num, n) {
+						var len = num.toString().length;
+						while (len < n) {
+							num = "0" + num;
+							len++;
+						}
+						return num;
+					}
+					var date = new Date();
+					var pickerf = function() {
+						var _self = this;
+						if (_self.picker) {
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+								2);
+							current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+							var options = {
+								"value": current,
+								"beginYear": 2019,
+								"endYear": 2038
+							};
+							console.log("当前时间:" + current);
+							var id = this.getAttribute('id');
+
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}
+					//document.getElementById("checkTime").addEventListener('tap', pickerf);
+
+
+
+					document.getElementById("reset").addEventListener('tap', function() {
+						if (!confirm("确认重置吗？"))
+							return;
+
+						document.querySelectorAll(".tiaoMa input[type='text']").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+							el.innerHTML = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelector("input[value='无不良']").checked = 'checked';
+					});
+
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

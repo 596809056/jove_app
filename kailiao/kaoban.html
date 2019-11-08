@@ -27,10 +27,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -78,10 +78,10 @@
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: indianred;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">板材二维码</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" value="" data-id="bancai1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="materialBarcode" type="text" class="scan" value="" data-id="bancai" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,15 +90,15 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">投料数量:</span>
-							<span class="mui-col-xs-9"><input id="inputnumber" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inputnumber" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检查数量:</span>
-							<span class="mui-col-xs-9"><input id="checknumber" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checknumber" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板材类型:</span>
-							<span class="mui-col-xs-9"><input id="supppn" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="supppn" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">是否含铜:</span>
@@ -110,44 +110,44 @@
 						<hr>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求板厚:</span>
-							<span class="mui-col-xs-9"><input id="plateply" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="plateply" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板厚公差:</span>
-							<span class="mui-col-xs-9"><input id="plytolerance" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="plytolerance" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚A:</span>
-							<span class="mui-col-xs-9"><input id="measurea" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measurea" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚B:</span>
-							<span class="mui-col-xs-9"><input id="measureb" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measureb" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚C:</span>
-							<span class="mui-col-xs-9"><input id="measurec" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measurec" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚D:</span>
-							<span class="mui-col-xs-9"><input id="measured" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measured" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<hr>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">铜厚:</span>
-							<span class="mui-col-xs-9"><input id="copperply" type="text" value="" placeholder="单位oz" /></span>
+							<span class="mui-col-xs-9"><input id="copperply" class="reset" type="text" value="" placeholder="单位oz" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求尺寸:</span>
-							<span class="mui-col-xs-9"><input id="requiredsize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="requiredsize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">尺寸公差:</span>
-							<span class="mui-col-xs-9"><input id="sizetolerance" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="sizetolerance" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测尺寸:</span>
-							<span class="mui-col-xs-9"><input id="measuresize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measuresize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">特殊尺寸:</span>
@@ -175,17 +175,17 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>板厚不符</label><input value="板厚不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜厚不符</label><input value="铜厚不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>板边披锋</label><input value="板边披锋" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>圆角不良</label><input value="圆角不良" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>板材不符</label><input value="板材不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" class="none" checked="checked"></span>
+								<span class="mui-col-xs-4"><label>板厚不符</label><input value="板厚不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜厚不符</label><input value="铜厚不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板边披锋</label><input value="板边披锋" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>圆角不良</label><input value="圆角不良" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板材不符</label><input value="板材不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 					</div>
@@ -193,7 +193,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark">
+						<textarea rows="5" class="reset" cols="" id="remark">
 
 						</textarea>
 					</div>
@@ -207,6 +207,22 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+					$(".reset").on("click", function() {
+						$(this).css("background-color", "");
+					});
+				});
+				//监听复选框
+				$(".none").change(function() {
+					if ($(this).is(":checked")) {
+						$(".rej").prop("checked", false);
+					}
+				});
+				$(".rej").change(function() {
+					if ($(this).is(":checked")) {
+						$(".none").prop("checked", false);
+					}
+				});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var iscopper = "";
@@ -377,6 +393,11 @@
 							} else {
 								mui.alert("未知错误。");
 							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
+							$(".rej").prop("checked", false);
+							$(".none").prop("checked", true);
 						}
 					});
 					}
@@ -409,14 +430,14 @@
 							$.toast(data.message);
 						} else {
 							// 基础信息
-							document.getElementById("mo").value = data.data.MO;
-							document.getElementById("wo").value = data.data.WO;
-							document.getElementById("mfg").value = data.data.MFG;
-							document.getElementById("custcode").value = data.data.CUST_CODE;
-							document.getElementById("custpart").value = data.data.PN;
-							document.getElementById("lot").value = data.data.LOT;
-							document.getElementById("datecode").value = data.data.DATECODE;
-							document.getElementById("d06rkey").value = data.data.D06RKEY;
+							document.getElementById("mo").value = data.app.mo;
+							document.getElementById("wo").value = data.app.wo;
+							document.getElementById("mfg").value = data.app.mfg;
+							document.getElementById("custcode").value = data.app.cust_code;
+							document.getElementById("custpart").value = data.app.pn;
+							document.getElementById("lot").value = data.app.lot;
+							document.getElementById("datecode").value = data.app.datecode;
+							document.getElementById("d06rkey").value = data.app.d06rkey;
 							
 						}
 					},
@@ -476,14 +497,14 @@
 									$.toast(data.message);
 								} else {
 									// 基础信息
-									document.getElementById("mo").value = data.data.MO;
-									document.getElementById("wo").value = data.data.WO;
-									document.getElementById("mfg").value = data.data.MFG;
-									document.getElementById("custcode").value = data.data.CUST_CODE;
-									document.getElementById("custpart").value = data.data.PN;
-									document.getElementById("lot").value = data.data.LOT;
-									document.getElementById("datecode").value = data.data.DATECODE;
-									document.getElementById("d06rkey").value = data.data.D06RKEY;
+									document.getElementById("mo").value = data.app.mo;
+									document.getElementById("wo").value = data.app.wo;
+									document.getElementById("mfg").value = data.app.mfg;
+									document.getElementById("custcode").value = data.app.cust_code;
+									document.getElementById("custpart").value = data.app.pn;
+									document.getElementById("lot").value = data.app.lot;
+									document.getElementById("datecode").value = data.app.datecode;
+									document.getElementById("d06rkey").value = data.app.d06rkey;
 								}
 
 							},

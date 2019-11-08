@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,64 +90,72 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">规格:</span>
-							<span class="mui-col-xs-9"><input id="prodSpec" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodSpec" class="reset" type="text" value="" /></span>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">项目:</span>
-							<span class="mui-col-xs-9">
-								<select id="checkItem">
-									<option value="" selected="selected">请选择</option>
-									<option value="面铜">面铜</option>
-									<option value="孔铜">孔铜</option>
-									<option value="孔粗">孔粗</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 8px 0px 0px 0px;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">项目:</label>
+									<span class="mui-badge1">
+										<select id="checkItem" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="面铜">面铜</option>
+											<option value="孔铜">孔铜</option>
+											<option value="孔粗">孔粗</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">检测类型:</span>
-							<span class="mui-col-xs-9">
-								<select id="checkType">
-									<option value="" selected="selected">请选择</option>
-									<option value="首件">首件</option>
-									<option value="批量">批量</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">检测类型:</label>
+									<span class="mui-badge1">
+										<select id="checkType" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="首件">首件</option>
+											<option value="批量">批量</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
 						<p class="mui-row shiceshuju" style="padding:9px 0px 0px 0px;">
 							<span class="mui-col-xs-12" style="line-height: 52px;padding-left: 1rem;">测量数据</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据1:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measurea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measurea" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据2:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measureb" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measureb" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据3:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measurec" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measurec" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据4:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measured" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measured" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据5:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measuree" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measuree" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据6:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measuref" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset" id="measuref" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" >
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -165,7 +173,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -177,21 +185,32 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
+			var decide;
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
+			
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
 				prodSpec: document.getElementById("prodSpec").value || '',
 				checkItem: checkItem.options[checkItem.selectedIndex].value || '',
 				checkType: checkType.options[checkType.selectedIndex].value || '',
-				decide: document.querySelector("input[name='decide'][checked='checked']").value || '',
+				decide: decide || '',
 				measurea: document.getElementById("measurea").value || '',
 				measureb: document.getElementById("measureb").value || '',
 				measurec: document.getElementById("measurec").value || '',
 				measured: document.getElementById("measured").value || '',
 				measuree: document.getElementById("measuree").value || '',
 				measuref: document.getElementById("measuref").value || '',
-				operator: document.getElementById("operator").value || ''
+				operator: document.getElementById("operator").value || '',
 				//auditor: document.getElementById("auditor").value,
 
 			}
@@ -237,7 +256,7 @@
 					return;
 				}
 
-				var decide;
+				
 				var facarr = {
 					'一厂': 1,
 					'二厂': 2,
@@ -246,10 +265,7 @@
 				}
 
 				factoryName = facarr[document.getElementById("factoryName").value];
-				document.querySelectorAll("input[name='decide']").forEach(function(el) {
-					if (el.checked)
-						decide = el.value;
-				})
+				
 				checkItem = document.getElementById("checkItem");
 				checkType = document.getElementById("checkType");
 
@@ -300,6 +316,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -477,7 +496,7 @@
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
 
-				function cal() {
+				/* function cal() {
 					var minCopperThick = 999;
 					var maxCopperThick = -999;
 					var num = 0;
@@ -500,7 +519,7 @@
 							"copperThickRequire").value;
 					document.getElementById("maxMinusMin").value = document.getElementById("maxCopperThick").value - document.getElementById(
 						"minCopperThick").value;
-				}
+				} */
 
 				// document.querySelectorAll(".meashuju").forEach(function(el){
 				// 	el.addEventListener('change',cal)

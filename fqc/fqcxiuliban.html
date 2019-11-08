@@ -1,0 +1,653 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script src="../js/app.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				FQC修理板的登记及审批记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">条码信息</a>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+					</div>
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">基础数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">厂别:</span>
+							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">MO号:</span>
+							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">生产编码:</span>
+							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">工单号:</span>
+							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户代码:</span>
+							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">客户型号:</span>
+							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">LOT号:</span>
+							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju">
+							<span class="mui-col-xs-3">周期:</span>
+							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
+						</p>
+						<p class="mui-row jichushuju" style="display: none;">
+							<span class="mui-col-xs-3">d06rkey:</span>
+							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
+						</p>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">数量(panel/set):</span>
+							<span class="mui-col-xs-9"><input class="reset" type="text" name="" id="prodQty" value="" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">测试修理不良:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="testRepairBad" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">线路缺口:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="lineGap" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">板面残铜:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="residualCopper" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">露基材:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="exposedLaminate" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">掉油:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="offOil" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油底氧化:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="oilOxide" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">文字上PAD:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="padChar" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油起泡:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="oilBlister" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">不下油:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="noOil" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">兰胶不良:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="welanBad" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">字符不清:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="charFuzzy" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">漏印字符:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="skipChar" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">绿油入孔:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="holeInOil" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">曝光不良:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="exposeBad" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">擦花露铜:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="chafedExposedCopper" value="0"
+								 required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">显影不净:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="underDevelop" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">开短路:</span>
+							<span class="mui-col-xs-9"><input class="reset  calc" type="text" name="" id="openShort" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">划伤:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="scratch" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">焊盘露铜:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="padExposedCopper" value="0"
+								 required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">V割不良:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="vCutBad" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡面粗糙:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="scratchyTin" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">锡高:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="exessiveSolder" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">其他:</span>
+							<span class="mui-col-xs-9"><input class="reset calc" type="text" name="" id="others" value="0" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">附着力测试:</span>
+							<span class="mui-col-xs-9"><input class="reset" type="text" name="" id="adhesionTest" value="" required="required" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">数量:</span>
+							<span class="mui-col-xs-9"><input class="reset" type="text" name="" id="checkQty" value="" required="required"
+								 style="cursor:not-allowed;background-color: #EEEEEE" disabled="disabled" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">FQC检查员:</span>
+							<span class="mui-col-xs-9"><input id="fqcInspector" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" cols="" class="reset" id="remark" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			})
+			//自动计算
+			$(".calc").on("change", function() {
+				var r2 = $("#testRepairBad").val() * 1;
+				var r3 = $("#lineGap").val() * 1;
+				var r4 = $("#residualCopper").val() * 1;
+				var r5 = $("#exposedLaminate").val() * 1;
+				var r6 = $("#offOil").val() * 1;
+				var r7 = $("#oilOxide").val() * 1;
+				var r8 = $("#padChar").val() * 1;
+				var r9 = $("#oilBlister").val() * 1;
+				var r10 = $("#noOil").val() * 1;
+				var r11 = $("#welanBad").val() * 1;
+				var r12 = $("#charFuzzy").val() * 1;
+				var r13 = $("#skipChar").val() * 1;
+				var r14 = $("#holeInOil").val() * 1;
+				var r15 = $("#exposeBad").val() * 1;
+				var r16 = $("#chafedExposedCopper").val() * 1;
+				var r17 = $("#underDevelop").val() * 1;
+				var r18 = $("#openShort").val() * 1;
+				var r19 = $("#scratch").val() * 1;
+				var r20 = $("#padExposedCopper").val() * 1;
+				var r21 = $("#vCutBad").val() * 1;
+				var r22 = $("#scratchyTin").val() * 1;
+				var r23 = $("#exessiveSolder").val() * 1;
+				var r24 = $("#others").val() * 1;
+				var checkQty = r2 + r3 + r4 + r5 + r6 + r7 + r8 + r9 + r10 + r11 + r12 + r13 + r14 + r15 + r16 + r17 + r18 +
+					r19 + r20 + r21 + r22 + r23 + r24;
+				$("#checkQty").val(checkQty);
+			});
+			// 表单
+			document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+					prodQty: document.getElementById("prodQty").value || '',
+					testRepairBad: document.getElementById("testRepairBad").value || '',
+					lineGap: document.getElementById("lineGap").value || '',
+					residualCopper: document.getElementById("residualCopper").value || '',
+					exposedLaminate: document.getElementById("exposedLaminate").value || '',
+					offOil: document.getElementById("offOil").value || '',
+					oilOxide: document.getElementById("oilOxide").value || '',
+					padChar: document.getElementById("padChar").value || '',
+					oilBlister: document.getElementById("oilBlister").value || '',
+					noOil: document.getElementById("noOil").value || '',
+					welanBad: document.getElementById("welanBad").value || '',
+					charFuzzy: document.getElementById("charFuzzy").value || '',
+					skipChar: document.getElementById("skipChar").value || '',
+					holeInOil: document.getElementById("holeInOil").value || '',
+					exposeBad: document.getElementById("exposeBad").value || '',
+					chafedExposedCopper: document.getElementById("chafedExposedCopper").value || '',
+					underDevelop: document.getElementById("underDevelop").value || '',
+					openShort: document.getElementById("openShort").value || '',
+					scratch: document.getElementById("scratch").value || '',
+					padExposedCopper: document.getElementById("padExposedCopper").value || '',
+					vCutBad: document.getElementById("vCutBad").value || '',
+					scratchyTin: document.getElementById("scratchyTin").value || '',
+					exessiveSolder: document.getElementById("exessiveSolder").value || '',
+					others: document.getElementById("others").value || '',
+					adhesionTest: document.getElementById("adhesionTest").value || '',
+					checkQty: document.getElementById("checkQty").value || '',
+					fqcInspector: document.getElementById("fqcInspector").value || '',
+				}
+				if (information.prodQty.length < 1 || information.testRepairBad.length < 1 ||
+					information.lineGap.length < 1 || information.residualCopper.length < 1 ||
+					information.exposedLaminate.length < 1 || information.offOil.length < 1 ||
+					information.oilOxide.length < 1 || information.padChar.length < 1 ||
+
+					information.oilBlister.length < 1 || information.noOil.length < 1 ||
+					information.welanBad.length < 1 || information.charFuzzy.length < 1 ||
+					information.skipChar.length < 1 || information.holeInOil.length < 1 ||
+					information.exposeBad.length < 1 || information.chafedExposedCopper.length < 1 ||
+					information.underDevelop.length < 1 || information.openShort.length < 1 ||
+
+					information.scratch.length < 1 || information.padExposedCopper.length < 1 ||
+					information.vCutBad.length < 1 || information.scratchyTin.length < 1 ||
+					information.exessiveSolder.length < 1 || information.others.length < 1 ||
+					information.adhesionTest.length < 1 || information.checkQty.length < 1 ||
+					information.fqcInspector.length < 1) {
+					var color = "#F9F900";
+					if (information.prodQty.length < 1)
+						$("#prodQty").css("background-color", color);
+					if (information.testRepairBad.length < 1)
+						$("#testRepairBad").css("background-color", color);
+					if (information.lineGap.length < 1)
+						$("#lineGap").css("background-color", color);
+					if (information.residualCopper.length < 1)
+						$("#residualCopper").css("background-color", color);
+					if (information.exposedLaminate.length < 1)
+						$("#exposedLaminate").css("background-color", color);
+					if (information.holeInOil.length < 1)
+						$("#holeInOil").css("background-color", color);
+					if (information.exessiveSolder.length < 1)
+						$("#exessiveSolder").css("background-color", color);
+					if (information.padChar.length < 1)
+						$("#padChar").css("background-color", color);
+					if (information.offOil.length < 1)
+						$("#offOil").css("background-color", color);
+					if (information.oilBlister.length < 1)
+						$("#oilBlister").css("background-color", color);
+					if (information.noOil.length < 1)
+						$("#noOil").css("background-color", color);
+					if (information.welanBad.length < 1)
+						$("#welanBad").css("background-color", color);
+					if (information.charFuzzy.length < 1)
+						$("#charFuzzy").css("background-color", color);
+					if (information.skipChar.length < 1)
+						$("#skipChar").css("background-color", color);
+					if (information.holeInOil.length < 1)
+						$("#holeInOil").css("background-color", color);
+					if (information.exposeBad.length < 1)
+						$("#exposeBad").css("background-color", color);
+					if (information.chafedExposedCopper.length < 1)
+						$("#chafedExposedCopper").css("background-color", color);
+					if (information.underDevelop.length < 1)
+						$("#underDevelop").css("background-color", color);
+					if (information.openShort.length < 1)
+						$("#openShort").css("background-color", color);
+
+					if (information.scratch.length < 1)
+						$("#scratch").css("background-color", color);
+					if (information.padExposedCopper.length < 1)
+						$("#padExposedCopper").css("background-color", color);
+					if (information.vCutBad.length < 1)
+						$("#vCutBad").css("background-color", color);
+					if (information.scratchyTin.length < 1)
+						$("#scratchyTin").css("background-color", color);
+					if (information.oilOxide.length < 1)
+						$("#oilOxide").css("background-color", color);
+					if (information.others.length < 1)
+						$("#others").css("background-color", color);
+					if (information.adhesionTest.length < 1)
+						$("#adhesionTest").css("background-color", color);
+					if (information.checkQty.length < 1)
+						$("#checkQty").css("background-color", color);
+					if (information.fqcInspector.length < 1)
+						$("#fqcInspector").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					var iscopper;
+					var speccut;
+					var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value];
+					var data = {
+						factoryName: factoryName,
+						mo: document.getElementById("mo").value,
+						mfg: document.getElementById("mfg").value,
+						wo: document.getElementById("wo").value,
+						custcode: document.getElementById("custcode").value,
+						custpart: document.getElementById("custpart").value,
+						lot: document.getElementById("lot").value,
+						datecode: document.getElementById("datecode").value,
+						d06rkey: document.getElementById("d06rkey").value,
+
+						prodQty: document.getElementById("prodQty").value,
+						testRepairBad: document.getElementById("testRepairBad").innerHTML,
+						lineGap: document.getElementById("lineGap").value,
+						residualCopper: document.getElementById("residualCopper").value,
+						exposedLaminate: document.getElementById("exposedLaminate").value,
+						offOil: document.getElementById("offOil").value,
+						oilOxide: document.getElementById("oilOxide").value,
+						padChar: document.getElementById("padChar").value,
+						oilBlister: document.getElementById("oilBlister").value,
+						noOil: document.getElementById("noOil").value,
+						welanBad: document.getElementById("welanBad").value,
+						charFuzzy: document.getElementById("charFuzzy").value,
+						skipChar: document.getElementById("skipChar").value,
+						holeInOil: document.getElementById("holeInOil").value,
+						exposeBad: document.getElementById("exposeBad").value,
+						chafedExposedCopper: document.getElementById("chafedExposedCopper").value,
+						underDevelop: document.getElementById("underDevelop").value,
+						openShort: document.getElementById("openShort").value,
+						scratch: document.getElementById("scratch").value,
+						padExposedCopper: document.getElementById("padExposedCopper").value,
+						vCutBad: document.getElementById("vCutBad").value,
+						scratchyTin: document.getElementById("scratchyTin").value,
+						exessiveSolder: document.getElementById("exessiveSolder").value,
+						others: document.getElementById("others").value,
+						adhesionTest: document.getElementById("adhesionTest").value,
+						checkQty: document.getElementById("checkQty").value,
+						fqcInspector: document.getElementById("fqcInspector").value,
+						remark: document.getElementById("remark").value,
+					}
+
+					// for(var key in data){
+					// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+					// 		mui.alert("必填项不能为空");
+					// 		return;
+					// 	}
+					// }
+
+					var params = JSON.stringify(data);
+					mui.ajax({
+						url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=67',
+						type: "post",
+						data: {
+							params: params,
+							isRejectItem: false,
+						},
+						dataType: "json",
+						async: false,
+						error: function() {
+							mui.alert("error occur!");
+						},
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+						$(".reset").val("");
+						$(".calc").val("0");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
+						}
+					});
+				}
+			});
+
+			(function($, doc) {
+				//初始化 scan页
+				$.init({
+					preloadPages: [{
+						id: 'scan.html',
+						url: '../scan.html'
+					}]
+				});
+
+				document.querySelector("input[data-id='tiaoma1']").onchange = function() {
+					var qrdata = document.getElementById("code").value;
+					// 采集数据
+					mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+						data: {
+							wo: qrdata,
+							isControl: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 3000, //超时时间设置为10秒；
+						success: function(data) {
+							if (data.success) {
+								// 基础信息
+								document.getElementById("mo").value = data.app.mo;
+								document.getElementById("wo").value = data.app.wo;
+								document.getElementById("mfg").value = data.app.mfg;
+								document.getElementById("custcode").value = data.app.cust_code;
+								document.getElementById("custpart").value = data.app.pn;
+								document.getElementById("lot").value = data.app.lot;
+								document.getElementById("datecode").value = data.app.datecode;
+								document.getElementById("d06rkey").value = data.app.d06rkey;
+
+								document.getElementById("prodQty").value = data.app.quanpanel;
+							} else {
+								mui.alert(data.mess);
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理
+							if (type == "timeout")
+								$.toast('连接超时，请检查网络')
+
+							$.toast('系统异常，请检查是否连接jove-wifi')
+						}
+					})
+				}
+
+				//自定义事件,供扫描回调
+				window.addEventListener('getScan', function(event) {
+					// 获得事件参数
+					// var id = event.detail.id;
+					qrtype = event.detail.qrtype;
+					qrdata = event.detail.qrdata;
+					// 赋值到输入框
+					if (qrtype && qrdata) {
+						// mui.alert(qrtype + ":" + qrdata );
+						var arr = qrdata.split(',');
+						if (arr.length > 2) {
+							qrdata = arr[1];
+						}
+						document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
+
+						if (qrtype == 'tiaoma') {
+							// 采集数据
+							mui.ajax(realapi + '/JOVE_QIS/query/queryCommonDataByWO.action?id=2', {
+								data: {
+									wo: qrdata,
+									isControl: false
+								},
+								dataType: 'json', //服务器返回json格式数据
+								type: 'POST', //HTTP请求类型
+								timeout: 3000, //超时时间设置为10秒；
+								success: function(data) {
+									if (data.success) {
+										// 基础信息
+										document.getElementById("mo").value = data.app.mo;
+										document.getElementById("wo").value = data.app.wo;
+										document.getElementById("mfg").value = data.app.mfg;
+										document.getElementById("custcode").value = data.app.cust_code;
+										document.getElementById("custpart").value = data.app.pn;
+										document.getElementById("lot").value = data.app.lot;
+										document.getElementById("datecode").value = data.app.datecode;
+										document.getElementById("d06rkey").value = data.app.d06rkey;
+
+										document.getElementById("prodQty").value = data.app.quanpanel;
+									} else {
+										mui.alert(data.mess);
+									}
+								},
+								error: function(xhr, type, errorThrown) {
+									//异常处理
+									if (type == "timeout")
+										$.toast('连接超时，请检查网络')
+
+									$.toast('系统异常，请检查是否连接jove-wifi')
+								}
+							})
+						}
+
+						if (qrtype == 'bancai') {
+							var val = qrdata.trim().split(",");
+							if (val.length != 11) {
+								//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+								mui.toast("板材条码错误");
+							} else {
+								document.getElementById("supppn").value = val[5];
+								document.getElementById("plateply").value = val[8];
+								document.getElementById("copperply").value = val[9];
+							}
+						}
+					}
+				});
+
+				$.plusReady(function() {
+					// 获取本页面的固定信息
+					var self = plus.webview.currentWebview();
+
+					// 扫描页webview
+					var scanPage = null;
+					document.querySelectorAll(".scan").forEach(function(el) {
+						el.addEventListener('tap', function() {
+							// 扫描页webview
+							if (!scanPage) {
+								scanPage = plus.webview.getWebviewById('scan.html');
+							}
+							// 这里只有qrtype 是不一样的,根据el来
+							var qrtype = el.getAttribute("data-id");
+							mui.fire(scanPage, 'newScan', {
+								qrtype: qrtype,
+								source: self.openurl,
+								sourceid: self.id
+							});
+							mui.openWindow({
+								id: 'scan.html'
+							});
+						})
+					})
+
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("factoryName").value = state.changbie;
+					document.getElementById("fqcInspector").value = state.username;
+
+					// 日期控件
+					function pad(num, n) {
+						var len = num.toString().length;
+						while (len < n) {
+							num = "0" + num;
+							len++;
+						}
+						return num;
+					}
+					var date = new Date();
+					var pickerf = function() {
+						var _self = this;
+						if (_self.picker) {
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+								2);
+							current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+							var options = {
+								"value": current,
+								"beginYear": 2019,
+								"endYear": 2038
+							};
+							console.log("当前时间:" + current);
+							var id = this.getAttribute('id');
+
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}
+					//document.getElementById("checkTime").addEventListener('tap', pickerf);
+
+
+
+					document.getElementById("reset").addEventListener('tap', function() {
+						if (!confirm("确认重置吗？"))
+							return;
+
+						document.querySelectorAll(".tiaoMa input[type='text']").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+							el.innerHTML = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelector("input[value='无不良']").checked = 'checked';
+					});
+
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

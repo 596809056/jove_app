@@ -37,10 +37,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -91,34 +91,34 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" placeholder="panel/set" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" placeholder="panel/set" /></span>
 						</p>
 						<p style="padding: 1rem;">绿油修理</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="oilRepairQty" type="text" value="" placeholder="(set)" /></span>
+							<span class="mui-col-xs-9"><input id="oilRepairQty" class="reset" type="text" value="" placeholder="(set)" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">烤板条件:</span>
-							<span class="mui-col-xs-9"><input id="oilRepairCondition" placeholder="" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="oilRepairCondition" class="reset" placeholder="" type="text" value="" /></span>
 						</p>
 						<p style="padding: 1rem;">文字修理</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="charRepairQty" type="text" value="" placeholder="(set)" /></span>
+							<span class="mui-col-xs-9"><input id="charRepairQty" class="reset" class="reset" type="text" value="" placeholder="(set)" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">烤板条件:</span>
-							<span class="mui-col-xs-9"><input id="charRepairCondition" placeholder="" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="charRepairCondition" placeholder="" class="reset" type="text" value="" /></span>
 						</p>
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">焊锡修理数量:</span>
-							<span class="mui-col-xs-9"><input id="tinRepairQty" type="text" value="" placeholder="(set)" /></span>
+							<span class="mui-col-xs-9"><input id="tinRepairQty" class="reset" type="text" value="" placeholder="(set)" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">其他修理数量:</span>
-							<span class="mui-col-xs-9"><input id="othersRepairQty" type="text" value="" placeholder="(set)" /></span>
+							<span class="mui-col-xs-9"><input id="othersRepairQty" class="reset" type="text" value="" placeholder="(set)" /></span>
 						</p>
 						<p class="mui-row ">
 							<span class="mui-col-xs-3">操作员:</span>
@@ -133,7 +133,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -145,6 +145,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -258,6 +263,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

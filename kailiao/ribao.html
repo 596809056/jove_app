@@ -27,10 +27,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -78,10 +78,10 @@
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: indianred;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">板材二维码</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" value="" data-id="bancai1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="materialBarcode" type="text" class="scan" value="" data-id="bancai" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,36 +90,36 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板材供应商:</span>
-							<span class="mui-col-xs-9"><input id="plateSupplier" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="plateSupplier" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板材批次号:</span>
-							<span class="mui-col-xs-9"><input id="plateLot" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="plateLot" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="inputNum" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inputNum" class="reset" type="text" value="" /></span>
 						</p>
 						<hr>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板材规格:</span>
-							<span class="mui-col-xs-9"><input id="plateSpec" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="plateSpec" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">尺寸要求:</span>
-							<span class="mui-col-xs-9"><input id="reqSize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="reqSize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实际尺寸:</span>
-							<span class="mui-col-xs-9"><input id="trimSize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="trimSize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">裁切米数:</span>
-							<span class="mui-col-xs-9"><input id="cutInmeters" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="cutInmeters" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">裁切总米数:</span>
-							<span class="mui-col-xs-9"><input id="cumuCutInmeters" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="cumuCutInmeters"class="reset"  type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">操作员:</span>
@@ -134,7 +134,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark">
+						<textarea rows="5" class="reset" cols="" id="remark">
 
 						</textarea>
 					</div>
@@ -148,6 +148,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -253,6 +258,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

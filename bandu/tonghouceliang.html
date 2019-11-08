@@ -13,7 +13,7 @@
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
 		<style type="text/css">
-			#prodQty,
+			#sampleTime,
 			#decide {
 				height: 40px;
 				line-height: 10px;
@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -91,7 +91,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量线别:</span>
 							<span class="mui-col-xs-9">
-								<select id="prodType">
+								<select id="prodType" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="板镀铜厚">板镀铜厚</option>
 									<option value="图镀铜厚">图镀铜厚</option>
@@ -100,47 +100,47 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量程式:</span>
-							<span class="mui-col-xs-9"><input id="measureProgram" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="measureProgram" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">表铜要求:</span>
-							<span class="mui-col-xs-9"><input id="copperThickRequire" type="text" value="0" /></span>
+							<span class="mui-col-xs-9"><input id="copperThickRequire" class="reset" type="text" value="0" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">孔铜平均:</span>
-							<span class="mui-col-xs-9"><input id="holeCopperAvg" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="holeCopperAvg" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">孔铜单点:</span>
-							<span class="mui-col-xs-9"><input id="holeCopperSinglePoint" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="holeCopperSinglePoint" class="reset"type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">缸号:</span>
-							<span class="mui-col-xs-9"><input id="dyelotNumber" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="dyelotNumber" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据1:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measurea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="measurea" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据2:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measureb" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="measureb" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据3:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measurec" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="measurec" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据4:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measured" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset"  id="measured" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量数据5:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="measuree" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="measuree" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">测量时间:</span>
@@ -157,50 +157,50 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">孔铜偏薄厚:</span>
-							<span class="mui-col-xs-9"><input id="holeCopperAbnormal" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="holeCopperAbnormal" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最小值:</span>
-							<span class="mui-col-xs-9"><input id="minCopperThick" type="text" value="0" readonly="" /></span>
+							<span class="mui-col-xs-9"><input id="minCopperThick" class="num" type="text" value="0" readonly="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最大值:</span>
-							<span class="mui-col-xs-9"><input id="maxCopperThick" type="text" value="0" readonly="" /></span>
+							<span class="mui-col-xs-9"><input id="maxCopperThick" class="num" type="text" value="0" readonly="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最小值与要求差:</span>
-							<span class="mui-col-xs-9"><input id="maxMinusRequire" type="text" value="0" readonly="" /></span>
+							<span class="mui-col-xs-9"><input id="maxMinusRequire" class="num" type="text" value="0" readonly="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最小值与最大值差:</span>
-							<span class="mui-col-xs-9"><input id="maxMinusMin" type="text" value="0" readonly="" /></span>
+							<span class="mui-col-xs-9"><input id="maxMinusMin" class="num" type="text" value="0" readonly="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">表铜切片:</span>
-							<span class="mui-col-xs-9"><input id="surfaceCopperSlice" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="surfaceCopperSlice" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">孔铜切片:</span>
-							<span class="mui-col-xs-9"><input id="holeCopperSlice" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="holeCopperSlice" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">编号:</span>
-							<span class="mui-col-xs-9"><input id="serialNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="serialNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row ">
 							<span class="mui-col-xs-3">测量人:</span>
-							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="operator" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="display: none;">
 							<span class="mui-col-xs-3">审核人:</span>
-							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="auditor" class="reset" type="text" value="" /></span>
 						</p>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -212,6 +212,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -384,7 +389,12 @@
 							} else {
 								mui.alert("未知错误。");
 							}
+							$(".reset").val("");
+							$(".num").val("0");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
 						}
+						
 					});
 					}
 				});

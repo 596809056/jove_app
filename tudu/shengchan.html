@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -91,7 +91,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">上板方式:</span>
 							<span class="mui-col-xs-9">
-								<select id="upperWay" name="upperWay">
+								<select id="upperWay" name="upperWay" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="横">横</option>
 									<option value="竖">竖</option>
@@ -100,47 +100,47 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty"  class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">图形面积ss:</span>
-							<span class="mui-col-xs-9"><input id="ssGraphicsArea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="ssGraphicsArea"  class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">图形面积cs:</span>
-							<span class="mui-col-xs-9"><input id="csGraphicsArea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="csGraphicsArea" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">铜缸缸号:</span>
-							<span class="mui-col-xs-9"><input id="copperDyelotNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="copperDyelotNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">电流参数:</span>
-							<span class="mui-col-xs-9"><input id="copperCurrentParameter" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="copperCurrentParameter" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">镀铜电流ss:</span>
-							<span class="mui-col-xs-9"><input id="ssCopperCurrent" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="ssCopperCurrent" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">镀铜电流cs:</span>
-							<span class="mui-col-xs-9"><input id="csCopperCurrent" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="csCopperCurrent" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">锡缸缸号:</span>
-							<span class="mui-col-xs-9"><input id="tinDyelotNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="tinDyelotNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">电流参数:</span>
-							<span class="mui-col-xs-9"><input id="thinCurrentParameter" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="thinCurrentParameter" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">镀锡电流ss:</span>
-							<span class="mui-col-xs-9"><input id="ssThinCurrent" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="ssThinCurrent" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">镀锡电流cs:</span>
-							<span class="mui-col-xs-9"><input id="csThinCurrent" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="csThinCurrent" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">线别:</span>
@@ -178,7 +178,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -190,6 +190,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			processCategory = document.getElementById("processCategory");
@@ -330,6 +335,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -509,7 +517,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

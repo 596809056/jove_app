@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,69 +90,90 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检验数量:</span>
-							<span class="mui-col-xs-9"><input id="checkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求:</span>
-							<span class="mui-col-xs-9"><input id="checkRequire" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkRequire" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">公差:</span>
-							<span class="mui-col-xs-9"><input id="checkTolerance" type="text" value="" placeholder="格式：+xx/-xx" /></span>
+							<span class="mui-col-xs-9"><input id="checkTolerance" class="reset" type="text" value="" placeholder="格式：+xx/-xx" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测:</span>
-							<span class="mui-col-xs-9"><input id="measureData" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="measureData" class="reset" type="text" value="" /></span>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">判定:</span>
-							<span class="mui-col-xs-9">
-								<select id="decide">
-									<option value="" selected="selected">请选择</option>
-									<option value="ACCEPT">ACC</option>
-									<option value="REJECT">REJ</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 8px 0px 0px 0px;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">判定:</label>
+									<span class="mui-badge1">
+										<select id="decide" class="reset" style="margin:auto; color:#8F8F94; font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="ACCEPT">ACC</option>
+											<option value="REJECT">REJ</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">附着力测试:</span>
-							<span class="mui-col-xs-9">
-								<select id="adhesionTest">
-									<option value="" selected="selected">请选择</option>
-									<option value="OK">OK</option>
-									<option value="NG">NG</option>
-								</select>
-							</span>
+
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">附着力测试:</label>
+									<span class="mui-badge1">
+										<select id="adhesionTest" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="OK">OK</option>
+											<option value="NG">NG</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">有无压接孔:</span>
-							<span class="mui-col-xs-9">
-								<select id="isPorePressure">
-									<option value="" selected="selected">请选择</option>
-									<option value="无">无</option>
-									<option value="有">有</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">有无压接孔:</label>
+									<span class="mui-badge1">
+										<select id="isPorePressure" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="无">无</option>
+											<option value="有">有</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">外观判定:</span>
-							<span class="mui-col-xs-9">
-								<select id="facadeCheck">
-									<option value="" selected="selected">请选择</option>
-									<option value="ACCEPT">ACC</option>
-									<option value="REJECT">REJ</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">外观判定:</label>
+									<span class="mui-badge1">
+										<select id="facadeCheck" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="ACCEPT">ACC</option>
+											<option value="REJECT">REJ</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">最终判定:</span>
-							<span class="mui-col-xs-9">
-								<select id="finalDecide">
-									<option value="" selected="selected">请选择</option>
-									<option value="ACCEPT">ACC</option>
-									<option value="REJECT">REJ</option>
-								</select>
-							</span>
+						<p class="mui-row shiceshuju" style="padding: 31px 0px 0px 0px ;">
+							<div class="mui-input-group">
+								<div class="mui-input-row" style="height: 43px;">
+									<label class="mui-badge1">最终判定:</label>
+									<span class="mui-badge1">
+										<select id="finalDecide" class="reset" style="margin: auto;color: #8F8F94;font-size: 14px;">
+											<option value="" selected="selected">请选择</option>
+											<option value="ACCEPT">ACC</option>
+											<option value="REJECT">REJ</option>
+										</select>
+									</span>
+								</div>
+							</div>
 						</p>
 
 						<p class="mui-row " style="padding: 23px 0px 0px 0px ;">
@@ -168,7 +189,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -180,6 +201,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -296,6 +322,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -473,7 +502,7 @@
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
 
-				function cal() {
+				/* function cal() {
 					var minCopperThick = 999;
 					var maxCopperThick = -999;
 					var num = 0;
@@ -496,7 +525,7 @@
 					document.getElementById("maxMinusMin").value = document.getElementById("maxCopperThick").value - document.getElementById(
 						"minCopperThick").value;
 				}
-
+ */
 				// document.querySelectorAll(".meashuju").forEach(function(el){
 				// 	el.addEventListener('change',cal)
 				// })
@@ -507,7 +536,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset]").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

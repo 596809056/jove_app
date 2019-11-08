@@ -35,10 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -89,41 +89,41 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">面次:</span>
-							<span class="mui-col-xs-9"><input id="surfaceTime" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="surfaceTime" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检查数量:</span>
-							<span class="mui-col-xs-9"><input id="checkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">油墨类型:</span>
-							<span class="mui-col-xs-9"><input id="inkPn" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inkPn" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">油墨颜色:</span>
-							<span class="mui-col-xs-9"><input id="inkColor" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inkColor" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产周期:</span>
-							<span class="mui-col-xs-9"><input id="prodDatecode" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="prodDatecode" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求字符厚度:</span>
-							<span class="mui-col-xs-9"><input id="requireCharThick" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="requireCharThick" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测字符厚度:</span>
-							<span class="mui-col-xs-9"><input id="measureCharThick" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="measureCharThick" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio">
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -133,25 +133,26 @@
 						</p>
 						<p class="mui-row shiceshuju" style="display: none;">
 							<span class="mui-col-xs-3">审核人:</span>
-							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="auditor" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>偏位</label><input value="偏位" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>字符模糊</label><input value="字符模糊" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>周期错误</label><input value="周期错误" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>字符残缺</label><input value="字符残缺" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>油上焊盘</label><input value="油上焊盘" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>漏油上板面</label><input value="漏油上板面" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>重影</label><input value="重影" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>字符变色</label><input value="字符变色" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>不过油</label><input value="不过油" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>字符擦花</label><input value="字符擦花" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>字符脱落</label><input value="字符脱落" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>冒油</label><input value="冒油" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" class="none" type="checkbox"
+									 checked="checked"></span>
+								<span class="mui-col-xs-4"><label>偏位</label><input value="偏位" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>字符模糊</label><input value="字符模糊" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>周期错误</label><input value="周期错误" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>字符残缺</label><input value="字符残缺" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>油上焊盘</label><input value="油上焊盘" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>漏油上板面</label><input value="漏油上板面" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>重影</label><input value="重影" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>字符变色</label><input value="字符变色" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>不过油</label><input value="不过油" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>字符擦花</label><input value="字符擦花" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>字符脱落</label><input value="字符脱落" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>冒油</label><input value="冒油" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 					</div>
@@ -159,7 +160,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -171,8 +172,29 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		//监听复选框
+		$(".none").change(function() {
+			if ($(this).is(":checked")) {
+				$(".rej").prop("checked", false);
+			}
+		});
+		$(".rej").change(function() {
+			if ($(this).is(":checked")) {
+				$(".none").prop("checked", false);
+			}
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
+			var decide;
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
 				surfaceTime: document.getElementById("surfaceTime").value || '',
@@ -182,7 +204,7 @@
 				requireCharThick: document.getElementById("requireCharThick").value || '',
 				measureCharThick: document.getElementById("measureCharThick").value || '',
 				prodDatecode: document.getElementById("prodDatecode").value || '',
-				//decide: decide,
+				decide: decide || '',
 				//rejectitem: rejectitem,
 				operator: document.getElementById("operator").value || '',
 			}
@@ -190,10 +212,12 @@
 				information.checkQty.length < 1 || information.inkColor.length < 1 ||
 				information.inkPn.length < 1 || information.requireCharThick.length < 1 ||
 				information.measureCharThick.length < 1 || information.prodDatecode.length < 1 ||
-				information.operator.length < 1) {
+				information.decide.length < 1 || information.operator.length < 1) {
 				var color = "#F9F900";
+				if (information.decide.length < 1)
+					$("#decide").css("background-color", color);
 				if (information.prodQty.length < 1)
-					$("#prodQty").css("background-color", color);
+					$("#prodQty").css("background-color", color);	
 				if (information.surfaceTime.length < 1)
 					$("#surfaceTime").css("background-color", color);
 				if (information.checkQty.length < 1)
@@ -213,94 +237,93 @@
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
 			} else {
-			if (!confirm("确认提交吗？"))
-				return;
-		
-			if (document.getElementById("remark").value.length > 30) {
-				mui.alert("备注超过30字");
-				return;
-			}
-			var iscopper;
-			var speccut;
-			var decide;
-			var rejectitem = [];
-			var facarr = {
-				'一厂': 1,
-				'二厂': 2,
-				'三厂': 3,
-				'未知': 'N/A'
-			}
-			factoryName = facarr[document.getElementById("factoryName").value];
-			document.querySelectorAll("input[name='decide']").forEach(function(el) {
-				if (el.checked)
-					decide = el.value;
-			})
-			document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
-				if (el.checked)
-					rejectitem.push(el.value);
-			})
-		
-		
-			var data = {
-				factoryName: factoryName,
-				mo: document.getElementById("mo").value,
-				mfg: document.getElementById("mfg").value,
-				wo: document.getElementById("wo").value,
-				custcode: document.getElementById("custcode").value,
-				custpart: document.getElementById("custpart").value,
-				lot: document.getElementById("lot").value,
-				datecode: document.getElementById("datecode").value,
-				d06rkey: document.getElementById("d06rkey").value,
-		
-				prodQty: document.getElementById("prodQty").value,
-				surfaceTime: document.getElementById("surfaceTime").value,
-				checkQty: document.getElementById("checkQty").value,
-				inkColor: document.getElementById("inkColor").value,
-				inkPn: document.getElementById("inkPn").value,
-		
-				requireCharThick: document.getElementById("requireCharThick").value,
-				measureCharThick: document.getElementById("measureCharThick").value,
-				prodDatecode: document.getElementById("prodDatecode").value,
-		
-				decide: decide,
-				rejectitem: rejectitem,
-				operator: document.getElementById("operator").value,
-				auditor: document.getElementById("auditor").value,
-				remark: document.getElementById("remark").value,
-			}
-		
-			// for(var key in data){
-			// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
-			// 		mui.alert("必填项不能为空");
-			// 		return;
-			// 	}
-			// }
-		
-			var params = JSON.stringify(data);
-			mui.ajax({
-				url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=52',
-				type: "post",
-				data: {
-					params: params,
-					isRejectItem: true,
-					rejectItem: rejectitem.toString()
-				},
-				dataType: "json",
-				async: false,
-				error: function() {
-					mui.alert("error occur!");
-				},
-				success: function(data) {
-					if (data.isOK) {
-						mui.alert("上传成功!");
-					} else {
-						mui.alert("未知错误。");
-					}
+				if (!confirm("确认提交吗？"))
+					return;
+
+				if (document.getElementById("remark").value.length > 30) {
+					mui.alert("备注超过30字");
+					return;
 				}
-			});
+				var iscopper;
+				var speccut;
+				var rejectitem = [];
+				var facarr = {
+					'一厂': 1,
+					'二厂': 2,
+					'三厂': 3,
+					'未知': 'N/A'
+				}
+				factoryName = facarr[document.getElementById("factoryName").value];
+				
+				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
+					if (el.checked)
+						rejectitem.push(el.value);
+				})
+
+
+				var data = {
+					factoryName: factoryName,
+					mo: document.getElementById("mo").value,
+					mfg: document.getElementById("mfg").value,
+					wo: document.getElementById("wo").value,
+					custcode: document.getElementById("custcode").value,
+					custpart: document.getElementById("custpart").value,
+					lot: document.getElementById("lot").value,
+					datecode: document.getElementById("datecode").value,
+					d06rkey: document.getElementById("d06rkey").value,
+
+					prodQty: document.getElementById("prodQty").value,
+					surfaceTime: document.getElementById("surfaceTime").value,
+					checkQty: document.getElementById("checkQty").value,
+					inkColor: document.getElementById("inkColor").value,
+					inkPn: document.getElementById("inkPn").value,
+
+					requireCharThick: document.getElementById("requireCharThick").value,
+					measureCharThick: document.getElementById("measureCharThick").value,
+					prodDatecode: document.getElementById("prodDatecode").value,
+
+					decide: decide,
+					rejectitem: rejectitem,
+					operator: document.getElementById("operator").value,
+					auditor: document.getElementById("auditor").value,
+					remark: document.getElementById("remark").value,
+				}
+
+				// for(var key in data){
+				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
+				// 		mui.alert("必填项不能为空");
+				// 		return;
+				// 	}
+				// }
+
+				var params = JSON.stringify(data);
+				mui.ajax({
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=52',
+					type: "post",
+					data: {
+						params: params,
+						isRejectItem: true,
+						rejectItem: rejectitem.toString()
+					},
+					dataType: "json",
+					async: false,
+					error: function() {
+						mui.alert("error occur!");
+					},
+					success: function(data) {
+						if (data.isOK) {
+							mui.alert("上传成功!");
+						} else {
+							mui.alert("未知错误。");
+						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
+					}
+				});
 			}
 		});
-		
+
 		(function($, doc) {
 			//初始化 scan页
 			$.init({

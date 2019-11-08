@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,36 +90,36 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" placeholder="panel/set" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" type="text" class="reset" value="" placeholder="panel/set" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">问题描述:</span>
-							<span class="mui-col-xs-9"><input id="problemDesc" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="problemDesc" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">拼板尺寸:</span>
-							<span class="mui-col-xs-9"><input id="plateSize" type="text" value="" placeholder="mm*mm" /></span>
+							<span class="mui-col-xs-9"><input id="plateSize" class="reset" type="text" value="" placeholder="mm*mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">产量:</span>
-							<span class="mui-col-xs-9"><input id="outputQty" type="text" value="" placeholder="pnl" /></span>
+							<span class="mui-col-xs-9"><input id="outputQty" class="reset" type="text" value="" placeholder="pnl" /></span>
 						</p>
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良数量:</span>
-							<span class="mui-col-xs-9"><input id="rejQty" type="text" value="" placeholder="pnl" /></span>
+							<span class="mui-col-xs-9"><input id="rejQty" class="reset" type="text" value="" placeholder="pnl" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良原因:</span>
-							<span class="mui-col-xs-9"><input id="culprit" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="culprit" class="reset"  type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返工:</span>
-							<span class="mui-col-xs-9"><input id="rework" type="text" value="" placeholder="pnl" /></span>
+							<span class="mui-col-xs-9"><input id="rework" class="reset" type="text" value="" placeholder="pnl" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返修:</span>
-							<span class="mui-col-xs-9"><input id="repair" type="text" value="" placeholder="pnl" /></span>
+							<span class="mui-col-xs-9"><input id="repair" class="reset" type="text" value="" placeholder="pnl" /></span>
 						</p>
 
 						<!-- <p class="mui-row shiceshuju">
@@ -143,7 +143,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -155,6 +155,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -261,6 +266,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

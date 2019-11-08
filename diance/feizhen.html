@@ -35,10 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly"/></p>
 					</div>
 				</li>
@@ -89,7 +89,7 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<!-- 
 						<p class="mui-row shiceshuju">
@@ -115,7 +115,7 @@
 						</p>
 						<p class="mui-row shiceshuju" style="display: none;">
 							<span class="mui-col-xs-3">审核人:</span>
-							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="auditor"  type="text" value="" /></span>
 						</p>
 					</div>
 				</li>
@@ -134,6 +134,11 @@
 	</body>
 	
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var decide = "";
@@ -216,6 +221,9 @@
 							}else{
 								mui.alert("未知错误。");
 							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
 						}
 					});
 					}

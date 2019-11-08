@@ -36,7 +36,7 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -87,28 +87,28 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检验数量:</span>
-							<span class="mui-col-xs-9"><input id="checkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求:</span>
-							<span class="mui-col-xs-9"><input id="checkRequire" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkRequire" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">公差:</span>
-							<span class="mui-col-xs-9"><input id="checkTolerance" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="checkTolerance" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测:</span>
-							<span class="mui-col-xs-9"><input id="measureData" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="measureData" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定:</span>
 							<span class="mui-col-xs-9">
-								<select id="decide">
+								<select id="decide" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="ACCEPT">ACC</option>
 									<option value="REJECT">REJ</option>
@@ -117,17 +117,17 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">涨缩系数:</span>
-							<span class="mui-col-xs-9"><input id="higherShrinkageCoefficient" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="higherShrinkageCoefficient" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">层间对准度:</span>
-							<span class="mui-col-xs-9"><input id="interlaminarAlignment" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="interlaminarAlignment" class="reset" type="text" value="" /></span>
 						</p>
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">有无压接孔:</span>
 							<span class="mui-col-xs-9">
-								<select id="isHole">
+								<select id="isHole" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="Y">有</option>
 									<option value="N">无</option>
@@ -137,7 +137,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">外观判定:</span>
 							<span class="mui-col-xs-9">
-								<select id="facadeDecide">
+								<select id="facadeDecide" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="ACCEPT">ACC</option>
 									<option value="REJECT">REJ</option>
@@ -147,7 +147,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最终判定:</span>
 							<span class="mui-col-xs-9">
-								<select id="finalDecide">
+								<select id="finalDecide" class="reset">
 									<option value="" selected="selected">请选择</option>
 									<option value="ACCEPT">ACC</option>
 									<option value="REJECT">REJ</option>
@@ -167,7 +167,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -179,6 +179,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var decide;
@@ -303,6 +308,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -474,7 +482,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

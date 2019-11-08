@@ -27,10 +27,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -81,39 +81,39 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产尺寸:</span>
-							<span class="mui-col-xs-9"><input id="prodSize" class="calc" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="prodSize" class="reset calc" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产数量:</span>
-							<span class="mui-col-xs-9"><input id="inputNum" class="calc" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="inputNum" class="reset calc" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">棕化板类型:</span>
-							<span class="mui-col-xs-9"><input id="brownType" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="brownType" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">棕化速度:</span>
-							<span class="mui-col-xs-9"><input id="brownRate" type="text" value="" placeholder="mm/min" /></span>
+							<span class="mui-col-xs-9"><input id="brownRate" class="reset" type="text" value="" placeholder="mm/min" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产面积:</span>
-							<span class="mui-col-xs-9"><input id="prodArea" type="text" value="" placeholder="" readonly="readonly" /></span>
+							<span class="mui-col-xs-9"><input id="prodArea" class="reset" type="text" value="" placeholder="" readonly="readonly" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">累计面积:</span>
-							<span class="mui-col-xs-9"><input id="prodTotalArea" type="text" value="" placeholder="" readonly="readonly" /></span>
+							<span class="mui-col-xs-9"><input id="prodTotalArea" class="reset" type="text" value="" placeholder="" readonly="readonly" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">补加H₂SO₄:</span>
-							<span class="mui-col-xs-9"><input id="addVitrol" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="addVitrol" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">补加SPS:</span>
-							<span class="mui-col-xs-9"><input id="addSps" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="addSps" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">补加232:</span>
-							<span class="mui-col-xs-9"><input id="addT" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="addT" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">操作员:</span>
@@ -136,7 +136,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark">
+						<textarea rows="5" class="reset" cols="" id="remark">
 
 						</textarea>
 					</div>
@@ -150,6 +150,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -269,6 +274,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

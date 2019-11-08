@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,34 +90,34 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">树脂型号:</span>
-							<span class="mui-col-xs-9"><input id="resinType" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="resinType" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-12" style="line-height: 52px;padding-left: 1rem;">塞孔参数</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">真空度:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="tapholeVacuum" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="tapholeVacuum" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">压力:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="tapholePressure" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="tapholePressure" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">速度:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="tapholeSpeed" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="tapholeSpeed" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">次数:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="tapholeTimes" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="tapholeTimes" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">新油/回用:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="tapholeOil" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="tapholeOil" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">是否饱满:</span>
@@ -128,11 +128,11 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产数量:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="checkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="checkQty" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">面积:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="prodArea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="prodArea" type="text" value="" /></span>
 						</p>
 						<p class="mui-row ">
 							<span class="mui-col-xs-3">操作人:</span>
@@ -147,7 +147,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -159,6 +159,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var decide;
@@ -274,6 +279,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

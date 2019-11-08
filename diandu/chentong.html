@@ -35,10 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,7 +90,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">选择线别:</span>
 							<span class="mui-col-xs-9">
-								<select id="processCategory">
+								<select id="processCategory" class="reset">
 									<option value="">请选择</option>
 									<option value="沉铜A线">沉铜A线</option>
 									<option value="沉铜B线">沉铜B线</option>
@@ -99,11 +99,11 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input class="calc" id="prodNum" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset calc" id="prodNum" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最小孔径:</span>
-							<span class="mui-col-xs-9"><input id="minHole" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="minHole" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">投入时间:</span>
@@ -111,19 +111,19 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">开料尺寸:</span>
-							<span class="mui-col-xs-9"><input class="calc" id="cutPlateSize" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="reset calc" id="cutPlateSize" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">做板面积:</span>
-							<span class="mui-col-xs-9"><input id="prodArea" type="text" value="" readonly="readonly" /></span>
+							<span class="mui-col-xs-9"><input id="prodArea" class="reset" type="text" value="" readonly="readonly" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">累计面积:</span>
-							<span class="mui-col-xs-9"><input id="addUpArea" type="text" value="" readonly="readonly" /></span>
+							<span class="mui-col-xs-9"><input id="addUpArea" class="reset" type="text" value="" readonly="readonly" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">电镀面积:</span>
-							<span class="mui-col-xs-9"><input id="platingArea" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="platingArea" class="reset" type="text" value="" /></span>
 						</p>
 
 						<p class="mui-row ">
@@ -145,58 +145,58 @@
 						<p style="padding-bottom:10px;color: #DD524D">每项100m²补/加药水记录</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">膨松4126:</span>
-							<span class="mui-col-xs-9"><input id="fots" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="fots" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">除胶KMnO₄:</span>
-							<span class="mui-col-xs-9"><input id="kmno" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="kmno" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">除胶NaoH:</span>
-							<span class="mui-col-xs-9"><input id="naoh" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="naoh" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">中和216-5:</span>
-							<span class="mui-col-xs-9"><input id="tfsf" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="tfsf" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">预中和H₂O₂:</span>
-							<span class="mui-col-xs-9"><input id="htot" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="htot" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">预中和H₂SO₄:</span>
-							<span class="mui-col-xs-9"><input id="hso" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="hso" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">除油233:</span>
-							<span class="mui-col-xs-9"><input id="ttt" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="ttt" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">酸洗H₂SO₄:</span>
-							<span class="mui-col-xs-9"><input id="htsof" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="htsof" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">微蚀SPS:</span>
-							<span class="mui-col-xs-9"><input id="sps" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="sps" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">微蚀H₂SO₄:</span>
-							<span class="mui-col-xs-9"><input id="hsof" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="hsof" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">预浸404:</span>
-							<span class="mui-col-xs-9"><input id="fzf" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="fzf" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">活化CAT44:</span>
-							<span class="mui-col-xs-9"><input id="catff" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="catff" class="reset" type="text" value="" /></span>
 						</p>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -208,6 +208,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -364,6 +369,9 @@
 							} else {
 								mui.alert("未知错误。");
 							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+							$(".tiaoMa input[type='text']").val("");
 						}
 					});
 					}
@@ -580,7 +588,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

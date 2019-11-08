@@ -35,10 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -89,43 +89,43 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">面次:</span>
-							<span class="mui-col-xs-9"><input id="pcbLayerNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="pcbLayerNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p>线宽/线距(mil)</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求线宽:</span>
-							<span class="mui-col-xs-9"><input id="lineWidth" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="lineWidth" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">线宽要求范围:</span>
-							<span class="mui-col-xs-9"><input id="lineWidthRange" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="lineWidthRange" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测线宽:</span>
-							<span class="mui-col-xs-9"><input id="lineWidthValue" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="lineWidthValue" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求线距:</span>
-							<span class="mui-col-xs-9"><input id="lineDistance" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="lineDistance" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">线距要求范围:</span>
-							<span class="mui-col-xs-9"><input id="lineDistanceRange" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="lineDistanceRange" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测线距:</span>
-							<span class="mui-col-xs-9"><input id="lineDistanceValue" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="lineDistanceValue" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio">
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -140,23 +140,24 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>开路</label><input value="开路" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>短路</label><input value="短路" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>层偏</label><input value="层偏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线路缺口</label><input value="线路缺口" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线路狗牙</label><input value="线路狗牙" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线宽偏大</label><input value="线宽偏大" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线幼</label><input value="线幼" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线距偏大</label><input value="线距偏大" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>线距偏小</label><input value="线距偏小" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>擦花</label><input value="擦花" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>残铜</label><input value="残铜" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>退膜不净</label><input value="退膜不净" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>蚀刻不净</label><input value="蚀刻不净" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>蚀刻过度</label><input value="蚀刻过度" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>曝光不良</label><input value="曝光不良" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" class="none"
+									 checked="checked"></span>
+								<span class="mui-col-xs-4"><label>开路</label><input value="开路" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>短路</label><input value="短路" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>层偏</label><input value="层偏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线路缺口</label><input value="线路缺口" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线路狗牙</label><input value="线路狗牙" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线宽偏大</label><input value="线宽偏大" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线幼</label><input value="线幼" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线距偏大</label><input value="线距偏大" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>线距偏小</label><input value="线距偏小" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>擦花</label><input value="擦花" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>残铜</label><input value="残铜" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>退膜不净</label><input value="退膜不净" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>蚀刻不净</label><input value="蚀刻不净" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>蚀刻过度</label><input value="蚀刻过度" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>曝光不良</label><input value="曝光不良" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 					</div>
@@ -164,7 +165,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -176,8 +177,29 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		//监听复选框
+		$(".none").change(function() {
+			if ($(this).is(":checked")) {
+				$(".rej").prop("checked", false);
+			}
+		});
+		$(".rej").change(function() {
+			if ($(this).is(":checked")) {
+				$(".none").prop("checked", false);
+			}
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
+			var decide;
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
 				pcbLayerNo: document.getElementById("pcbLayerNo").value || '',
@@ -187,7 +209,7 @@
 				lineDistance: document.getElementById("lineDistance").value || '',
 				lineDistanceRange: document.getElementById("lineDistanceRange").value || '',
 				lineDistanceValue: document.getElementById("lineDistanceValue").value || '',
-				//decide: decide,
+				decide: decide || '',
 				//rejectitem: rejectitem,
 				operator: document.getElementById("operator").value || '',
 			}
@@ -195,10 +217,12 @@
 				information.lineWidth.length < 1 || information.lineWidthValue.length < 1 ||
 				information.lineWidthRange.length < 1 || information.lineDistance.length < 1 ||
 				information.lineDistanceRange.length < 1 || information.lineDistanceValue.length < 1 ||
-				information.operator.length < 1) {
+				information.decide.length < 1 || information.operator.length < 1) {
 				var color = "#F9F900";
 				if (information.prodQty.length < 1)
 					$("#prodQty").css("background-color", color);
+				if (information.decide.length < 1)
+					$("#decide").css("background-color", color);
 				if (information.pcbLayerNo.length < 1)
 					$("#pcbLayerNo").css("background-color", color);
 				if (information.lineWidth.length < 1)
@@ -227,7 +251,6 @@
 				}
 				var iscopper;
 				var speccut;
-				var decide;
 				var rejectitem = [];
 				var facarr = {
 					'一厂': 1,
@@ -236,10 +259,7 @@
 					'未知': 'N/A'
 				}
 				factoryName = facarr[document.getElementById("factoryName").value];
-				document.querySelectorAll("input[name='decide']").forEach(function(el) {
-					if (el.checked)
-						decide = el.value;
-				})
+
 				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
 					if (el.checked)
 						rejectitem.push(el.value);
@@ -300,6 +320,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

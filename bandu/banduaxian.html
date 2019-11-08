@@ -35,10 +35,10 @@
 				<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 					<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 						<a class="mui-navigate-right" href="#">条码信息</a>
-						<div class="mui-collapse-content">
+						<div class="mui-collapse-content tiaoMa">
 							<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 						</div>
-						<div class="mui-collapse-content">
+						<div class="mui-collapse-content tiaoMa">
 							<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 						</div>
 					</li>
@@ -90,27 +90,27 @@
 						<div class="mui-collapse-content">
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">完成铜厚:</span>
-								<span class="mui-col-xs-9"><input id="completeCopperThick" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="completeCopperThick" class="reset" type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">拼板尺寸:</span>
-								<span class="mui-col-xs-9"><input id="plateSize" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="plateSize" class="reset"  type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">数量:</span>
-								<span class="mui-col-xs-9"><input id="checkQty" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">电流:</span>
-								<span class="mui-col-xs-9"><input id="electricity" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="electricity" class="reset" type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">电流密度:</span>
-								<span class="mui-col-xs-9"><input id="ampereDensity" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="ampereDensity" class="reset" type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">镀槽号:</span>
-								<span class="mui-col-xs-9"><input id="platingTankNo" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="platingTankNo" class="reset" type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">进板时间:</span>
@@ -130,7 +130,7 @@
 							</p>
 							<p class="mui-row shiceshuju">
 								<span class="mui-col-xs-3">电流确认人:</span>
-								<span class="mui-col-xs-9"><input id="currentConfirm" type="text" value="" /></span>
+								<span class="mui-col-xs-9"><input id="currentConfirm" class="reset"  type="text" value="" /></span>
 							</p>
 							<p class="mui-row shiceshuju" style="display: none;">
 								<span class="mui-col-xs-3">审核人:</span>
@@ -141,7 +141,7 @@
 					<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 						<a class="mui-navigate-right" href="#">备注</a>
 						<div class="mui-collapse-content">
-							<textarea rows="5" cols="" id="remark"></textarea>
+							<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 						</div>
 					</li>
 				</ul>
@@ -155,6 +155,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -257,6 +262,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -451,7 +459,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

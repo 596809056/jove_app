@@ -37,10 +37,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -53,35 +53,35 @@
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">MO号:</span>
-							<span class="mui-col-xs-9"><input id="mo" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">生产编码:</span>
-							<span class="mui-col-xs-9"><input id="mfg" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">工单号:</span>
-							<span class="mui-col-xs-9"><input id="wo" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户代码:</span>
-							<span class="mui-col-xs-9"><input id="custcode" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户型号:</span>
-							<span class="mui-col-xs-9"><input id="custpart" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">LOT号:</span>
-							<span class="mui-col-xs-9"><input id="lot" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">周期:</span>
-							<span class="mui-col-xs-9"><input id="datecode" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju" style="display: none;">
 							<span class="mui-col-xs-3">d06rkey:</span>
-							<span class="mui-col-xs-9"><input id="d06rkey" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
 						</p>
 
 					</div>
@@ -91,15 +91,15 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" placeholder="panel/set" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset calc" type="text" value="" placeholder="panel/set" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">尺寸:</span>
-							<span class="mui-col-xs-9"><input id="plateSize" type="text" value="" placeholder="mm*mm" /></span>
+							<span class="mui-col-xs-9"><input id="plateSize" class="reset calc" type="text" value="" placeholder="mm*mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">面积:</span>
-							<span class="mui-col-xs-9"><input id="prodArea" placeholder="m²" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodArea" placeholder="m²" type="text" value="" style="cursor: not-allowed;background-color: #EEEEEE;" disabled="disabled"/></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">时间:</span>
@@ -107,7 +107,7 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">效率:</span>
-							<span class="mui-col-xs-9"><input id="prodEfficiency" placeholder="set/h" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodEfficiency" class="reset" placeholder="set/h" type="text" value="" /></span>
 						</p>
 						<p class="mui-row ">
 							<span class="mui-col-xs-3">记录人:</span>
@@ -134,34 +134,54 @@
 	</body>
 
 	<script type="text/javascript">
-		// 表单
+		
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		
+		$(function(){       
+			   //计算面积
+			   $(".calc").on("change", function(){    
+			        var ps=$("#plateSize").val().trim();
+			   		var opn=$("#prodQty").val();
+			   		if(ps.length>0 && opn>0){
+			   			var arr=ps.split("X");
+			   			var pl=parseFloat(arr[0]);
+			   			var pw=parseFloat(arr[1]);
+			   			var area=(pl*pw/1000000)*opn;
+			   			$("#prodArea").val(area.toFixed(4));
+			   		}else{
+			   		   $("#prodArea").val("");
+			   		   return false;
+			   		}
+			   });
+			 })
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
 				plateSize: document.getElementById("plateSize").value || '',
-				prodArea: document.getElementById("prodArea").value || '',
-				signTime: document.getElementById("signTime").innerHTML || '',
 				prodEfficiency: document.getElementById("prodEfficiency").value || '',
 
-				operator: document.getElementById("operator").value || ''
+				operator: document.getElementById("operator").value || '',
+				auditor: document.getElementById("auditor").value || '',
 			}
 			if (information.prodQty.length < 1 || information.plateSize.length < 1 ||
-				information.prodArea.length < 1 || information.signTime.length < 1 ||
-				information.prodEfficiency.length < 1 || information.operator.length < 1 ) {
+				information.prodEfficiency.length < 1 || information.operator.length < 1 ||
+				information.auditor.length < 1) {
 				var color = "#F9F900";
 				if (information.prodQty.length < 1)
 					$("#prodQty").css("background-color", color);
 				if (information.plateSize.length < 1)
 					$("#plateSize").css("background-color", color);
-				if (information.prodArea.length < 1)
-					$("#prodArea").css("background-color", color);
-				if (information.signTime.length < 1)
-					$("#signTime").css("background-color", color);
 				if (information.prodEfficiency.length < 1)
 					$("#prodEfficiency").css("background-color", color);
 				if (information.operator.length < 1)
 					$("#operator").css("background-color", color);
+				if (information.auditor.length < 1)
+					$("#auditor").css("background-color", color);
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
 			} else {
@@ -220,6 +240,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -386,7 +409,7 @@
 						};
 						console.log("当前时间:" + current);
 						var id = this.getAttribute('id');
-
+				
 						_self.picker = new $.DtPicker(options);
 						_self.picker.show(function(rs) {
 							_self.innerHTML = rs.text;
@@ -396,6 +419,9 @@
 					}
 				}
 				document.getElementById("signTime").addEventListener('tap', pickerf);
+				var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(), 2);
+				current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+				document.getElementById("signTime").innerHTML = current;
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
 
 				function cal() {

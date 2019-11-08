@@ -9,28 +9,34 @@
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
 		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
 		<script src="../js/app.js"></script>
 	</head>
-
+	<style type="text/css">
+		#inputTime,
+		#outputTime,
+		#signTime {
+			height: 40px;
+			line-height: 10px;
+		}
+	</style>
 	<body>
-		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
-			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
-				<span class="mui-icon mui-icon-left-nav"></span>
-			</button>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">中富移动办公</h1>
 		</header>
-		<div class="mui-content" id="">
-
+		<div class="mui-content">
 			<div id="hcaption">
-				曝光机生产记录
+				压合压机异常记录
 			</div>
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -43,110 +49,76 @@
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">MO号:</span>
-							<span class="mui-col-xs-9"><input id="mo" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">生产编码:</span>
-							<span class="mui-col-xs-9"><input id="mfg" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">工单号:</span>
-							<span class="mui-col-xs-9"><input id="wo" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户代码:</span>
-							<span class="mui-col-xs-9"><input id="custcode" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户型号:</span>
-							<span class="mui-col-xs-9"><input id="custpart" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">LOT号:</span>
-							<span class="mui-col-xs-9"><input id="lot" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">周期:</span>
-							<span class="mui-col-xs-9"><input id="datecode" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju" style="display: none;">
 							<span class="mui-col-xs-3">d06rkey:</span>
-							<span class="mui-col-xs-9"><input id="d06rkey" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
 						</p>
-
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding:0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">实测数据</a>
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" type="text" value="" /></span>
+							<span class="mui-col-xs-3">数量(panel/set):</span>
+							<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" placeholder="panel/set" /></span>
+							<span class="mui-col-xs-3">进炉时间(min):</span>
+							<span class="mui-col-xs-9"><input id="inTime" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">油墨类型:</span>
-							<span class="mui-col-xs-9"><input id="inkType" type="text" value="" /></span>
+							<span class="mui-col-xs-3">异常时间(min):</span>
+							<span class="mui-col-xs-9"><input id="abnormalTime" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">油墨颜色:</span>
-							<span class="mui-col-xs-9"><input id="inkColor" type="text" value="" /></span>
+							<span class="mui-col-xs-3">出炉时间(min):</span>
+							<span class="mui-col-xs-9"><input id="outTime" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光能量(CS):</span>
-							<span class="mui-col-xs-9"><input id="csExposureAbility" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-3">异常情况:</span>
+							<span class="mui-col-xs-9"><input id="abnormalCondition" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光能量(SS):</span>
-							<span class="mui-col-xs-9"><input id="ssExposureAbility" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-3">异常处理:</span>
+							<span class="mui-col-xs-9"><input id="abnormalHandling" class="reset" type="text" value="" /></span>
 						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光尺(CS):</span>
-							<span class="mui-col-xs-9"><input id="csExposureScale" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光尺(SS):</span>
-							<span class="mui-col-xs-9"><input id="ssExposureScale" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光偏移度设定(CS):</span>
-							<span class="mui-col-xs-9"><input id="csExposureDeviation" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">曝光偏移度设定(SS):</span>
-							<span class="mui-col-xs-9"><input id="ssExposureDeviation" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">生产数量:</span>
-							<span class="mui-col-xs-9"><input class="calc" id="prodNum" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">生产尺寸:</span>
-							<span class="mui-col-xs-9"><input class="calc" id="prodSize" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">生产面积:</span>
-							<span class="mui-col-xs-9"><input id="prodArea" type="text" value="" placeholder="" /></span>
-						</p>
-						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">操作员:</span>
+						
+						<p class="mui-row " style="padding:25px 0px 0px 0px;">
+							<span class="mui-col-xs-3">测量人:</span>
 							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
-						</p>
-						<p class="mui-row shiceshuju" style="display: none;">
-							<span class="mui-col-xs-3">审核人:</span>
-							<span class="mui-col-xs-9"><input id="auditor" type="text" value="" /></span>
 						</p>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark">
-
-						</textarea>
+						<textarea rows="5" cols="" class="reset" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -158,60 +130,41 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
-				machineNo: document.getElementById("machineNo").value || '',
-				prodQty: document.getElementById("prodQty").value || '',
-				inkType: document.getElementById("inkType").value || '',
-				inkColor: document.getElementById("inkColor").value || '',
-				csExposureAbility: document.getElementById("csExposureAbility").value || '',
-				ssExposureAbility: document.getElementById("ssExposureAbility").value || '',
-				csExposureScale: document.getElementById("csExposureScale").value || '',
-				ssExposureScale: document.getElementById("ssExposureScale").value || '',
+				checkQty: document.getElementById("checkQty").value || '',
+				inTime: document.getElementById("inTime").value || '',
+				abnormalTime: document.getElementById("abnormalTime").value || '',
+				outTime: document.getElementById("outTime").value || '',
+				abnormalCondition: document.getElementById("abnormalCondition").value || '',
+				abnormalHandling: document.getElementById("abnormalHandling").value || '',
 				operator: document.getElementById("operator").value || '',
-				csExposureDeviation: document.getElementById("csExposureDeviation").value || '',
-				ssExposureDeviation: document.getElementById("ssExposureDeviation").value || '',
-				prodNum: document.getElementById("prodNum").value || '',
-				prodSize: document.getElementById("prodSize").value || '',
-				prodArea: document.getElementById("prodArea").value || ''
 			}
-			if (information.machineNo.length < 1 || information.prodQty.length < 1 ||
-				information.inkType.length < 1 || information.inkColor.length < 1 ||
-				information.csExposureAbility.length < 1 || information.ssExposureAbility.length < 1 ||
-				information.csExposureScale.length < 1 || information.ssExposureScale.length < 1 ||
-				information.operator.length < 1 || information.csExposureDeviation.length < 1 ||
-				information.ssExposureDeviation.length < 1 || information.prodNum.length < 1 ||
-				information.prodSize.length < 1 || information.prodArea.length < 1 ) {
+			if (information.checkQty.length < 1 || information.inTime.length < 1 ||
+				information.abnormalTime.length < 1 || information.outTime.length < 1 ||
+				information.abnormalCondition.length < 1 || information.abnormalHandling.length < 1 ||
+				information.operator.length < 1) {
 				var color = "#F9F900";
-				if (information.machineNo.length < 1)
-					$("#machineNo").css("background-color", color);
-				if (information.prodQty.length < 1)
-					$("#prodQty").css("background-color", color);
-				if (information.inkType.length < 1)
-					$("#inkType").css("background-color", color);
-				if (information.inkColor.length < 1)
-					$("#inkColor").css("background-color", color);
-				if (information.csExposureAbility.length < 1)
-					$("#csExposureAbility").css("background-color", color);
-				if (information.ssExposureAbility.length < 1)
-					$("#ssExposureAbility").css("background-color", color);
-				if (information.csExposureScale.length < 1)
-					$("#csExposureScale").css("background-color", color);
-				if (information.ssExposureScale.length < 1)
-					$("#ssExposureScale").css("background-color", color);
+				if (information.checkQty.length < 1)
+					$("#checkQty").css("background-color", color);
+				if (information.inTime.length < 1)
+					$("#inTime").css("background-color", color);
+				if (information.abnormalTime.length < 1)
+					$("#abnormalTime").css("background-color", color);
+				if (information.outTime.length < 1)
+					$("#outTime").css("background-color", color);
+				if (information.abnormalCondition.length < 1)
+					$("#abnormalCondition").css("background-color", color);
+				if (information.abnormalHandling.length < 1)
+					$("#abnormalHandling").css("background-color", color);
 				if (information.operator.length < 1)
 					$("#operator").css("background-color", color);
-				if (information.csExposureDeviation.length < 1)
-					$("#csExposureDeviation").css("background-color", color);
-				if(information.ssExposureDeviation.length < 1)
-					$("#ssExposureDeviation").css("background-color",color);
-				if(information.prodNum.length < 1)
-					$("#prodNum").css("background-color",color);
-				if(information.prodSize.length < 1)
-					$("#prodSize").css("background-color",color);
-				if(information.prodArea.length < 1)
-					$("#prodArea").css("background-color",color);
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
 			} else {
@@ -222,7 +175,8 @@
 					mui.alert("备注超过30字");
 					return;
 				}
-
+				var iscopper;
+				var speccut;
 				var facarr = {
 					'一厂': 1,
 					'二厂': 2,
@@ -241,23 +195,13 @@
 					datecode: document.getElementById("datecode").value,
 					d06rkey: document.getElementById("d06rkey").value,
 
-					machineNo: document.getElementById("machineNo").value,
-					prodQty: document.getElementById("prodQty").value,
-					inkType: document.getElementById("inkType").value,
-					inkColor: document.getElementById("inkColor").value,
-
-					csExposureAbility: document.getElementById("csExposureAbility").value,
-					ssExposureAbility: document.getElementById("ssExposureAbility").value,
-					csExposureScale: document.getElementById("csExposureScale").value,
-					ssExposureScale: document.getElementById("ssExposureScale").value,
-					csExposureDeviation: document.getElementById("csExposureDeviation").value,
-					ssExposureDeviation: document.getElementById("ssExposureDeviation").value,
-
-					prodNum: document.getElementById("prodNum").value,
-					prodSize: document.getElementById("prodSize").value,
-					prodArea: document.getElementById("prodArea").value,
+					checkQty: document.getElementById("checkQty").value,
+					inTime: document.getElementById("inTime").value,
+					abnormalTime: document.getElementById("abnormalTime").value,
+					outTime: document.getElementById("outTime").value,
+					abnormalCondition: document.getElementById("abnormalCondition").value,
+					abnormalHandling: document.getElementById("abnormalHandling").value,
 					operator: document.getElementById("operator").value,
-					auditor: document.getElementById("auditor").value,
 					remark: document.getElementById("remark").value,
 				}
 
@@ -270,11 +214,11 @@
 
 				var params = JSON.stringify(data);
 				mui.ajax({
-					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=41',
+					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=90',
 					type: "post",
 					data: {
 						params: params,
-						isRejectItem: false
+						isRejectItem: false,
 					},
 					dataType: "json",
 					async: false,
@@ -287,10 +231,14 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
 		});
+
 		(function($, doc) {
 			//初始化 scan页
 			$.init({
@@ -312,7 +260,6 @@
 					type: 'post', //HTTP请求类型
 					timeout: 3000, //超时时间设置为10秒；
 					success: function(data) {
-
 						if (data.success) {
 							// 基础信息
 							document.getElementById("mo").value = data.app.mo;
@@ -324,11 +271,10 @@
 							document.getElementById("datecode").value = data.app.datecode;
 							document.getElementById("d06rkey").value = data.app.d06rkey;
 
-							document.getElementById("prodSize").value = data.app.panels;
+							//document.getElementById("prodQty").value = data.app.quanpanel;
 						} else {
 							mui.alert(data.mess);
 						}
-
 					},
 					error: function(xhr, type, errorThrown) {
 						//异常处理
@@ -353,7 +299,6 @@
 					if (arr.length > 2) {
 						qrdata = arr[1];
 					}
-
 					document.querySelector("input[data-id='" + qrtype + "']").value = qrdata;
 
 					if (qrtype == 'tiaoma') {
@@ -364,10 +309,9 @@
 								isControl: false
 							},
 							dataType: 'json', //服务器返回json格式数据
-							type: 'post', //HTTP请求类型
+							type: 'POST', //HTTP请求类型
 							timeout: 3000, //超时时间设置为10秒；
 							success: function(data) {
-
 								if (data.success) {
 									// 基础信息
 									document.getElementById("mo").value = data.app.mo;
@@ -379,11 +323,10 @@
 									document.getElementById("datecode").value = data.app.datecode;
 									document.getElementById("d06rkey").value = data.app.d06rkey;
 
-									document.getElementById("prodSize").value = data.app.panels;
+									//document.getElementById("prodQty").value = data.app.quanpanel;
 								} else {
 									mui.alert(data.mess);
 								}
-
 							},
 							error: function(xhr, type, errorThrown) {
 								//异常处理
@@ -393,6 +336,18 @@
 								$.toast('系统异常，请检查是否连接jove-wifi')
 							}
 						})
+					}
+
+					if (qrtype == 'bancai') {
+						var val = qrdata.trim().split(",");
+						if (val.length != 11) {
+							//板材二维码规格：供应商名称,料号,批次号,数量,尺寸,规格,生产日期,是否含铜,板厚,铜厚,TG值
+							mui.toast("板材条码错误");
+						} else {
+							document.getElementById("supppn").value = val[5];
+							document.getElementById("plateply").value = val[8];
+							document.getElementById("copperply").value = val[9];
+						}
 					}
 				}
 			});
@@ -427,33 +382,65 @@
 				document.getElementById("factoryName").value = state.changbie;
 				document.getElementById("operator").value = state.username;
 
-				document.querySelectorAll(".calc").forEach(function(el) {
-					el.addEventListener('change', function() {
+				// 日期控件
+				function pad(num, n) {
+					var len = num.toString().length;
+					while (len < n) {
+						num = "0" + num;
+						len++;
+					}
+					return num;
+				}
+				var date = new Date();
+				/* var itTime = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getHours() +
+					':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':' + (date.getSeconds() < 10 ?
+						'0' + date.getSeconds() : date.getSeconds());
+				document.getElementById("inputTime").innerHTML = itTime;
+				document.getElementById("outputTime").innerHTML = itTime; */
+				var pickerf = function() {
+					var _self = this;
+					if (_self.picker) {
+						_self.picker.show(function(rs) {
+							_self.innerHTML = rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+					} else {
+						var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+							2);
+						current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+						var options = {
+							"value": current,
+							"beginYear": 2019,
+							"endYear": 2038
+						};
+						console.log("当前时间:" + current);
+						var id = this.getAttribute('id');
 
-						var ps = document.getElementById("prodSize").value.trim();
-						var opn = document.getElementById("prodNum").value;
-						if (ps.length > 0 && opn > 0) {
-							var arr = ps.split("X");
-							var pl = parseFloat(arr[0]);
-							var pw = parseFloat(arr[1]);
-							var area = (pl * pw / 1000000) * opn;
-							document.getElementById("prodArea").value = area.toFixed(4);
-						} else {
-							document.getElementById("prodArea").value = "";
+						_self.picker = new $.DtPicker(options);
+						_self.picker.show(function(rs) {
+							_self.innerHTML = rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+					}
+				}
+				//document.getElementById("outputTime").addEventListener('tap', pickerf);
+				//document.getElementById("inputTime").addEventListener('tap', pickerf);
 
-							return false;
-						}
-					});
-				});
+
 
 				document.getElementById("reset").addEventListener('tap', function() {
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".tiaoMa input[type='text']").forEach(function(el) {
 						el.value = '';
 					})
-					document.querySelectorAll(".shiceshuju button").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
+						el.value = '';
+					})
+					document.querySelectorAll(".shiceshuju .reset").forEach(function(el) {
 						el.innerHTML = '';
 					})
 					document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
@@ -462,6 +449,7 @@
 					document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
 						el.checked = '';
 					})
+					document.querySelector("input[value='无不良']").checked = 'checked';
 				});
 
 			});

@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,65 +90,65 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">首检数量:</span>
-							<span class="mui-col-xs-9"><input id="checkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p>缺陷项目及数量</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">线路上金:</span>
-							<span class="mui-col-xs-9"><input id="defect017" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect017" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">金面不良:</span>
-							<span class="mui-col-xs-9"><input id="defect018" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect018" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">漏镀:</span>
-							<span class="mui-col-xs-9"><input id="defect019" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect019" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板损:</span>
-							<span class="mui-col-xs-9"><input id="defect020" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect020" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">氧化:</span>
-							<span class="mui-col-xs-9"><input id="defect021" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect021" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">发黑:</span>
-							<span class="mui-col-xs-9"><input id="defect022" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect022" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">NPTH孔上金:</span>
-							<span class="mui-col-xs-9"><input id="defect023" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect023" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">脱层:</span>
-							<span class="mui-col-xs-9"><input id="defect024" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect024" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">甩镍金:</span>
-							<span class="mui-col-xs-9"><input id="defect025" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect025" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">金面粗糙:</span>
-							<span class="mui-col-xs-9"><input id="defect026" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect026" class="reset" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">绿油起泡:</span>
-							<span class="mui-col-xs-9"><input id="defect027" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="defect027" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">附着力测试及拉力测试:</span>
-							<span class="mui-col-xs-9"><input id="itemTest" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="itemTest" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" >
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -166,7 +166,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -178,8 +178,19 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
+			
+			var decide;
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
 				checkQty: document.getElementById("checkQty").value || '',
@@ -195,7 +206,7 @@
 				defect026: document.getElementById("defect026").value || '',
 				defect027: document.getElementById("defect027").value || '',
 				itemTest: document.getElementById("itemTest").value || '',
-				decide: document.querySelector("input[name='decide'][checked='checked']").value || '',
+				decide: decide || '',
 				operator: document.getElementById("operator").value || '',
 
 			}
@@ -251,7 +262,7 @@
 					return;
 				}
 
-				var decide;
+				
 				var facarr = {
 					'一厂': 1,
 					'二厂': 2,
@@ -260,10 +271,7 @@
 				}
 
 				factoryName = facarr[document.getElementById("factoryName").value];
-				document.querySelectorAll("input[name='decide']").forEach(function(el) {
-					if (el.checked)
-						decide = el.value;
-				})
+				
 
 				var data = {
 					factoryName: factoryName,
@@ -291,7 +299,6 @@
 					defect027: document.getElementById("defect027").value,
 					itemTest: document.getElementById("itemTest").value,
 					decide: decide,
-
 					operator: document.getElementById("operator").value,
 					auditor: document.getElementById("auditor").value,
 					remark: document.getElementById("remark").value,
@@ -316,6 +323,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -493,7 +503,7 @@
 				// document.getElementById("checkTime").addEventListener('tap',pickerf);
 				// document.getElementById("outputTime").addEventListener('tap',pickerf);
 
-				function cal() {
+				/* function cal() {
 					var minCopperThick = 999;
 					var maxCopperThick = -999;
 					var num = 0;
@@ -515,7 +525,7 @@
 						"copperThickRequire").value;
 					document.getElementById("maxMinusMin").value = document.getElementById("maxCopperThick").value - document.getElementById(
 						"minCopperThick").value;
-				}
+				} */
 
 				// document.querySelectorAll(".meashuju").forEach(function(el){
 				// 	el.addEventListener('change',cal)

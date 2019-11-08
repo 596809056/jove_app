@@ -1,0 +1,286 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.picker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<script src="../js/app.js"></script>
+	</head>
+	<style type="text/css">
+		#inTime,
+		#outTime,
+		#roastTime {
+			height: 40px;
+			line-height: 10px;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">中富移动办公</h1>
+		</header>
+		<div class="mui-content">
+			<div id="hcaption">
+				绿油喷涂机开油生产记录
+			</div>
+			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
+
+				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right" href="#">实测数据</a>
+					<div class="mui-collapse-content">
+						<p class="mui-row shiCeShuJu" style="padding:15px 0px 0px 0px">
+							<div class="mui-input-group">
+								<div class="mui-input-row">
+									<label class="mui-badge1 ">厂别:</label>
+									<a class="mui-navigate-right">
+										<span class="mui-badge1">
+											<select id="factoryName" style="margin:auto; color:#8F8F94; font-size: 14px;">
+												<option value="">请选择</option>
+												<option value="1">一厂</option>
+												<option value="2">二厂</option>
+												<option value="3">三厂</option>
+											</select>
+										</span>
+									</a>
+								</div>
+							</div>
+						</p>
+						<p class="mui-row shiCeShuJu" style="padding:25px 0px 0px 0px ">
+							<span class="mui-col-xs-3">时间:</span>
+							<span class="mui-col-xs-9"><button id="inTime" class="btn mui-btn mui-btn-block reset"  ></button></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">喷涂油墨开油数量:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="prodQty" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">油墨批次 :</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="inkBatch" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">PM添加数量:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="addPM" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">PM批次:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="pmBatch" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">PM油墨黏度:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="inkViscosity" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3"> PM保养用量:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="pmUpkeep" value="" /></span>
+						</p>
+						<p class="mui-row shiCeShuJu">
+							<span class="mui-col-xs-3">PM当班总用量:</span>
+							<span class="mui-col-xs-9"><input type="text" class="reset"  id="pmTotal" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">操作员:</span>
+							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+						</p>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
+					<a class="mui-navigate-right">备注</a>
+					<div id="" class="mui-collapse-content">
+						<textarea rows="5" class="reset"  id="remark" placeholder="30字以内"></textarea>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-list-inline" style="text-align: center;">
+				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
+				<li><button id="reset" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">重置</button></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".reset").on("click", function() {
+					$(this).css("background-color", "");
+				});
+			});
+			// 表单
+			document.getElementById("submit").addEventListener('tap', function() {
+				var information = {
+					inTime: document.getElementById("inTime").innerHTML || '',
+					prodQty: document.getElementById("prodQty").value || '',
+					inkBatch: document.getElementById("inkBatch").value || '',
+					addPM: document.getElementById("addPM").value || '',
+					inkViscosity: document.getElementById("inkViscosity").value || '',
+					pmBatch: document.getElementById("pmBatch").value || '',
+					pmUpkeep: document.getElementById("pmUpkeep").value || '',
+					pmTotal: document.getElementById("pmTotal").value || '',
+					operator: document.getElementById('operator').value || '',
+				}
+				if (information.inTime.length < 1 || information.prodQty.length < 1 ||
+					information.inkBatch.length < 1 || information.addPM.length < 1 ||
+					information.pmBatch.length < 1 || information.pmUpkeep.length < 1 ||
+					information.pmTotal.length < 1 || information.inkViscosity.length < 1 ||
+					information.operator.length < 1) {
+					var color = "#F9F900";
+					if (information.inTime.length < 1)
+						$("#inTime").css("background-color", color);
+					if (information.prodQty.length < 1)
+						$("#prodQty").css("background-color", color);
+					if (information.inkBatch.length < 1)
+						$("#inkBatch").css("background-color", color);
+					if (information.addPM.length < 1)
+						$("#addPM").css("background-color", color);
+					if (information.pmBatch.length < 1)
+						$("#pmBatch").css("background-color", color);
+					if (information.inkViscosity.length < 1)
+						$("#inkViscosity").css("background-color", color);
+					if (information.pmUpkeep.length < 1)
+						$("#pmUpkeep").css("background-color", color);
+					if (information.pmTotal.length < 1)
+						$("#pmTotal").css("background-color", color);
+					if (information.operator.length < 1)
+						$("#operator").css("background-color", color);
+					plus.nativeUI.toast("黄色区域为必填项！");
+					return;
+				} else {
+					if (!confirm("确认提交吗？"))
+						return;
+			
+					if (document.getElementById("remark").value.length > 30) {
+						mui.alert("备注超过30字");
+						return;
+					}
+					/* var facarr = {
+						'一厂': 1,
+						'二厂': 2,
+						'三厂': 3,
+						'未知': 'N/A'
+					}
+					factoryName = facarr[document.getElementById("factoryName").value]; */
+					var data = {
+						factoryName: document.getElementById("factoryName").value,
+						inTime: document.getElementById("inTime").innerHTML ,
+						prodQty: document.getElementById("prodQty").value ,
+						inkBatch: document.getElementById("inkBatch").value ,
+						addPM: document.getElementById("addPM").value ,
+						pmBatch: document.getElementById("pmBatch").value ,
+						pmUpkeep: document.getElementById("pmUpkeep").value ,
+						pmTotal: document.getElementById("pmTotal").value ,
+						operator: document.getElementById('operator').value ,
+						operator: document.getElementById('operator').value,
+						inkViscosity: document.getElementById("inkViscosity").value ,
+						remark: document.getElementById('remark').value,
+					}
+			
+					var params = JSON.stringify(data);
+					mui.ajax(realapi + '/JOVE_QIS/query/saveVerifyData.action?id=133', {
+						data: {
+							params: params,
+							isRejectItem: false
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						async: false,
+						success: function(data) {
+							if (data.isOK) {
+								mui.alert("上传成功!");
+							} else {
+								mui.alert("未知错误。");
+							}
+							$(".reset").val("");
+							$(".reset").css("background-color", "");
+			
+						},
+						error: function(xhr, type, errorThrown) {
+							mui.alert("error occur!");
+						}
+					});
+			
+				}
+			});
+			
+			
+			(function($, doc) {
+			
+				mui.plusReady(function() {
+					// 登录状态消息
+					var state = app.getState();
+					document.getElementById("operator").value = state.username;
+			
+					mui.ajax(realapi + '/JOVE_QIS/pack/getUniqueIdentifier.action', {
+						type: "post",
+						data: {},
+						dataType: "json",
+						success: function(data) {
+							document.getElementById("factoryName").value = data.factoryName;
+							//form.render("select");
+						}
+					});
+					
+					// 日期控件
+					function pad(num, n) {
+						var len = num.toString().length;
+						while (len < n) {
+							num = "0" + num;
+							len++;
+						}
+						return num;
+					}
+					var date = new Date();
+					var pickerf = function() {
+						var _self = this;
+						if (_self.picker) {
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						} else {
+							var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+								2);
+							current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+							var options = {
+								"value": current,
+								"beginYear": 2019,
+								"endYear": 2038
+							};
+							console.log("当前时间:" + current);
+							var id = this.getAttribute('id');
+					
+							_self.picker = new $.DtPicker(options);
+							_self.picker.show(function(rs) {
+								_self.innerHTML = rs.text;
+								_self.picker.dispose();
+								_self.picker = null;
+							});
+						}
+					}
+					document.getElementById("inTime").addEventListener('tap', pickerf);
+			
+					document.getElementById('reset').addEventListener('tap', function() {
+						if (!confirm('确认重置吗？')) {
+							return;
+						}
+						document.querySelectorAll(".reset").forEach(function(el) {
+							el.value = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='radio']").forEach(function(el) {
+							el.checked = '';
+						})
+						document.querySelectorAll(".shiceshuju input[type='checkbox']").forEach(function(el) {
+							el.checked = '';
+						})
+					});
+				});
+			
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

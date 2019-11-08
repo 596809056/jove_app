@@ -35,10 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -89,23 +89,23 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">生产数量:</span>
-							<span class="mui-col-xs-9"><input id="prodQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">叠板数量:</span>
-							<span class="mui-col-xs-9"><input id="addPlateQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="addPlateQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">合计检验数量:</span>
-							<span class="mui-col-xs-9"><input id="checkTotalQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkTotalQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良数量:</span>
-							<span class="mui-col-xs-9"><input id="rejectQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="rejectQty" class="reset" type="text" value="" /></span>
 						</p>
 
 						<p class="mui-row">
@@ -119,24 +119,25 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>层偏</label><input value="层偏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>钻孔偏</label><input value="钻孔偏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>靶孔偏</label><input value="靶孔偏" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" class="none"
+									 checked="checked"></span>
+								<span class="mui-col-xs-4"><label>层偏</label><input value="层偏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>钻孔偏</label><input value="钻孔偏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>靶孔偏</label><input value="靶孔偏" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">X-RAY检测:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="xrayCheck" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="xrayCheck" value="ACCEPT" type="radio">
 								<label>REJ</label><input name="xrayCheck" value="REJECT" type="radio">
 							</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定:</span>
 							<span class="mui-col-xs-9 hradio">
-								<label>ACC</label><input name="decide" value="ACCEPT" type="radio" checked="checked">
+								<label>ACC</label><input name="decide" value="ACCEPT" type="radio">
 								<label>REJ</label><input name="decide" value="REJECT" type="radio">
 							</span>
 						</p>
@@ -145,7 +146,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -157,20 +158,54 @@
 	</body>
 
 	<script type="text/javascript">
+		
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
+		//监听复选框
+		$(".none").change(function() {
+			if ($(this).is(":checked")) {
+				$(".rej").prop("checked", false);
+			}
+		});
+		$(".rej").change(function() {
+			if ($(this).is(":checked")) {
+				$(".none").prop("checked", false);
+			}
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
+			var xrayCheck;
+			var decide;
+			document.querySelectorAll("input[name='xrayCheck']").forEach(function(el) {
+				if (el.checked)
+					xrayCheck = el.value;
+			})
+			document.querySelectorAll("input[name='decide']").forEach(function(el) {
+				if (el.checked)
+					decide = el.value;
+			})
 			var information = {
 				machineNo: document.getElementById("machineNo").value || '',
 				prodQty: document.getElementById("prodQty").value || '',
 				addPlateQty: document.getElementById("addPlateQty").value || '',
 				checkTotalQty: document.getElementById("checkTotalQty").value || '',
 				rejectQty: document.getElementById("rejectQty").value || '',
+				decide: decide || '',
+				xrayCheck: xrayCheck || '',
 				operator: document.getElementById("operator").value || '',
 			}
 			if (information.machineNo.length < 1 || information.prodQty.length < 1 ||
 				information.addPlateQty.length < 1 || information.checkTotalQty.length < 1 ||
+				information.decide.length < 1 || information.xrayCheck.length < 1 ||
 				information.rejectQty.length < 1 || information.operator.length < 1) {
 				var color = "#F9F900";
+				if (information.decide.length < 1)
+					$("#decide").css("background-color", color);
+				if (information.xrayCheck.length < 1)
+					$("#xrayCheck").css("background-color", color);
 				if (information.machineNo.length < 1)
 					$("#machineNo").css("background-color", color);
 				if (information.prodQty.length < 1)
@@ -194,10 +229,8 @@
 					mui.alert("备注超过30字");
 					return;
 				}
-				var xrayCheck;
+				
 				var inspectionTool;
-				var decide;
-
 				var rejectitem = [];
 				var facarr = {
 					'一厂': 1,
@@ -210,14 +243,7 @@
 					if (el.checked)
 						inspectionTool = el.value;
 				})
-				document.querySelectorAll("input[name='xrayCheck']").forEach(function(el) {
-					if (el.checked)
-						xrayCheck = el.value;
-				})
-				document.querySelectorAll("input[name='decide']").forEach(function(el) {
-					if (el.checked)
-						decide = el.value;
-				})
+			
 				document.querySelectorAll("input[name='rejectitem']").forEach(function(el) {
 					if (el.checked)
 						rejectitem.push(el.value);
@@ -277,6 +303,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

@@ -13,7 +13,7 @@
 		<script src="../js/mui.picker.min.js"></script>
 		<script src="../js/app.js"></script>
 		<style type="text/css">
-			#inputTime,
+			#backTime,
 			#outputTime {
 				height: 40px;
 				line-height: 10px;
@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,46 +90,46 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">配刀方案:</span>
-							<span class="mui-col-xs-9"><input id="knifeScheme" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="knifeScheme" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-12" style="line-height: 52px;padding-left: 1rem;">发出</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">规格:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="specKnife" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju" id="specKnife" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="knifeQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju" id="knifeQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">钻咀尖部到胶环边缘长度:</span>
-							<span class="mui-col-xs-9" style="height: 4rem;padding-top: 2rem;"><input class="meashuju" id="knifeLen" type="text"
+							<span class="mui-col-xs-9" style="height: 4rem;padding-top: 2rem;"><input class="meashuju reset" id="knifeLen" type="text"
 								 value="" placeholder="(20.65mm +/- 0.15mm)" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">研磨次数:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="grindTime" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="grindTime" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">备料员:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="stockPart" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="stockPart" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-12" style="line-height: 52px;padding-left: 1rem;">退回</span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">断刀数量:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="cutKnifeQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="cutKnifeQty" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">退回数量:</span>
-							<span class="mui-col-xs-9"><input class="meashuju" id="backKnifeQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input class="meashuju reset" id="backKnifeQty" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">收料员:</span>
@@ -149,7 +149,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -161,6 +161,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -276,6 +281,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
@@ -517,7 +525,7 @@
 					if (!confirm("确认重置吗？"))
 						return;
 
-					document.querySelectorAll(".shiceshuju input[type='text']").forEach(function(el) {
+					document.querySelectorAll(".reset").forEach(function(el) {
 						el.value = '';
 					})
 					document.querySelectorAll(".shiceshuju button").forEach(function(el) {

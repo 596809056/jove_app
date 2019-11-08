@@ -35,7 +35,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
+						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+					</div>
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -86,29 +89,29 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							开路
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">设计点数:</span>
-							<span class="mui-col-xs-9"><input id="" type="text" value="5" placeholder="" readonly="readonly" style="background: #D8D8D8;" /></span>
+							<span class="mui-col-xs-9"><input id="" class="reset" type="text" value="5" placeholder="" readonly="readonly" style="background: #D8D8D8;" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="openCircuitMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="openCircuitMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							短路
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">设计点数:</span>
-							<span class="mui-col-xs-9"><input id="" type="text" value="5" placeholder="" readonly="readonly" style="background: #D8D8D8;" /></span>
+							<span class="mui-col-xs-9"><input id="" class="reset" type="text" value="5" placeholder="" readonly="readonly" style="background: #D8D8D8;" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="shortCircuitMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="shortCircuitMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							残铜
@@ -119,7 +122,7 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="liftedLandsMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="liftedLandsMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							缺口/针孔
@@ -130,7 +133,7 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="gapOrPinholeMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="gapOrPinholeMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							线突出
@@ -141,7 +144,7 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="lineHighlightMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="lineHighlightMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="font-weight: bolder;padding-left: 0.3rem;padding-bottom: 0.3rem;">
 							焊盘缺失
@@ -152,16 +155,16 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测点数:</span>
-							<span class="mui-col-xs-9"><input id="padGapMea" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="padGapMea" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<hr>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">问题点数:</span>
-							<span class="mui-col-xs-9"><input id="problemPoints" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="problemPoints" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">假点数:</span>
-							<span class="mui-col-xs-9"><input id="falsePoints" type="text" value="" placeholder="" /></span>
+							<span class="mui-col-xs-9"><input id="falsePoints" class="reset" type="text" value="" placeholder="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检测结果:</span>
@@ -184,7 +187,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -196,6 +199,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			document.querySelectorAll("input[name='decide']").forEach(function(el) {
@@ -325,6 +333,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

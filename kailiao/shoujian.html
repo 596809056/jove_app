@@ -27,10 +27,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -90,15 +90,15 @@
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">投料数量:</span>
-							<span class="mui-col-xs-9"><input id="inputnumber" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inputnumber" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检查数量:</span>
-							<span class="mui-col-xs-9"><input id="checknumber" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checknumber" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板材类型:</span>
-							<span class="mui-col-xs-9"><input id="supppn" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="supppn" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">是否含铜:</span>
@@ -109,43 +109,43 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求板厚:</span>
-							<span class="mui-col-xs-9"><input id="plateply" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="plateply" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板厚公差:</span>
-							<span class="mui-col-xs-9"><input id="plytolerance" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="plytolerance" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚A:</span>
-							<span class="mui-col-xs-9"><input id="measurea" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measurea" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚B:</span>
-							<span class="mui-col-xs-9"><input id="measureb" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measureb" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚C:</span>
-							<span class="mui-col-xs-9"><input id="measurec" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measurec" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测板厚D:</span>
-							<span class="mui-col-xs-9"><input id="measured" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measured" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">铜厚:</span>
-							<span class="mui-col-xs-9"><input id="copperply" type="text" value="" placeholder="单位oz" /></span>
+							<span class="mui-col-xs-9"><input id="copperply" class="reset" type="text" value="" placeholder="单位oz" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">要求尺寸:</span>
-							<span class="mui-col-xs-9"><input id="requiredsize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="requiredsize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">尺寸公差:</span>
-							<span class="mui-col-xs-9"><input id="sizetolerance" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="sizetolerance" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">实测尺寸:</span>
-							<span class="mui-col-xs-9"><input id="measuresize" type="text" value="" placeholder="单位mm" /></span>
+							<span class="mui-col-xs-9"><input id="measuresize" class="reset" type="text" value="" placeholder="单位mm" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">特殊尺寸:</span>
@@ -172,17 +172,18 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">不良项:</span>
 							<span class="mui-col-xs-9 mui-row hcheckbox">
-								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" checked="checked"></span>
-								<span class="mui-col-xs-4"><label>板厚不符</label><input value="板厚不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜厚不符</label><input value="铜厚不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>板边披锋</label><input value="板边披锋" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>圆角不良</label><input value="圆角不良" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>板材不符</label><input value="板材不符" name="rejectitem" type="checkbox"></span>
-								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>无不良</label><input value="无不良" name="rejectitem" type="checkbox" class="none"
+									 checked="checked"></span>
+								<span class="mui-col-xs-4"><label>板厚不符</label><input value="板厚不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜厚不符</label><input value="铜厚不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>尺寸不符</label><input value="尺寸不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>三角擦花</label><input value="三角擦花" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>凹坑/凹痕</label><input value="凹坑/凹痕" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板边披锋</label><input value="板边披锋" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>铜皮刮伤</label><input value="铜皮刮伤" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>圆角不良</label><input value="圆角不良" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>板材不符</label><input value="板材不符" name="rejectitem" class="rej" type="checkbox"></span>
+								<span class="mui-col-xs-4"><label>其他</label><input value="其他" name="rejectitem" class="rej" type="checkbox"></span>
 							</span>
 						</p>
 					</div>
@@ -202,6 +203,22 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+					$(".reset").on("click", function() {
+						$(this).css("background-color", "");
+					});
+				});
+				//监听复选框
+				$(".none").change(function() {
+					if ($(this).is(":checked")) {
+						$(".rej").prop("checked", false);
+					}
+				});
+				$(".rej").change(function() {
+					if ($(this).is(":checked")) {
+						$(".none").prop("checked", false);
+					}
+				});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var iscopper = "";
@@ -245,55 +262,55 @@
 				rejectitem: rejectitem || '',
 				inspector: document.getElementById("inspector").value || ''
 			}
-			if (information.inputnumber.length < 1 || information.checknumber.length < 1 || 
+			if (information.inputnumber.length < 1 || information.checknumber.length < 1 ||
 				information.supppn.length < 1 || information.iscopper.length < 1 ||
 				information.plateply.length < 1 || information.plytolerance.length < 1 ||
-				information.measurea.length < 1 || information.measureb.length < 1|| 
+				information.measurea.length < 1 || information.measureb.length < 1 ||
 				information.measurec.length < 1 || information.measured.length < 1 ||
 				information.copperply.length < 1 || information.sizetolerance.length < 1 ||
 				information.requiredsize.length < 1 || information.plytolerance.length < 1 ||
 				information.measuresize.length < 1 || information.speccut.length < 1 ||
-				information.decide.length < 1 || information.rejectitem.length < 1|| 
-				information.inspector.length < 1 ) {
+				information.decide.length < 1 || information.rejectitem.length < 1 ||
+				information.inspector.length < 1) {
 				var color = "#F9F900";
-				if(information.inputnumber.length < 1)
-					$("#inputnumber").css("background-color",color);
-				if(information.checknumber.length < 1)
-					$("#checknumber").css("background-color",color);
-				if(information.supppn.length < 1)
-					$("#supppn").css("background-color",color);
-				if(information.iscopper.length < 1)
-					$("#iscopper").css("background-color",color);
-				if(information.plateply.length < 1)
-					$("#plateply").css("background-color",color);
-				if(information.plytolerance.length < 1)
-					$("#plytolerance").css("background-color",color);
-				if(information.measurea.length < 1)
-					$("#measurea").css("background-color",color);
-				if(information.measureb.length < 1)
-					$("#measureb").css("background-color",color);
-				if(information.measurec.length < 1)
-					$("#measurec").css("background-color",color);
-				if(information.measured.length < 1)
-					$("#measured").css("background-color",color);
-				if(information.copperply.length < 1)
-					$("#copperply").css("background-color",color);
-				if(information.sizetolerance.length < 1)
-					$("#sizetolerance").css("background-color",color);
-				if(information.requiredsize.length < 1)
-					$("#requiredsize").css("background-color",color);
-				if(information.plytolerance.length < 1)
-					$("#plytolerance").css("background-color",color);
-				if(information.measuresize.length < 1)
-					$("#measuresize").css("background-color",color);
-				if(information.speccut.length < 1)
-					$("#speccut").css("background-color",color);
-				if(information.decide.length < 1)
-					$("#decide").css("background-color",color);
-				if(information.rejectitem.length < 1)
-					$("#rejectitem").css("background-color",color);
-				if(information.inspector.length < 1)
-					$("#inspector").css("background-color",color);
+				if (information.inputnumber.length < 1)
+					$("#inputnumber").css("background-color", color);
+				if (information.checknumber.length < 1)
+					$("#checknumber").css("background-color", color);
+				if (information.supppn.length < 1)
+					$("#supppn").css("background-color", color);
+				if (information.iscopper.length < 1)
+					$("#iscopper").css("background-color", color);
+				if (information.plateply.length < 1)
+					$("#plateply").css("background-color", color);
+				if (information.plytolerance.length < 1)
+					$("#plytolerance").css("background-color", color);
+				if (information.measurea.length < 1)
+					$("#measurea").css("background-color", color);
+				if (information.measureb.length < 1)
+					$("#measureb").css("background-color", color);
+				if (information.measurec.length < 1)
+					$("#measurec").css("background-color", color);
+				if (information.measured.length < 1)
+					$("#measured").css("background-color", color);
+				if (information.copperply.length < 1)
+					$("#copperply").css("background-color", color);
+				if (information.sizetolerance.length < 1)
+					$("#sizetolerance").css("background-color", color);
+				if (information.requiredsize.length < 1)
+					$("#requiredsize").css("background-color", color);
+				if (information.plytolerance.length < 1)
+					$("#plytolerance").css("background-color", color);
+				if (information.measuresize.length < 1)
+					$("#measuresize").css("background-color", color);
+				if (information.speccut.length < 1)
+					$("#speccut").css("background-color", color);
+				if (information.decide.length < 1)
+					$("#decide").css("background-color", color);
+				if (information.rejectitem.length < 1)
+					$("#rejectitem").css("background-color", color);
+				if (information.inspector.length < 1)
+					$("#inspector").css("background-color", color);
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
 			} else {
@@ -304,7 +321,7 @@
 					mui.alert("备注超过30字");
 					return;
 				}
-				
+
 				var facarr = {
 					'一厂': 1,
 					'二厂': 2,
@@ -312,7 +329,7 @@
 					'未知': 'N/A'
 				}
 				factoryName = facarr[document.getElementById("factoryName").value];
-				
+
 				var data = {
 					factoryName: factoryName,
 					mo: document.getElementById("mo").value,
@@ -373,6 +390,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}

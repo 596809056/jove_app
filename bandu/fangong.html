@@ -36,10 +36,10 @@
 			<ul class="mui-list-unstyled mui-table-view biaodan" style="margin-top: 0;">
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
@@ -91,7 +91,7 @@
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返工线别:</span>
 							<span class="mui-col-xs-9">
-								<select id="reworkClassify" name="reworkClassify">
+								<select id="reworkClassify" class="reset" name="reworkClassify">
 									<option value="" selected="selected">请选择</option>
 									<option value="内层化学前处理">内层化学前处理</option>
 									<option value="沉铜A线">沉铜A线</option>
@@ -116,23 +116,23 @@
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返工数量:</span>
-							<span class="mui-col-xs-9"><input id="reworkQty" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="reworkQty" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返工原因:</span>
-							<span class="mui-col-xs-9"><input id="reworkReason" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="reworkReason" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">返工次数:</span>
-							<span class="mui-col-xs-9"><input id="reworkTime" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="reworkTime" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">标准要求:</span>
-							<span class="mui-col-xs-9"><input id="standardRequest" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="standardRequest" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">检测数据:</span>
-							<span class="mui-col-xs-9"><input id="inspectionData" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="inspectionData" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">判定结果:</span>
@@ -158,7 +158,7 @@
 				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">备注</a>
 					<div class="mui-collapse-content">
-						<textarea rows="5" cols="" id="remark"></textarea>
+						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
 					</div>
 				</li>
 			</ul>
@@ -170,6 +170,11 @@
 	</body>
 
 	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".reset").on("click", function() {
+				$(this).css("background-color", "");
+			});
+		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
@@ -264,6 +269,9 @@
 						} else {
 							mui.alert("未知错误。");
 						}
+						$(".reset").val("");
+						$(".reset").css("background-color", "");
+						$(".tiaoMa input[type='text']").val("");
 					}
 				});
 			}
