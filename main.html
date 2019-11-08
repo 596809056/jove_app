@@ -78,18 +78,18 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script>
-			// 用户状态
-			var state = app.getState();
-			account.innerText = state.account;
-			if(state.account == null || state.account == undefined || state.account == '' )
-			{
-				mui.openWindow('login.html');
-			}
 			
 			(function($, doc) {
 				$.init();
+				// 用户状态
+				var state = app.getState();
 				var settings = app.getSettings();
-				var account = doc.getElementById('account');
+				var account = document.getElementById('account');
+				// account.innerText = state.account;
+				if(state.account == null || state.account == undefined || state.account == '' )
+				{
+					mui.openWindow('login.html');
+				}
 				
 				$.plusReady(function() {
 					//设置键
@@ -162,18 +162,24 @@
 							timeout:3000,//超时时间设置为10秒；
 							headers:{'Content-Type':'application/json'},
 							success: function(res) {
-								
 								if(res.code == 0) {
 									
 									console.log("当前服务器号：" + res.data.version)
 									console.log("当前版本号：" + wgtVer)
+									console.log("当前网络：" + netstatus)
 									
 									if(checkVer(wgtVer,res.data.version) > 0){
 										mui.confirm('是否更新？','发现新版本',['取消','确认'],function (e) {
 											if (e.index == 1) {
 												// 下载任务
+												durl = '';
+												if(netstatus == 'out')
+													durl = res.data.urlout
+												else
+													durl = res.data.urlin
+												
 												var dtask = plus.downloader.createDownload(
-													res.data.url,
+													durl,
 													{
 														"priority": 99,
 														"timeout": 5,  
