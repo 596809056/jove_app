@@ -169,7 +169,8 @@
 									console.log("当前网络：" + netstatus)
 									
 									if(checkVer(wgtVer,res.data.version) > 0){
-										mui.confirm('是否更新？','发现新版本',['取消','确认'],function (e) {
+										
+										mui.confirm( '更新内容：' + res.data.desc + '<br/>是否更新？','发现新版本',['取消','确认'],function (e) {
 											if (e.index == 1) {
 												// 下载任务
 												durl = '';
