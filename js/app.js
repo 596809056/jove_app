@@ -4,7 +4,10 @@
  * 请注意将相关方法调整成 “基于服务端Service” 的实现。
  **/
  // 测试内外网状态，如果内网能连就不需要外网
- var realhost = 'http://192.168.30.96:8080';
+ var netstatus = '';
+ // php接口
+ var realhost = 'http://10.10.0.138:8888';
+ // 录入数据
  var realapi = 'https://192.168.20.232:8080';
  mui.ajax(realhost + '/api/user/login',{
  		data:{},
@@ -15,13 +18,15 @@
  		headers:{'Content-Type':'application/json'},
  		success:function(data){
  			// 连接内网成功
- 			console.log('内网 success');
+			netstatus = 'in';
+ 			console.log('内网 success:'+realhost);
  		},
  		error:function(xhr,type,errorThrown){
  			// 连接内网失败
-			console.log('change to 外网');
+			netstatus = 'out';
  			realhost = 'http://125.91.116.227:8888';
  			realapi = 'http://125.91.116.227:8181';
+			console.log('change to 外网:'+realhost);
  		}
  });
 
