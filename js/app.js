@@ -3,12 +3,46 @@
  * 当您要参考这个演示程序进行相关 app 的开发时，
  * 请注意将相关方法调整成 “基于服务端Service” 的实现。
  **/
+if (!Array.prototype.forEach) {
+ Array.prototype.forEach = function(callback, thisArg) {  
+	 var T, k;  
+	 if (this == null) {  
+		 throw new TypeError(" this is null or not defined");  
+	 }  
+	 var O = Object(this);  
+	 var len = O.length >>> 0; // Hack to convert O.length to a UInt32  
+	 if ({}.toString.call(callback) != "[object Function]") {  
+		 throw new TypeError(callback + " is not a function");  
+	 }  
+	 if (thisArg) {  
+		 T = thisArg;  
+	 }  
+	 k = 0;  
+	 while (k < len) {  
+		 var kValue;  
+		 if (k in O) {  
+			 kValue = O[k];  
+			 callback.call(T, kValue, k, O);  
+		 }  
+		 k++;  
+	 }  
+ };  
+}
+
+if (window.NodeList && !NodeList.prototype.forEach) {
+        NodeList.prototype.forEach = function (callback, thisArg) {
+            thisArg = thisArg || window;
+            for (let i = 0; i < this.length; i++) {
+                callback.call(thisArg, this[i], i, this);
+            }
+        };
+}
+
  // 测试内外网状态，如果内网能连就不需要外网
  var netstatus = '';
  // php接口
- var realhost = 'http://10.10.0.138:8888';
- // 录入数据
- var realapi = 'https://192.168.20.232:8080';
+ var realhost = 'http://125.91.116.227:8888';
+ var realapi = 'http://125.91.116.227:8181';
  mui.ajax(realhost + '/api/user/login',{
  		data:{},
  		async: true,
@@ -17,16 +51,16 @@
  		timeout:3000,//超时时间设置为3秒；
  		headers:{'Content-Type':'application/json'},
  		success:function(data){
- 			// 连接内网成功
-			netstatus = 'in';
- 			console.log('内网 success:'+realhost);
+ 			// 连接外网成功
+			netstatus = 'out';
+ 			console.log('change to 外网:'+realhost);
  		},
  		error:function(xhr,type,errorThrown){
- 			// 连接内网失败
-			netstatus = 'out';
- 			realhost = 'http://125.91.116.227:8888';
- 			realapi = 'http://125.91.116.227:8181';
-			console.log('change to 外网:'+realhost);
+ 			// 连接外网失败
+			netstatus = 'in';
+ 			realhost = 'http://10.10.0.138:8888';
+ 			realapi = 'https://192.168.20.232:8080';
+			console.log('change to 内网:'+realhost);
  		}
  });
 
@@ -60,10 +94,10 @@
 					member:loginInfo.account,
 					password:loginInfo.password,
 				},
-				async:true,
+				async: true,
 				dataType:'json',//服务器返回json格式数据
 				type:'post',//HTTP请求类型
-				timeout:3000,//超时时间设置为10秒；
+				timeout: 10000,//超时时间设置为10秒；
 				headers:{'Content-Type':'application/json'},	              
 				success:function(data){
 					//服务器返回响应，根据响应结果，分析是否登录成功;
