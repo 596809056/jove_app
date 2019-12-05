@@ -31,7 +31,7 @@
         "Share" : {},
         "VideoPlayer" : {},
         "Speech" : {},
-        "OAuth" : {}
+        "OAuth" : {},"Webview":{},"NativeUI":{},"Navigator":{}
     },
     "plus" : {
         "splashscreen" : {
@@ -285,7 +285,12 @@
 					"lvyou/FanGong.html",
 					"yahe/ronghe.html",
 					"yahe/ppChouYou.html",
-					"diance/feizhen.html"
+					"diance/feizhen.html",
+					"ganmo/GanMoChuShu.html",
+					"pinzhi/dutongqiepian.html",
+					"yaoshuitianjia/tongganglulizi.html",
+					"ganmo/CCDbaoguang.html",
+					"ganmo/quanzidongbaoguang.html"
 				],
 				"priority": 0
 			},
@@ -339,6 +344,34 @@
 				"priority": 0
 			},
 			"diance/feizhen.html": {
+				"resources": [],
+				"refer": [
+					"scan.html"
+				],
+				"priority": 0
+			},
+			"ganmo/GanMoChuShu.html": {
+				"resources": [],
+				"refer": [
+					"scan.html"
+				],
+				"priority": 0
+			},
+			"pinzhi/dutongqiepian.html": {
+				"resources": [],
+				"refer": [
+					"scan.html"
+				],
+				"priority": 0
+			},
+			"ganmo/CCDbaoguang.html": {
+				"resources": [],
+				"refer": [
+					"scan.html"
+				],
+				"priority": 0
+			},
+			"ganmo/quanzidongbaoguang.html": {
 				"resources": [],
 				"refer": [
 					"scan.html"
