@@ -89,6 +89,10 @@
 					<a class="mui-navigate-right" href="#">实测数据</a>
 					<div class="mui-collapse-content">
 						<p class="mui-row shiceshuju">
+							<span class="mui-col-xs-3">机台号:</span>
+							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
+						</p>
+						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">数量:</span>
 							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
 						</p>
@@ -155,6 +159,7 @@
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
 			var information = {
+				machineNo: document.getElementById("machineNo").value || '',
 				upOrlowFrame: upOrlowFrame.options[document.getElementById("upOrlowFrame").selectedIndex].value || '',
 				prodQty: document.getElementById("prodQty").value || '',
 				prodNum: document.getElementById("prodNum").value || '',
@@ -167,8 +172,11 @@
 			if (information.upOrlowFrame.length < 1 || information.prodQty.length < 1 || 
 				information.prodNum.length < 1 || information.exposureEnergy.length < 1 ||
 				information.tableVacuum.length < 1 || information.confirmor.length < 1 ||
-				information.standardRequest.length < 1 || information.operator.length < 1 ) {
+				information.standardRequest.length < 1 || information.machineNo.length < 1 ||
+				information.operator.length < 1 ) {
 				var color = "#F9F900";
+				if(information.machineNo.length < 1)
+					$("#machineNo").css("background-color",color);
 				if(information.upOrlowFrame.length < 1)
 					$("#upOrlowFrame").css("background-color",color);
 				if(information.prodQty.length < 1)
@@ -215,6 +223,7 @@
 						d06rkey: document.getElementById("d06rkey").value,
 				
 						upOrlowFrame: upOrlowFrame.options[upOrlowFrame.selectedIndex].value,
+						machineNo: document.getElementById("machineNo").value,
 						prodQty: document.getElementById("prodQty").value,
 						prodNum: document.getElementById("prodNum").value,
 						exposureEnergy: document.getElementById("exposureEnergy").value,
