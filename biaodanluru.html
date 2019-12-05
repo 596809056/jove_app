@@ -712,6 +712,7 @@
 				var account = doc.getElementById('account');
 				
 				var nodes = document.querySelectorAll("nav a");
+
                                 Array.from(nodes).forEach((el, idx) => {
                                         //Todo
                                         el.addEventListener('tap',function(){
@@ -721,6 +722,7 @@
                                                 });
                                         });
                                 })
+
 				
 				$.plusReady(function() {
 					//设置键
@@ -746,12 +748,15 @@
 					});
 					
 					var nodes = document.querySelectorAll(".pro");
+
                                 Array.from(nodes).forEach((el, idx) => {
                                         //Todo
                                         var idstr = el.id;
 										var urlarr = idstr.split('_');
 										var url = urlarr[0] + '/' + urlarr[1] + '.html';
+
 						
+
                                         el.addEventListener('tap',function(){
                                                 console.log(el.id)
                                                 mui.openWindow({
@@ -773,6 +778,7 @@
                                         });
                                 })
 					
+
 					
 				});
 			}(mui, document));
