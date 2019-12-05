@@ -205,10 +205,10 @@
 									<a class="mui-navigate-right">X-RAY钻靶</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="yahe_zonghuayaoshui">
-									<a class="mui-navigate-right">粽化药水补加</a>
+									<a class="mui-navigate-right">棕化药水补加</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="yahe_zonghuafangong">
-									<a class="mui-navigate-right">粽化返工</a>
+									<a class="mui-navigate-right">棕化返工</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="yahe_ccdZuanBaiJi">
 									<a class="mui-navigate-right">CCD钻靶机</a>
@@ -235,7 +235,7 @@
 									<a class="mui-navigate-right">PP裁切</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="yahe_ppChouYou">
-									<a class="mui-navigate-right">PP抽油</a>
+									<a class="mui-navigate-right">PP抽湿</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="yahe_ZongHuaHouKaoBan">
 									<a class="mui-navigate-right">棕化后烤板</a>
@@ -503,18 +503,18 @@
 								<li class="mui-table-view-cell pro" id="zifu_ZiFuShengChang">
 									<a class="mui-navigate-right">字符生产</a>
 								</li>
-								<li class="mui-table-view-cell pro" id="zifu_GongBanJiLu">
+								<!--<li class="mui-table-view-cell pro" id="zifu_GongBanJiLu">
 									<a class="mui-navigate-right">烘板记录</a>
-								</li>
+								</li>-->
 								<li class="mui-table-view-cell pro" id="zifu_ZiFuHouGuHua">
 									<a class="mui-navigate-right">字符后固化</a>
 								</li>
 								<li class="mui-table-view-cell pro" id="zifu_WenZiPenYin">
 									<a class="mui-navigate-right">文字喷印</a>
 								</li>
-								<li class="mui-table-view-cell pro" id="zifu_XiWangJiLu">
+								<!--<li class="mui-table-view-cell pro" id="zifu_XiWangJiLu">
 									<a class="mui-navigate-right">洗网记录</a>
-								</li>
+								</li>-->
 								<li class="mui-table-view-cell pro" id="zifu_saikongshengchan">
 									<a class="mui-navigate-right">塞孔机生产</a>
 								</li>
@@ -711,14 +711,16 @@
 				var settings = app.getSettings();
 				var account = doc.getElementById('account');
 				
-				document.querySelectorAll("nav a").forEach(function(el){
-					el.addEventListener('tap',function(){
-						console.log(el.id)
-						$.openWindow({
-							url: el.id
-						});
-					});
-				})
+				var nodes = document.querySelectorAll("nav a");
+                                Array.from(nodes).forEach((el, idx) => {
+                                        //Todo
+                                        el.addEventListener('tap',function(){
+                                                console.log(el.id)
+                                                $.openWindow({
+                                                        url: el.id
+                                                });
+                                        });
+                                })
 				
 				$.plusReady(function() {
 					//设置键
@@ -743,31 +745,34 @@
 						});
 					});
 					
-					
-					document.querySelectorAll(".pro").forEach(function(el){
-						var idstr = el.id;
-						var urlarr = idstr.split('_');
-						var url = urlarr[0] + '/' + urlarr[1] + '.html';
+					var nodes = document.querySelectorAll(".pro");
+                                Array.from(nodes).forEach((el, idx) => {
+                                        //Todo
+                                        var idstr = el.id;
+										var urlarr = idstr.split('_');
+										var url = urlarr[0] + '/' + urlarr[1] + '.html';
 						
-						el.addEventListener('tap',function(){
-							mui.openWindow({
-								url: url,
-								id: idstr,
-								styles:{},
-								extras:{
-									openurl: url
-								},
-								createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
-								show:{
-								  autoShow:true,//页面loaded事件发生后自动显示，默认为true；
-								},
-								waiting:{
-								  autoShow:true,//自动显示等待框，默认为true
-								  title:'正在加载...',//等待对话框上显示的提示内容
-								}
-							});
-						});
-					});
+                                        el.addEventListener('tap',function(){
+                                                console.log(el.id)
+                                                mui.openWindow({
+                                                        url: url,
+														id: idstr,
+														styles:{},
+														extras:{
+															openurl: url
+														},
+														createNew:false,//是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+														show:{
+								  							autoShow:true,//页面loaded事件发生后自动显示，默认为true；
+														},
+														waiting:{
+								 							 autoShow:true,//自动显示等待框，默认为true
+								  							title:'正在加载...',//等待对话框上显示的提示内容
+														}
+                                                });
+                                        });
+                                })
+					
 					
 				});
 			}(mui, document));

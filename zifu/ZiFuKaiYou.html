@@ -220,9 +220,7 @@
 				}
 				if (information.prodQty.length < 1 || information.oilSupplier.length < 1 ||
 					information.oilPn.length < 1 || information.solderBatchNumber.length < 1 ||
-					information.oilColor.length < 1 || information.startManuallyStirring.length < 1 ||
-					information.stopManuallyStirring.length < 1 || information.startMixingMachine.length < 1 ||
-					information.stopMixingMachine.length < 1 || information.oilViscosity.length < 1 ||
+					information.oilColor.length < 1 || information.oilViscosity.length < 1 ||
 					information.operator.length < 1) {
 					var color = "#F9F900";
 					if (information.prodQty.length < 1)
@@ -235,19 +233,10 @@
 						$("#solderBatchNumber").css("background-color", color);
 					if (information.oilColor.length < 1)
 						$("#oilColor").css("background-color", color);
-					if (information.startManuallyStirring.length < 1)
-						$("#startManuallyStirring").css("background-color", color);
-					if (information.stopManuallyStirring.length < 1)
-						$("#stopManuallyStirring").css("background-color", color);
-					if (information.startMixingMachine.length < 1)
-						$("#startMixingMachine").css("background-color", color);
-					if (information.stopMixingMachine.length < 1)
-						$("#stopMixingMachine").css("background-color", color);
 					if (information.oilViscosity.length < 1)
 						$("#oilViscosity").css("background-color", color);
 					if (information.operator.length < 1)
 						$("#operator").css("background-color", color);
-
 					plus.nativeUI.toast("黄色区域为必填项！");
 					return;
 				} else {
@@ -487,9 +476,9 @@
 								_self.picker = null;
 							});
 						} else {
-							 var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
-								2); 
-							current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
+							 /*var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(),
+								2); */
+							current = pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
 							var options = {
 								"value": current,
 								"beginYear": 2019,

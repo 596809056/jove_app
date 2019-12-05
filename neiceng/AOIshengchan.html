@@ -217,7 +217,7 @@
 			})
 			document.querySelectorAll("input[name='checkType']").forEach(function(el) {
 				if (el.checked)
-					checkType = el.checkType;
+					checkType = el.value;
 			})
 			var information = {
 				prodQty: document.getElementById("prodQty").value || '',
