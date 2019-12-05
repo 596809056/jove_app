@@ -4,7 +4,7 @@
  * 请注意将相关方法调整成 “基于服务端Service” 的实现。
  **/
 if (!Array.prototype.forEach) {
- Array.prototype.forEach = function(callback, thisArg) {  
+	Array.prototype.forEach = function(callback, thisArg) {  
 	 var T, k;  
 	 if (this == null) {  
 		 throw new TypeError(" this is null or not defined");  
@@ -26,7 +26,7 @@ if (!Array.prototype.forEach) {
 		 }  
 		 k++;  
 	 }  
- };  
+	};  
 }
 
 if (window.NodeList && !NodeList.prototype.forEach) {
