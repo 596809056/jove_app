@@ -58,26 +58,26 @@ if (window.NodeList && !NodeList.prototype.forEach) {
  		error:function(xhr,type,errorThrown){
  			// 连接外网失败
  			netstatus = 'in';
- realhost = 'http://10.10.0.138:8888';
- realapi = 'https://192.168.20.232:8080';
- mui.ajax(realhost + '/api/user/login',{
- 		data:{},
- 		async: true,
- 		dataType:'json',//服务器返回json格式数据
- 		type:'post',//HTTP请求类型
- 		timeout:3000,//超时时间设置为3秒；
- 		headers:{'Content-Type':'application/json'},
- 		success:function(data){
- 			// 连接内网1成功
- 			console.log('change to 内网1:'+realhost);
- 		},
- 		error:function(xhr,type,errorThrown){
- 			// 连接内网1失败
- 			realhost = 'http://10.10.0.138:8888';
- 			realapi = 'http://10.10.0.138:8181';
-			console.log('change to 内网2:'+realhost);
- 		}
- });
+			realhost = 'http://10.10.0.138:8888';
+			realapi = 'https://192.168.20.232:8080';
+			mui.ajax(realhost + '/api/user/login',{
+				data:{},
+				async: true,
+				dataType:'json',//服务器返回json格式数据
+				type:'post',//HTTP请求类型
+				timeout:3000,//超时时间设置为3秒；
+				headers:{'Content-Type':'application/json'},
+				success:function(data){
+					// 连接内网1成功
+					console.log('change to 内网1:'+realhost);
+				},
+				error:function(xhr,type,errorThrown){
+					// 连接内网1失败
+					realhost = 'http://10.10.0.138:8888';
+					realapi = 'http://10.10.0.138:8181';
+					console.log('change to 内网2:'+realhost);
+				}
+			});
  		}
  });
 
