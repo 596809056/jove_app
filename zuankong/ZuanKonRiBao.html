@@ -7,7 +7,9 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/biaodan.css" />
+		<link rel="stylesheet" type="text/css" href="../js/layui/css/layui.css">
 		<script type="text/javascript" src="../js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="../js/layui/layui.all.js"></script>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.picker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
@@ -64,63 +66,86 @@
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: cadetblue;text-align: left;padding: 0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">条码信息</a>
 					<div class="mui-collapse-content tiaoMa">
-						<p><input id="code" type="text" value="" data-id="tiaoma1" placeholder="点击扫描" /></p>
+						<p><input id="code" type="text" value="  -511911-05-00" data-id="tiaoma1" placeholder="点击扫描" /></p>
 					</div>
 					<div class="mui-collapse-content tiaoMa">
 						<p><input id="barcode" type="text" class="scan" value="" data-id="tiaoma" placeholder="轻触以打开扫描" readonly="readonly" /></p>
 					</div>
 				</li>
+				
 				<li class="mui-table-view-cell mui-collapse" style="color: royalblue;text-align: left;padding:0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">基础数据</a>
 					<div class="mui-collapse-content">
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">厂别:</span>
-							<span class="mui-col-xs-9"><input id="factoryName" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="factoryName" name="factoryName" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">MO号:</span>
-							<span class="mui-col-xs-9"><input id="mo" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mo" name="mo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">生产编码:</span>
-							<span class="mui-col-xs-9"><input id="mfg" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="mfg" name="mfg" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">工单号:</span>
-							<span class="mui-col-xs-9"><input id="wo" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="wo" name="wo" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户代码:</span>
-							<span class="mui-col-xs-9"><input id="custcode" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custcode" name="custcode" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">客户型号:</span>
-							<span class="mui-col-xs-9"><input id="custpart" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="custpart" name="custpart" class="reset" type="text" value="" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">LOT号:</span>
-							<span class="mui-col-xs-9"><input id="lot" class="reset" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="lot" name="lot" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju">
 							<span class="mui-col-xs-3">周期:</span>
-							<span class="mui-col-xs-9"><input id="datecode" class="reset" type="text" value="N/A" readonly /></span>
+							<span class="mui-col-xs-9"><input id="datecode" name="datecode" class="reset" type="text" value="N/A" readonly /></span>
 						</p>
 						<p class="mui-row jichushuju" style="display: none;">
 							<span class="mui-col-xs-3">d06rkey:</span>
-							<span class="mui-col-xs-9"><input id="d06rkey" class="reset" type="text" value="" readonly /></span>
+							<span class="mui-col-xs-9"><input id="d06rkey" name="d06rkey" class="reset" type="text" value="" readonly /></span>
 						</p>
 					</div>
 				</li>
+				<div id="test">
+			<div class="layui-inline">
+			<label class="layui-form-label">班别</label>
+				<div class="layui-input-inline">
+					<input type="text" id="class" 
+						autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+			<label class="layui-form-label">操作员</label>
+				<div class="layui-input-inline">
+					<input type="text" id="operator" 
+						autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+			<label class="layui-form-label">机台号</label>
+				<div class="layui-input-inline">
+					<input type="text" id="machineNo" 
+						autocomplete="off" class="layui-input">
+				</div>
+			</div>
 				<li class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding:0.5rem 1rem;">
 					<a class="mui-navigate-right" href="#">实测数据</a>
-					<div class="mui-collapse-content">
+					<div class="mui-collapse-content" id="test">
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">机台号:</span>
-							<span class="mui-col-xs-9"><input id="machineNo" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="machineNo1" name="machineNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
-							<span class="mui-col-xs-3">数量(panel/set):</span>
-							<span class="mui-col-xs-9"><input id="prodQty" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-3">班别:</span>
+							<span class="mui-col-xs-9"><input id="class1" name="class" class="reset" type="text" value="" /></span>
 						</p>
 
 						<div id="jianYan">
@@ -129,77 +154,83 @@
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数1:</span>
-							<span class="mui-col-xs-9"><input id="laminatea" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminatea1" name="laminatea" class="reset calc" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数2:</span>
-							<span class="mui-col-xs-9"><input id="laminateb" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminateb1" name="laminateb" class="reset calc" type="text" value="" /></span>
 						</p>
 
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数3:</span>
-							<span class="mui-col-xs-9"><input id="laminatec" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminatec1" name="laminatec" class="reset calc" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数4:</span>
-							<span class="mui-col-xs-9"><input id="laminated" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminated1" name="laminated" class="reset calc" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数5:</span>
-							<span class="mui-col-xs-9"><input id="laminatee" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminatee1" name="laminatee" class="reset calc" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">主叠板数6:</span>
-							<span class="mui-col-xs-9"><input id="laminatef" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="laminatef1" name="laminatef" class="reset calc" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju" style="padding: 40px 0px 0px 0px;">
 							<span class="mui-col-xs-3">总孔数:</span>
-							<span class="mui-col-xs-9"><input id="totalHoleNo" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="totalHoleNo1" name="totalHoleNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">特殊孔数:</span>
-							<span class="mui-col-xs-9"><input id="specHoleNo" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="specHoleNo1" name"specHoleNo" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">最小孔径:</span>
-							<span class="mui-col-xs-9"><input id="minHoleDia" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="minHoleDia1" name="minHoleDia" class="reset minHoleDia" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">板厚:</span>
-							<span class="mui-col-xs-9"><input id="plateThick" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="plateThick1" name="plateThick" class="reset plateThick" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">总片数:</span>
-							<span class="mui-col-xs-9"><input id="totalNum" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="totalNum1" name="totalNum" class="reset" type="text" value="0"  style="cursor:not-allowed;background-color: #EEEEEE" disabled="disabled"/></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">上板时间:</span>
-							<span class="mui-col-xs-9"><button id="upperTime" class="btn mui-btn mui-btn-block"></button></span>
+							<span class="mui-col-xs-9"><button id="upperTime1" name="upperTime" class="btn mui-btn mui-btn-block"></button></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">下板时间:</span>
-							<span class="mui-col-xs-9"><button id="lowerTime" class="btn mui-btn mui-btn-block"></button></span>
+							<span class="mui-col-xs-9"><button id="lowerTime1" name="lowerTime" class="btn mui-btn mui-btn-block"></button></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">首件确认:</span>
-							<span class="mui-col-xs-9"><input id="fisrtConfirm" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="fisrtConfirm1" name="fisrtConfirm" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row shiceshuju">
 							<span class="mui-col-xs-3">底板检验状况:</span>
-							<span class="mui-col-xs-9"><input id="checkResult" class="reset" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="checkResult1" name="checkResult" class="reset" type="text" value="" /></span>
 						</p>
 						<p class="mui-row ">
 							<span class="mui-col-xs-3">操作人:</span>
-							<span class="mui-col-xs-9"><input id="operator" type="text" value="" /></span>
+							<span class="mui-col-xs-9"><input id="operator1" name="operator" type="text" value="" /></span>
 						</p>
+						<p class="mui-row ">
+							<span class="mui-col-xs-3">备注:</span>
+							<span class="mui-col-xs-9"><input id="remark1" name="remark1" type="text" value="" /></span>
+						</p>
+						<p class="mui-row " style="display: none;">
+							<span class="mui-col-xs-9"><input id="auditor1" name="operator" type="text" value="" /></span>
+					    </p>
 					</div>
 				</li>
-				<li class="mui-table-view-cell mui-collapse" style="color: slategray;text-align: left;padding: 0.5rem 1rem;">
-					<a class="mui-navigate-right" href="#">备注</a>
-					<div class="mui-collapse-content">
-						<textarea rows="5" class="reset" cols="" id="remark"></textarea>
-					</div>
-				</li>
+				</div>
+				<input type="button" class="mui-btn mui-btn-blue mui-btn-outlined" value="点击添加输入框"
+					id="add" />
+				<input type="button" class="mui-btn mui-btn-red mui-btn-outlined" value="点击清除输入框"
+					id="remove" />
 			</ul>
 			<ul class="mui-list-inline" style="text-align: center;">
 				<li><button id="submit" type="button" class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #009688;color: #fff;border-radius: 2px;">提交</button></li>
@@ -209,6 +240,170 @@
 	</body>
 
 	<script type="text/javascript">
+		var i = 2;
+$(function(){ 
+	  $("#add").click(function(){
+	    $("#test").append(
+	    				'<li id="t'+i+'" class="mui-table-view-cell mui-collapse mui-active" style="color: coral;text-align: left;padding:0.5rem 1rem;">'+
+						'<a class="mui-navigate-right" href="#">实测数据</a>'+
+						'<div class="mui-collapse-content">'+
+	    				'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">机台号:</span>'+
+							'<span class="mui-col-xs-9"><input id="machineNo'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">班别:</span>'+
+							'<span class="mui-col-xs-9"><input id="class'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+
+						'<div id="jianYan">'+
+							'<p class="title-text"><span>主轴叠板数</span></p>'+
+						'</div>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数1:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminatea'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数2:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminateb'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数3:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminatec'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数4:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminated'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数5:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminatee'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">主叠板数6:</span>'+
+							'<span class="mui-col-xs-9"><input id="laminatef'+i+'" class="reset calc'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju" style="padding: 40px 0px 0px 0px;">'+
+							'<span class="mui-col-xs-3">总孔数:</span>'+
+							'<span class="mui-col-xs-9"><input id="totalHoleNo'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">特殊孔数:</span>'+
+							'<span class="mui-col-xs-9"><input id="specHoleNo'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">最小孔径:</span>'+
+							'<span class="mui-col-xs-9"><input id="minHoleDia'+i+'" class="reset minHoleDia" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">板厚:</span>'+
+							'<span class="mui-col-xs-9"><input id="plateThick'+i+'" class="reset plateThick" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">总片数:</span>'+
+							'<span class="mui-col-xs-9"><input id="totalNum'+i+'" class="reset" type="text" value="0"  style="cursor:not-allowed;background-color: #EEEEEE" disabled="disabled"/></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">上板时间:</span>'+
+							'<span class="mui-col-xs-9"><button id="upperTime'+i+'" class="btn mui-btn mui-btn-block"></button></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">下板时间:</span>'+
+							'<span class="mui-col-xs-9"><button id="lowerTime'+i+'" class="btn mui-btn mui-btn-block"></button></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">首件确认:</span>'+
+							'<span class="mui-col-xs-9"><input id="fisrtConfirm'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row shiceshuju">'+
+							'<span class="mui-col-xs-3">底板检验状况:</span>'+
+							'<span class="mui-col-xs-9"><input id="checkResult'+i+'" class="reset" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row ">'+
+							'<span class="mui-col-xs-3">操作人:</span>'+
+							'<span class="mui-col-xs-9"><input id="operator'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row ">'+
+							'<span class="mui-col-xs-3">备注:</span>'+
+							'<span class="mui-col-xs-9"><input id="remark'+i+'" type="text" value="" /></span>'+
+						'</p>'+
+						'<p class="mui-row " style="display: none;">'+
+							'<span class="mui-col-xs-9"><input id="auditor'+i+'" type="text" value="" /></span>'+
+					    '</p>'+
+						'</div>'+
+						'</li>'+
+						'<script>'+
+						'layui.laydate.render({'+
+					  		'elem: "#upperTime'+i+'",'+
+					  		'type: "time",'+
+					  		'range:false,'+
+					  		'value: new Date(),'+
+					  		'format: "HH:mm:ss",'+
+					  		'theme: "default",'+
+					  		'btns:["now", "confirm"]'+
+				  		'});'+
+						'layui.laydate.render({'+
+					  		'elem: "#lowerTime'+i+'",'+
+					  		'type: "time",'+
+					  		'range:false,'+
+					  		'value: new Date(),'+
+					  		'format: "HH:mm:ss",'+
+					  		'theme: "default",'+
+					  		'btns:["now", "confirm"]'+
+				  		'});'+
+						'var state = app.getState();'+
+						'document.getElementById("operator'+i+'").value = state.username;'+
+						'document.getElementById("minHoleDia'+i+'").value = document.getElementById("minHoleDia1").value;'+
+						'document.getElementById("plateThick'+i+'").value = document.getElementById("plateThick1").value;'+
+						'$(".calc'+i+'").change(function(){'+
+		  				'$("#totalNum'+i+'").val($("#laminatea'+i+'").val()*1+$("#laminateb'+i+'").val()*1+'+
+		  				'$("#laminatec'+i+'").val()*1+$("#laminated'+i+'").val()*1+$("#laminatee'+i+'").val()*1+$("#laminatef'+i+'").val()*1);'+
+		  	  			'});'+
+						'<\/script>'
+	    );
+	    i++;
+	  });
+	  $("#remove").click(function(){
+		  if(i>2){
+		    $('#t'+--i).remove();
+		  }
+	  });
+	  $("#operator").change(function(){
+		  	$("#operator1").val($("#operator").val());
+	  });
+	  $("#machineNo").change(function(){
+	  	  	$("#machineNo1").val($("#machineNo").val());
+	  });
+	  $("#class").change(function(){
+	  	  	$("#class1").val($("#class").val());
+	  });
+	  $(".calc").change(function(){
+		  $("#totalNum1").val($("#laminatea1").val()*1+$("#laminateb1").val()*1+
+		  $("#laminatec1").val()*1+$("#laminated1").val()*1+$("#laminatee1").val()*1+$("#laminatef1").val()*1);
+	  });
+});
+
+//layui日期控件 
+	layui.laydate.render({
+		elem: "#upperTime1",
+		type: "time",
+		range:false,
+		value: new Date(),
+		format: "HH:mm:ss",
+		theme: "default",
+		btns:['now', 'confirm']
+	});
+	layui.laydate.render({
+		elem: "#lowerTime1",
+		type: "time",
+		range:false,
+		value: new Date(),
+		format: "HH:mm:ss",
+		theme: "default",
+		btns:['now', 'confirm']
+	});
+
 		$(document).ready(function(){
 		  $(".reset").on("click",function(){
 			  $(this).css("background-color", "");
@@ -216,7 +411,7 @@
 		});
 		// 表单
 		document.getElementById("submit").addEventListener('tap', function() {
-			var information = {
+			/*var information = {
 				machineNo: document.getElementById("machineNo").value || '',
 				prodQty: document.getElementById("prodQty").value || '',
 				laminatea: document.getElementById("laminatea").value || '',
@@ -278,11 +473,11 @@
 					$("#operator").css("background-color", color);
 				plus.nativeUI.toast("黄色区域为必填项！");
 				return;
-			} else {
+			} else {*/
 				if (!confirm("确认提交吗？"))
 					return;
 
-				if (document.getElementById("remark").value.length > 30) {
+				if (document.getElementById("remark1").value.length > 30) {
 					mui.alert("备注超过30字");
 					return;
 				}
@@ -295,37 +490,7 @@
 					'未知': 'N/A'
 				}
 				factoryName = facarr[document.getElementById("factoryName").value];
-				var data = {
-					factoryName: factoryName,
-					mo: document.getElementById("mo").value,
-					mfg: document.getElementById("mfg").value,
-					wo: document.getElementById("wo").value,
-					custcode: document.getElementById("custcode").value,
-					custpart: document.getElementById("custpart").value,
-					lot: document.getElementById("lot").value,
-					datecode: document.getElementById("datecode").value,
-					d06rkey: document.getElementById("d06rkey").value,
-
-					machineNo: document.getElementById("machineNo").value,
-					prodQty: document.getElementById("prodQty").value,
-					laminatea: document.getElementById("laminatea").value,
-					laminateb: document.getElementById("laminateb").value,
-					laminatec: document.getElementById("laminatec").value,
-					laminated: document.getElementById("laminated").value,
-					laminatee: document.getElementById("laminatee").value,
-					laminatef: document.getElementById("laminatef").value,
-					totalHoleNo: document.getElementById("totalHoleNo").value,
-					specHoleNo: document.getElementById("specHoleNo").value,
-					minHoleDia: document.getElementById("minHoleDia").value,
-					plateThick: document.getElementById("plateThick").value,
-					totalNum: document.getElementById("totalNum").value,
-					upperTime: document.getElementById("upperTime").innerHTML,
-					lowerTime: document.getElementById("lowerTime").innerHTML,
-					fisrtConfirm: document.getElementById("fisrtConfirm").value,
-					checkResult: document.getElementById("checkResult").value,
-					operator: document.getElementById("operator").value,
-					remark: document.getElementById("remark").value,
-				}
+				
 
 				// for(var key in data){
 				// 	if(data[key] == undefined || data[key] == null || data[key] == ''){
@@ -333,14 +498,45 @@
 				// 		return;
 				// 	}
 				// }
-
+				
+				var data = {factoryName: factoryName,
+					mo:document.getElementById("mo").value,
+					mfg:document.getElementById("mfg").value,
+					wo:document.getElementById("wo").value,
+					custcode:document.getElementById("custcode").value,
+					custpart:document.getElementById("custpart").value,
+					lot:document.getElementById("lot").value,
+					datecode:document.getElementById("datecode").value,
+					d06rkey:document.getElementById("d06rkey").value};
+				for(var j = 1;j < i;j++){
+					data["machineNo"+j] = document.getElementById("machineNo"+j).value;
+					data["class"+j] = document.getElementById("class"+j).value;
+					data["laminatea"+j] = document.getElementById("laminatea"+j).value;
+					data["laminateb"+j] = document.getElementById("laminateb"+j).value;
+					data["laminatec"+j] = document.getElementById("laminatec"+j).value;
+					data["laminated"+j] = document.getElementById("laminated"+j).value;
+					data["laminatee"+j] = document.getElementById("laminatee"+j).value;
+					data["laminatef"+j] = document.getElementById("laminatef"+j).value;
+					data["totalHoleNo"+j] = document.getElementById("totalHoleNo"+j).value;
+					data["specHoleNo"+j] = document.getElementById("specHoleNo"+j).value;
+					data["minHoleDia"+j] = document.getElementById("minHoleDia"+j).value;
+					data["plateThick"+j] = document.getElementById("plateThick"+j).value;
+					data["totalNum"+j] = document.getElementById("totalNum"+j).value;
+					data["upperTime"+j] = document.getElementById("upperTime"+j).innerHTML;
+					data["lowerTime"+j] = document.getElementById("lowerTime"+j).innerHTML;
+					data["fisrtConfirm"+j] = document.getElementById("fisrtConfirm"+j).value;
+					data["checkResult"+j] = document.getElementById("checkResult"+j).value;
+					data["operator"+j] = document.getElementById("operator"+j).value;
+					data["remark"+j] = document.getElementById("remark"+j).value;
+					data["auditor"+j] = document.getElementById("auditor"+j).value;
+				}
 				var params = JSON.stringify(data);
 				mui.ajax({
 					url: realapi + '/JOVE_QIS/query/saveVerifyData.action?id=30',
 					type: "post",
 					data: {
 						params: params,
-						isRejectItem: false,
+						isRejectItem: false
 					},
 					dataType: "json",
 					async: false,
@@ -358,8 +554,8 @@
 						$(".tiaoMa input[type='text']").val("");
 					}
 				});
-			}
-		});
+			});
+		
 
 		(function($, doc) {
 			//初始化 scan页
@@ -393,8 +589,8 @@
 							document.getElementById("datecode").value = data.app.datecode;
 							document.getElementById("d06rkey").value = data.app.d06rkey;
 
-							document.getElementById("minHoleDia").value = data.app.minholesize;
-							document.getElementById("plateThick").value = data.app.platethickness;
+							jQuery(".minHoleDia").val(data.app.minholesize);
+							jQuery(".plateThick").val(data.app.platethickness);
 						} else {
 							mui.alert(data.mess);
 						}
@@ -503,10 +699,10 @@
 				// 登录状态消息
 				var state = app.getState();
 				document.getElementById("factoryName").value = state.changbie;
-				document.getElementById("operator").value = state.username;
+				document.getElementById("operator1").value = state.username;
 
 				// 日期控件
-				function pad(num, n) {
+				/*function pad(num, n) {
 					var len = num.toString().length;
 					while (len < n) {
 						num = "0" + num;
@@ -543,12 +739,12 @@
 						});
 					}
 				}
-				document.getElementById("upperTime").addEventListener('tap', pickerf);
-				document.getElementById("lowerTime").addEventListener('tap', pickerf);
+				document.getElementById("upperTime1").addEventListener('tap', pickerf);
+				document.getElementById("lowerTime1").addEventListener('tap', pickerf);
 				var current = date.getFullYear() + "-" + pad((date.getMonth() + 1).toString(), 2) + "-" + pad(date.getDate(), 2);
 				current += " " + pad(date.getHours(), 2) + ":" + pad(date.getMinutes(), 2);
-				document.getElementById("upperTime").innerHTML = current;
-				document.getElementById("lowerTime").innerHTML = current;
+				document.getElementById("upperTime1").innerHTML = current;
+				document.getElementById("lowerTime1").innerHTML = current;*/
 
 
 
